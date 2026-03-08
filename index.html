@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///C:/Users/willi/Downloads/index_6.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="theme-color" content="#2d7a3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FLV Controle">
+<title>FLV Controle v5</title>
+<link rel="manifest" id="mfst" href="blob:null/3bb4f3e6-a4d2-4b41-bc39-6c340c7f1ba1">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
+html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-family:'Segoe UI',system-ui,sans-serif;color:var(--t);font-size:14px}
+#app{display:flex;flex-direction:column;height:100svh;max-width:480px;margin:0 auto;background:var(--bg)}
+.hdr{background:var(--g);padding:12px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(45,122,58,.25)}
+.hl{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ht{font-size:18px;font-weight:800;color:#fff}
+.hs{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.8px;text-transform:uppercase}
+.hd{font-size:11px;color:rgba(255,255,255,.75);font-family:monospace;margin-left:auto}
+.main{flex:1;overflow-y:auto;overflow-x:hidden;padding-bottom:70px}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid var(--br);display:flex;z-index:100;box-shadow:0 -2px 8px rgba(0,0,0,.06)}
+.nb{flex:1;padding:8px 4px 10px;background:none;border:none;cursor:pointer;color:var(--mu);font-size:9px;letter-spacing:.4px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:600}
+.nb.on{color:var(--g)}
+.nb svg{width:22px;height:22px;stroke-width:1.8}
+.card{margin:8px 12px;background:#fff;border:1px solid var(--br);border-radius:14px;overflow:hidden;box-shadow:var(--sh)}
+.ch{padding:11px 14px 9px;border-bottom:1px solid var(--br);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:7px}
+.ch svg{width:15px;height:15px;flex-shrink:0}
+.cb{padding:13px}
+.fld{margin-bottom:13px}
+.fld:last-child{margin-bottom:0}
+.lbl{display:block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
+.inp{width:100%;background:var(--bg);border:1.5px solid var(--br);border-radius:10px;padding:11px 13px;color:var(--t);font-size:14px;outline:none;-webkit-appearance:none;appearance:none;font-family:inherit}
+.inp:focus{border-color:var(--g);background:#fff}
+.inp[type=date]::-webkit-calendar-picker-indicator{filter:invert(.4) sepia(1) saturate(3) hue-rotate(100deg)}
+.inp[type=number]{font-family:monospace;font-size:15px}
+.inp[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.acw{position:relative}
+.aclist{position:absolute;top:100%;left:0;right:0;z-index:60;background:#fff;border:1.5px solid var(--g);border-top:none;border-radius:0 0 10px 10px;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.14);display:none}
+.aci{padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--br);display:flex;gap:10px;align-items:center}
+.aci:last-child{border-bottom:none}
+.aci:active,.aci:hover{background:var(--gl)}
+.acode{font-family:monospace;font-size:11px;color:var(--g);font-weight:700;min-width:50px}
+.aname{font-size:13px;color:var(--t)}
+.psel{display:flex;align-items:center;gap:6px;margin-top:6px;padding:7px 10px;background:var(--gl);border:1px solid var(--br);border-radius:8px}
+.psel svg{width:14px;height:14px;color:var(--g);flex-shrink:0}
+.psel span{font-size:12px;color:var(--g);font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 16px;border:none;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .15s}
+.btn:active{opacity:.8}
+.bp{background:var(--g);color:#fff}
+.bo{background:#fff;border:1.5px solid var(--br);color:var(--t2)}
+.bd{background:#fff2f2;border:1px solid #f5c5c5;color:var(--r)}
+.bg_{background:transparent;border:none;color:var(--mu)}
+.bwa{background:#25D366;color:#fff}
+.bf{width:100%}
+.bs{padding:7px 11px;font-size:12px}
+.btn svg{width:17px;height:17px;flex-shrink:0}
+.bdg{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;font-family:monospace}
+.bg2{background:#e6f5e9;color:var(--g)}
+.brr{background:#fdecea;color:var(--r)}
+.itabs{display:flex;gap:6px;padding:8px 12px 4px;overflow-x:auto}
+.itabs::-webkit-scrollbar{display:none}
+.itab{flex-shrink:0;padding:6px 16px;background:#fff;border:1.5px solid var(--br);border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;color:var(--mu)}
+.itab.on{background:var(--g);border-color:var(--g);color:#fff}
+.qw{margin-top:11px;padding:11px;background:var(--bg);border-radius:10px;border:1px solid var(--br)}
+.qtop{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+.qpct{font-family:monospace;font-size:22px;font-weight:700}
+.qmeta{font-size:10px;color:var(--mu);font-weight:600}
+.btrack{height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden}
+.bfill{height:100%;border-radius:3px;transition:width .4s}
+.qnote{font-size:10px;color:var(--mu);margin-top:5px;font-style:italic}
+.psec{margin-bottom:14px}
+.psec:last-child{margin-bottom:0}
+.psh{display:flex;align-items:center;gap:6px;margin-bottom:7px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--mu)}
+.pbtns{display:flex;gap:8px;margin-bottom:7px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:4px}
+.pthumb{position:relative;aspect-ratio:1;border-radius:9px;overflow:hidden;border:1px solid var(--br)}
+.pthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pdel{position:absolute;top:3px;right:3px;background:rgba(217,48,37,.88);color:#fff;border:none;border-radius:50%;width:22px;height:22px;font-size:11px;cursor:pointer;font-weight:800;display:flex;align-items:center;justify-content:center}
+.ptyp{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.45);font-size:8px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;padding:3px}
+input[type=file]{display:none}
+.wabox{background:var(--bg);border:2px solid var(--g);border-radius:12px;padding:14px;font-family:monospace;font-size:13px;line-height:1.85;color:var(--t);white-space:pre-wrap;word-break:break-word}
+.hcard{margin:7px 12px;background:#fff;border:1px solid var(--br);border-radius:13px;padding:12px 14px;cursor:pointer;box-shadow:var(--sh)}
+.hcard:active{border-color:var(--g)}
+.htop{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px}
+.hdt{font-family:monospace;font-size:11px;color:var(--g);font-weight:700}
+.hpr{font-size:12px;color:var(--mu);line-height:1.5}
+.pcard{margin:7px 12px;background:#fff;border:1px solid var(--br);border-radius:13px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh)}
+.pcode{font-family:monospace;font-size:12px;color:var(--g);font-weight:700;min-width:50px}
+.pinfo{flex:1;min-width:0}
+.pname{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pmeta{font-size:10px;color:var(--mu);margin-top:2px}
+.mbg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:flex-end;justify-content:center}
+.modal{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:90svh;overflow-y:auto;animation:su .25s ease}
+@keyframes su{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.mhd{padding:14px 16px 11px;border-bottom:1px solid var(--br);font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1}
+.mbd{padding:14px}
+.mft{padding:11px 14px;border-top:1px solid var(--br);display:flex;gap:8px;position:sticky;bottom:0;background:#fff}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 12px 4px}
+.metric{background:#fff;border:1px solid var(--br);border-radius:13px;padding:12px;box-shadow:var(--sh)}
+.mlbl{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--mu);margin-bottom:4px}
+.mval{font-family:monospace;font-size:24px;font-weight:700;color:var(--g)}
+.msub{font-size:10px;color:var(--mu);margin-top:2px}
+.crow{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.clbl{font-size:11px;color:var(--mu);width:84px;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.ctrk{flex:1;height:20px;background:var(--bg);border-radius:6px;overflow:hidden}
+.cfil{height:100%;background:linear-gradient(90deg,var(--g2),var(--g3));border-radius:6px}
+.cval{font-family:monospace;font-size:10px;color:var(--g);width:48px;text-align:right;font-weight:700}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--t);color:#fff;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:all .28s;white-space:nowrap;max-width:90vw;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.stitle{padding:13px 14px 5px;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:space-between}
+.srch{padding:5px 12px 9px}
+.empty{text-align:center;padding:48px 20px;color:var(--mu)}
+.empty-ico{font-size:42px;margin-bottom:10px}
+.empty p{font-size:13px;line-height:1.9;font-weight:500}
+.insight{background:var(--gl);border:1px solid var(--br);border-radius:10px;padding:11px 13px;margin-bottom:7px;font-size:13px;line-height:1.6}
+.spin{width:18px;height:18px;border:2px solid var(--br);border-top-color:var(--g);border-radius:50%;animation:sp .8s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+.mt8{margin-top:8px}
+.flex{display:flex}.gap8{gap:8px}.f1{flex:1}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="hdr">
+    <div class="hl">🥦</div>
+    <div style="flex:1"><div class="ht">FLV Controle</div><div class="hs">Quebra de Hortifruti &nbsp;·&nbsp; v5</div></div>
+    <div id="hdate" class="hd">07/03/2026</div>
+  </div>
+  <div class="main" id="main"><div><div style="padding:14px 14px 6px"><div style="font-size:21px;font-weight:800">Controle FLV</div><div style="font-size:11px;color:var(--mu);margin-top:2px;font-family:monospace">07/03/2026 · 0 tratativa(s) hoje</div></div>
+  <div class="metrics">
+    <div class="metric"><div class="mlbl">Quebra Hoje</div><div class="mval">0.0</div><div class="msub">kg perdidos</div></div>
+    <div class="metric"><div class="mval" style="color:var(--g)">0.0%</div><div class="msub">% quebra · meta: 5%</div></div>
+    <div class="metric"><div class="mlbl">Tratativas</div><div class="mval">0</div><div class="msub">total</div></div>
+    <div class="metric"><div class="mlbl">Produtos</div><div class="mval">0</div><div class="msub">ativos</div></div>
+  </div>
+  <div class="stitle" style="margin-top:4px"><span>Recentes</span></div>
+  <div class="empty"><div class="empty-ico">📋</div><p>Nenhuma tratativa ainda.<br>Toque em Nova para começar.</p></div>
+  <div style="padding:8px 12px 16px"><button class="btn bp bf" style="padding:14px;font-size:15px" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> Nova Tratativa</button></div></div></div>
+  <nav class="bnav" id="nav"><button class="nb on" onclick="go(&#39;home&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Início</span></button><button class="nb" onclick="go(&#39;produtos&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg><span>Produtos</span></button><button class="nb" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span>Nova</span></button><button class="nb" onclick="go(&#39;dashboard&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Dash</span></button><button class="nb" onclick="go(&#39;historico&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span>Histórico</span></button></nav>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+const DB={
+  get:(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},
+  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}
+};
+const gid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const today=()=>new Date().toISOString().split('T')[0];
+const fmtD=d=>{const dt=d?new Date(d+'T12:00:00'):new Date();return`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}/${dt.getFullYear()}`};
+const fmtK=n=>String(parseFloat(n)||0).replace('.',',');
+const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+let _tt;
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2800)};
+
+// ICONS
+const I={
+  home:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  box:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>`,
+  plus:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`,
+  chart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+  list:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`,
+  cam:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+  img:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
+  chk:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`,
+  x:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+  trash:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>`,
+  edit:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+  wa:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`,
+  copy:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>`,
+  back:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>`,
+  share:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+  brain:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="12" rx="10" ry="8"/><path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`,
+};
+
+// STATE
+const S={
+  tab:'home',
+  produtos:DB.get('flv-prod',[]),
+  trats:DB.get('flv-trat',[]),
+  periodo:'mes',histDetail:null,histQ:'',prodQ:'',
+  pModal:null,pForm:{c:'',n:'',p:'',m:'5'},pId:null,
+  ai:[],aiLoad:false,
+};
+const save=()=>{DB.set('flv-prod',S.produtos);DB.set('flv-trat',S.trats)};
+const genWA=items=>items.map(it=>{const p=S.produtos.find(p=>p.id===it.pid);if(!p)return'';return`Cod: ${p.c}\n${p.n}\n${fmtD(it.data)}\n chegou: ${fmtK(it.ch)} kg\nQuantidade da quebra: ${fmtK(it.qb)} kg`}).filter(Boolean).join('\n\n');
+const newItem=()=>({id:gid(),pid:null,data:today(),ch:'',qb:'',fotos:{p:[],b:[],e:[]}});
+
+// NOVA STATE - completely separate, never touched by main render
+const N={items:[],idx:0,step:'form'};
+const initN=()=>{if(!N.items.length){N.items=[newItem()];N.idx=0;N.step='form'}};
+
+// RENDER
+const nav=()=>$('nav').innerHTML=[['home','Início',I.home],['produtos','Produtos',I.box],['nova','Nova',I.plus],['dashboard','Dash',I.chart],['historico','Histórico',I.list]].map(([id,l,ic])=>`<button class="nb${S.tab===id?' on':''}" onclick="go('${id}')">${ic}<span>${l}</span></button>`).join('');
+
+window.go=t=>{
+  if(S.tab==='nova')saveNF();
+  S.tab=t;nav();
+  if(t==='nova'){initN();renderN()}else renderM()
+};
+
+const renderM=()=>{
+  if(S.tab==='home')$('main').innerHTML=homeH();
+  else if(S.tab==='produtos')$('main').innerHTML=prodH();
+  else if(S.tab==='dashboard')$('main').innerHTML=dashH();
+  else if(S.tab==='historico')$('main').innerHTML=histH();
+};
+
+// ── HOME
+const homeH=()=>{
+  const td=today();
+  const tt=S.trats.filter(t=>t.at.startsWith(td));
+  const tq=tt.reduce((s,t)=>s+t.items.reduce((a,i)=>a+(parseFloat(i.qb)||0),0),0);
+  const tc=tt.reduce((s,t)=>s+t.items.reduce((a,i)=>a+(parseFloat(i.ch)||0),0),0);
+  const pct=tc>0?((tq/tc)*100).toFixed(1):'0.0';
+  const rec=S.trats.slice(0,5).map(t=>{
+    const tq2=t.items.reduce((s,i)=>s+(parseFloat(i.qb)||0),0);
+    const nm=t.items.map(i=>{const p=S.produtos.find(p=>p.id===i.pid);return p?esc(p.n):'?'}).join(', ');
+    return`<div class="hcard" onclick="openDet('${t.id}')"><div class="htop"><span class="hdt">${fmtD(t.at)}</span><span class="bdg bg2">${t.items.length} item(ns)</span><span class="bdg brr">${tq2.toFixed(1)} kg</span></div><div class="hpr">${nm}</div></div>`;
+  }).join('');
+  return`<div><div style="padding:14px 14px 6px"><div style="font-size:21px;font-weight:800">Controle FLV</div><div style="font-size:11px;color:var(--mu);margin-top:2px;font-family:monospace">${fmtD()} · ${tt.length} tratativa(s) hoje</div></div>
+  <div class="metrics">
+    <div class="metric"><div class="mlbl">Quebra Hoje</div><div class="mval">${tq.toFixed(1)}</div><div class="msub">kg perdidos</div></div>
+    <div class="metric"><div class="mval" style="color:${parseFloat(pct)>5?'var(--r)':'var(--g)'}">${pct}%</div><div class="msub">% quebra · meta: 5%</div></div>
+    <div class="metric"><div class="mlbl">Tratativas</div><div class="mval">${S.trats.length}</div><div class="msub">total</div></div>
+    <div class="metric"><div class="mlbl">Produtos</div><div class="mval">${S.produtos.filter(p=>p.at).length}</div><div class="msub">ativos</div></div>
+  </div>
+  <div class="stitle" style="margin-top:4px"><span>Recentes</span></div>
+  ${S.trats.length===0?`<div class="empty"><div class="empty-ico">📋</div><p>Nenhuma tratativa ainda.<br>Toque em Nova para começar.</p></div>`:rec}
+  <div style="padding:8px 12px 16px"><button class="btn bp bf" style="padding:14px;font-size:15px" onclick="go('nova')">${I.plus} Nova Tratativa</button></div></div>`;
+};
+
+// ── PRODUTOS
+const prodH=()=>{
+  const q=S.prodQ||'';
+  const list=S.produtos.filter(p=>p.at&&(p.n.toLowerCase().includes(q.toLowerCase())||p.c.toLowerCase().includes(q.toLowerCase())));
+  return`<div><div class="stitle"><span>Produtos</span><button class="btn bp bs" onclick="newP()">${I.plus} Novo</button></div>
+  <div class="srch"><input class="inp" placeholder="Buscar..." value="${esc(q)}" oninput="S.prodQ=this.value;renderM()"></div>
+  ${list.length===0?`<div class="empty"><div class="empty-ico">📦</div><p>${q?'Nenhum encontrado.':'Cadastre o primeiro produto.'}</p></div>`:''}
+  ${list.map(p=>`<div class="pcard"><span class="pcode">${esc(p.c)}</span><div class="pinfo"><div class="pname">${esc(p.n)}</div><div class="pmeta">Meta: ${p.m||5}%${p.p?' · R$'+p.p+'/kg':''}</div></div><div class="flex gap8"><button class="btn bg_ bs" onclick="editP('${p.id}')">${I.edit}</button><button class="btn bg_ bs" style="color:var(--r)" onclick="delP('${p.id}')">${I.trash}</button></div></div>`).join('')}
+  ${pmH()}</div>`;
+};
+const pmH=()=>{
+  if(!S.pModal)return'';
+  const f=S.pForm;
+  return`<div class="mbg" onclick="closeP()"><div class="modal" onclick="event.stopPropagation()">
+    <div class="mhd"><span>${S.pId?'Editar':'Novo'} Produto</span><button class="btn bg_ bs" onclick="closeP()">${I.x}</button></div>
+    <div class="mbd">
+      <div class="fld"><label class="lbl">Código *</label><input class="inp" id="pm-c" value="${esc(f.c)}" placeholder="ex: 7028" style="font-family:monospace"></div>
+      <div class="fld"><label class="lbl">Nome *</label><input class="inp" id="pm-n" value="${esc(f.n)}" placeholder="ex: Tomate Longa Vida"></div>
+      <div class="r2">
+        <div class="fld"><label class="lbl">Preço/kg R$</label><input class="inp" id="pm-p" type="number" step="0.01" value="${f.p}" placeholder="0,00"></div>
+        <div class="fld"><label class="lbl">Meta Quebra %</label><input class="inp" id="pm-m" type="number" step="0.1" value="${f.m}" placeholder="5"></div>
+      </div>
+    </div>
+    <div class="mft"><button class="btn bo f1" onclick="closeP()">Cancelar</button><button class="btn bp" style="flex:2" onclick="saveP()">${I.chk} Salvar</button></div>
+  </div></div>`;
+};
+window.newP=()=>{S.pForm={c:'',n:'',p:'',m:'5'};S.pId=null;S.pModal='new';renderM()};
+window.editP=id=>{const p=S.produtos.find(p=>p.id===id);if(!p)return;S.pForm={c:p.c,n:p.n,p:p.p||'',m:p.m||'5'};S.pId=id;S.pModal='edit';renderM()};
+window.closeP=()=>{S.pModal=null;renderM()};
+window.delP=id=>{if(!confirm('Desativar este produto?'))return;S.produtos=S.produtos.map(p=>p.id===id?{...p,at:false}:p);save();toast('Produto desativado');renderM()};
+window.saveP=()=>{
+  const c=$('pm-c')?.value.trim(),n=$('pm-n')?.value.trim(),p=$('pm-p')?.value,m=$('pm-m')?.value;
+  if(!c||!n){toast('Código e nome obrigatórios');return}
+  if(S.produtos.find(x=>x.c===c&&x.at&&x.id!==S.pId)){toast('Código já existe');return}
+  if(S.pId){S.produtos=S.produtos.map(x=>x.id===S.pId?{...x,c,n,p,m}:x);toast('Produto atualizado!')}
+  else{S.produtos.push({id:gid(),c,n,p,m,at:true,cr:new Date().toISOString()});toast('Produto cadastrado!')}
+  save();S.pModal=null;renderM()
+};
+
+// ── DASHBOARD
+const dashH=()=>{
+  const now=new Date();
+  const tt=S.trats.filter(t=>{const d=new Date(t.at);
+    if(S.periodo==='hoje')return d.toDateString()===now.toDateString();
+    if(S.periodo==='semana')return(now-d)/864e5<=7;
+    if(S.periodo==='mes')return(now-d)/864e5<=30;
+    return true});
+  const ai=tt.flatMap(t=>t.items);
+  const tc=ai.reduce((s,i)=>s+(parseFloat(i.ch)||0),0);
+  const tq=ai.reduce((s,i)=>s+(parseFloat(i.qb)||0),0);
+  const pct=tc>0?((tq/tc)*100).toFixed(1):'0.0';
+  const bp={};ai.forEach(i=>{const p=S.produtos.find(p=>p.id===i.pid);if(!p)return;bp[p.n]=(bp[p.n]||0)+(parseFloat(i.qb)||0)});
+  const top=Object.entries(bp).sort((a,b)=>b[1]-a[1]).slice(0,8),mx=top[0]?.[1]||1;
+  const insH=S.aiLoad?`<div style="display:flex;align-items:center;gap:8px;padding:12px;color:var(--g)"><div class="spin"></div> Analisando...</div>`:
+    S.ai.length>0?`${S.ai.map((x,i)=>`<div class="insight"><strong>#${i+1}</strong> ${esc(x)}</div>`).join('')}<button class="btn bo bf bs mt8" onclick="doAI()">Reanalisar</button>`:
+    `<button class="btn bp bf" onclick="doAI()">${I.brain} Analisar com IA</button>`;
+  return`<div><div class="stitle"><span>Dashboard</span></div>
+  <div style="display:flex;gap:6px;padding:4px 12px 10px;overflow-x:auto">
+    ${[['hoje','Hoje'],['semana','7 dias'],['mes','30 dias'],['tudo','Tudo']].map(([v,l])=>`<button class="btn bs${S.periodo===v?' bp':' bo'}" onclick="S.periodo='${v}';renderM()">${l}</button>`).join('')}
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="mlbl">Tratativas</div><div class="mval">${tt.length}</div></div>
+    <div class="metric"><div class="mlbl">Quebra Total</div><div class="mval">${tq.toFixed(1)}</div><div class="msub">kg</div></div>
+    <div class="metric"><div class="mlbl">% Quebra</div><div class="mval" style="color:${parseFloat(pct)>5?'var(--r)':'var(--g)'}">${pct}%</div></div>
+    <div class="metric"><div class="mlbl">Chegou</div><div class="mval">${tc.toFixed(0)}</div><div class="msub">kg</div></div>
+  </div>
+  ${top.length>0?`<div class="card" style="margin-top:4px"><div class="ch">${I.chart} Top Quebra</div><div class="cb">${top.map(([n,k])=>`<div class="crow"><div class="clbl">${esc(n)}</div><div class="ctrk"><div class="cfil" style="width:${(k/mx*100).toFixed(1)}%"></div></div><div class="cval">${k.toFixed(1)} kg</div></div>`).join('')}</div></div>`:''}
+  <div class="card"><div class="ch">${I.brain} Análise IA</div><div class="cb">${insH}</div></div></div>`;
+};
+window.doAI=async()=>{
+  if(!S.trats.length){toast('Sem dados');return}
+  S.aiLoad=true;renderM();
+  try{
+    const r=S.trats.slice(0,20).flatMap(t=>t.items).map(i=>{const p=S.produtos.find(p=>p.id===i.pid);return p?`${p.n}:${i.ch}kg chegou,${i.qb}kg quebra`:null}).filter(Boolean).join(';');
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,messages:[{role:'user',content:`Analise quebra de hortifruti e dê 3 insights práticos em português: ${r}`}]})});
+    const d=await res.json();
+    const txt=d.content?.map(c=>c.text||'').join('');
+    S.ai=txt.split('\n').filter(l=>l.trim().length>10).slice(0,3)
+  }catch{S.ai=['Não foi possível analisar.']}
+  S.aiLoad=false;renderM()
+};
+
+// ── HISTÓRICO
+const histH=()=>{
+  if(S.histDetail)return histDetH(S.histDetail);
+  const q=S.histQ||'';
+  const list=S.trats.filter(t=>{if(!q)return true;const ql=q.toLowerCase();return t.items.some(i=>{const p=S.produtos.find(p=>p.id===i.pid);return p&&(p.n.toLowerCase().includes(ql)||p.c.toLowerCase().includes(ql))})});
+  return`<div><div class="stitle"><span>Histórico</span></div>
+  <div class="srch"><input class="inp" placeholder="Buscar..." value="${esc(q)}" oninput="S.histQ=this.value;renderM()"></div>
+  ${list.length===0?`<div class="empty"><div class="empty-ico">📂</div><p>${q?'Nenhum resultado.':'Nenhuma tratativa registrada.'}</p></div>`:''}
+  ${list.map(t=>{const tq2=t.items.reduce((s,i)=>s+(parseFloat(i.qb)||0),0);const nm=t.items.map(i=>{const p=S.produtos.find(p=>p.id===i.pid);return p?esc(p.n):'?'}).join(', ');return`<div class="hcard" onclick="openDet('${t.id}')"><div class="htop"><span class="hdt">${fmtD(t.at)}</span><span class="bdg bg2">${t.items.length} item(ns)</span><span class="bdg brr">${tq2.toFixed(1)} kg</span></div><div class="hpr">${nm}</div></div>`}).join('')}
+  </div>`;
+};
+const histDetH=t=>{
+  const allPh=t.items.flatMap(it=>[...it.fotos.p.map((s,i)=>({src:s,lbl:'Produto '+(i+1)})),...it.fotos.b.map((s,i)=>({src:s,lbl:'Balança '+(i+1)})),...it.fotos.e.map((s,i)=>({src:s,lbl:'Etiqueta '+(i+1)}))]);
+  return`<div><div class="stitle"><button class="btn bg_ bs" onclick="S.histDetail=null;renderM()">${I.back}</button><span style="flex:1;margin-left:6px">Detalhes</span></div>
+  <div class="card"><div class="ch">${I.wa} Texto</div><div class="cb">
+    <div class="wabox">${esc(t.wa)}</div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <button class="btn bo f1" onclick="cpTxt('${t.id}')">${I.copy} Copiar</button>
+      <button class="btn bwa f1" onclick="window.open('https://wa.me/?text='+encodeURIComponent(S.trats.find(x=>x.id==='${t.id}')?.wa||''),'_blank')">${I.wa} WhatsApp</button>
+    </div>
+  </div></div>
+  ${allPh.length>0?`<div class="card"><div class="ch">${I.cam} Fotos (${allPh.length})</div><div class="cb">
+    <div style="background:var(--gl);border-radius:8px;padding:9px 12px;margin-bottom:10px;font-size:12px;color:var(--t2);line-height:1.5">📲 Toque <strong>Enviar</strong> em cada foto → <strong>WhatsApp</strong> → mesmo contato</div>
+    ${allPh.map((f,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--br)"><img src="${f.src}" style="width:52px;height:52px;object-fit:cover;border-radius:9px;flex-shrink:0"><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:var(--t2);text-transform:uppercase">${f.lbl}</div></div><button class="btn bo bs" data-hsrc="${i}" data-htid="${t.id}">${I.wa} Enviar</button></div>`).join('')}
+  </div></div>`:''}
+  <div style="padding:6px 12px 16px"><button class="btn bd bf bs" onclick="delTrat('${t.id}')">${I.trash} Excluir</button></div></div>`;
+};
+window.openDet=id=>{S.histDetail=S.trats.find(t=>t.id===id)||null;renderM()};
+window.cpTxt=id=>{const t=S.trats.find(t=>t.id===id);if(!t)return;if(navigator.clipboard)navigator.clipboard.writeText(t.wa).then(()=>toast('Copiado!'))};
+window.delTrat=id=>{if(!confirm('Excluir esta tratativa?'))return;S.trats=S.trats.filter(t=>t.id!==id);save();S.histDetail=null;toast('Excluída');renderM()};
+
+// Share photo from history
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-hsrc]');
+  if(!btn)return;
+  const i=parseInt(btn.dataset.hsrc),tid=btn.dataset.htid;
+  const t=S.trats.find(t=>t.id===tid);if(!t)return;
+  const all=t.items.flatMap(it=>[...it.fotos.p,...it.fotos.b,...it.fotos.e]);
+  shareFoto(all[i],i);
+});
+
+const shareFoto=(src,i)=>{
+  if(!src)return;
+  fetch(src).then(r=>r.blob()).then(b=>{
+    const file=new File([b],`foto_${i+1}.jpg`,{type:'image/jpeg'});
+    if(navigator.share&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file]}).catch(()=>{});
+    } else {
+      const a=document.createElement('a');a.href=src;a.download=`foto_${i+1}.jpg`;a.click();
+      toast('Foto baixada — envie pelo WhatsApp');
+    }
+  }).catch(()=>toast('Erro ao processar foto'));
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// NOVA TRATATIVA - DOM ESTÁTICO, SEM RERENDER DURANTE DIGITAÇÃO
+// ══════════════════════════════════════════════════════════════════════════════
+const saveNF=()=>{
+  const it=N.items[N.idx];if(!it)return;
+  const ch=$('n-ch'),qb=$('n-qb'),dt=$('n-dt');
+  if(ch)it.ch=ch.value;
+  if(qb)it.qb=qb.value;
+  if(dt)it.data=dt.value;
+};
+
+const renderN=()=>{
+  if(N.step==='preview'){$('main').innerHTML=prevH();bindPrev();return}
+  const idx=N.idx,it=N.items[idx];if(!it)return;
+  $('main').innerHTML=novaH(idx,it);
+  bindNova(idx,it);
+};
+
+const novaH=(idx,it)=>{
+  const prod=it.pid?S.produtos.find(p=>p.id===it.pid):null;
+  const ch=parseFloat(it.ch)||0,qb=parseFloat(it.qb)||0;
+  const meta=prod?(parseFloat(prod.m)||5):5;
+  const pct=ch>0?(qb/ch*100):0,over=pct>meta,showQ=ch>0&&it.qb!=='';
+  const tabs=N.items.map((x,i)=>{const p=S.produtos.find(p=>p.id===x.pid);return`<div class="itab${i===idx?' on':''}" data-ti="${i}">${p?esc(p.c):`Item ${i+1}`}</div>`}).join('');
+  const photoSec=(tipo,label,multi,fotos)=>`<div class="psec">
+    <div class="psh">${label}<span class="bdg bg2" id="pb-${tipo}">${fotos.length} foto(s)</span>${!multi?'<span style="font-size:9px;margin-left:3px;color:var(--mu)">máx 1</span>':''}</div>
+    <div class="pbtns"><button class="btn bo bs" id="pc-${tipo}">${I.cam} Câmera</button><button class="btn bo bs" id="pg-${tipo}">${I.img} Galeria</button></div>
+    <div id="pg2-${tipo}">${fotos.length?pgH(fotos,tipo):''}</div>
+    <input type="file" id="pf-${tipo}-c" accept="image/*" capture="environment">
+    <input type="file" id="pf-${tipo}-g" accept="image/*"${multi?' multiple':''}>
+  </div>`;
+  return`<div style="padding-bottom:8px">
+    <div class="stitle"><span>Nova Tratativa</span><button class="btn bo bs" id="n-add">${I.plus} Item</button></div>
+    <div class="itabs">${tabs}</div>
+    <div class="card"><div class="ch">${I.box} Produto</div><div class="cb">
+      <div class="fld"><label class="lbl">Código / Nome</label>
+        <div class="acw">
+          <input class="inp" id="n-busca" value="${esc(prod?prod.c+' · '+prod.n:'')}" placeholder="Digite código ou nome do produto..." autocomplete="off" inputmode="text">
+          <div class="aclist" id="n-acl"></div>
+        </div>
+        <div id="n-psel">${prod?`<div class="psel">${I.chk}<span>${esc(prod.n)}</span></div>`:''}</div>
+      </div>
+      <div class="fld"><label class="lbl">Data</label><input class="inp" id="n-dt" type="date" value="${it.data}" max="${today()}"></div>
+      <div class="r2">
+        <div class="fld"><label class="lbl">Chegou (kg)</label><input class="inp" id="n-ch" type="number" step="0.1" min="0" value="${it.ch||''}" placeholder="0" inputmode="decimal"></div>
+        <div class="fld"><label class="lbl">Quebra (kg)</label><input class="inp" id="n-qb" type="number" step="0.1" min="0" value="${it.qb||''}" placeholder="0" inputmode="decimal"></div>
+      </div>
+      <div id="n-qw" class="qw" style="display:${showQ?'block':'none'}">
+        <div class="qtop"><div id="n-qpct" class="qpct" style="color:${over?'var(--r)':'var(--g)'}">${pct.toFixed(1)}%</div><div class="qmeta">meta: ${meta}%</div></div>
+        <div class="btrack"><div id="n-qfil" class="bfill" style="width:${Math.min(pct,100).toFixed(1)}%;background:${over?'var(--r)':'linear-gradient(90deg,var(--g2),var(--g3))'}"></div></div>
+        <div id="n-qnote" class="qnote">${over?'⚠ Acima da meta — ':''}Percentual interno, não enviado ao WhatsApp</div>
+      </div>
+    </div></div>
+    <div class="card"><div class="ch">${I.cam} Fotos</div><div class="cb">
+      ${photoSec('p','Foto do Produto',true,it.fotos.p)}
+      ${photoSec('b','Foto da Balança',true,it.fotos.b)}
+      ${photoSec('e','Foto da Etiqueta',false,it.fotos.e)}
+    </div></div>
+    ${N.items.length>1?`<div style="padding:0 12px 6px"><button class="btn bd bf bs" id="n-rm">${I.trash} Remover item</button></div>`:''}
+    <div style="padding:6px 12px 16px"><button class="btn bp bf" style="padding:14px;font-size:15px" id="n-prev">${I.share} Gerar Preview</button></div>
+  </div>`;
+};
+
+const pgH=(fotos,tipo)=>`<div class="pgrid">${fotos.map((src,pi)=>`<div class="pthumb"><img src="${src}" loading="lazy"><button class="pdel" data-t="${tipo}" data-i="${pi}">✕</button><div class="ptyp">${tipo==='p'?'Produto':tipo==='b'?'Balança':'Etiqueta'}</div></div>`).join('')}</div>`;
+
+const updPhotos=(tipo,it)=>{
+  const bdg=$(`pb-${tipo}`);if(bdg)bdg.textContent=it.fotos[tipo].length+' foto(s)';
+  const grid=$(`pg2-${tipo}`);if(grid)grid.innerHTML=it.fotos[tipo].length?pgH(it.fotos[tipo],tipo):'';
+};
+
+const updBar=it=>{
+  const ch=parseFloat($('n-ch')?.value)||0;
+  const qb=parseFloat($('n-qb')?.value)||0;
+  it.ch=$('n-ch')?.value||it.ch;
+  it.qb=$('n-qb')?.value||it.qb;
+  const prod=S.produtos.find(p=>p.id===it.pid);
+  const meta=prod?(parseFloat(prod.m)||5):5;
+  const pct=ch>0?(qb/ch*100):0,over=pct>meta;
+  const qw=$('n-qw');if(!qw)return;
+  if(ch>0&&$('n-qb')?.value!==''){
+    qw.style.display='block';
+    $('n-qpct').textContent=pct.toFixed(1)+'%';
+    $('n-qpct').style.color=over?'var(--r)':'var(--g)';
+    $('n-qfil').style.width=Math.min(pct,100).toFixed(1)+'%';
+    $('n-qfil').style.background=over?'var(--r)':'linear-gradient(90deg,var(--g2),var(--g3))';
+    $('n-qnote').textContent=(over?'⚠ Acima da meta — ':'')+'Percentual interno, não enviado ao WhatsApp';
+  } else qw.style.display='none';
+};
+
+const bindNova=(idx,it)=>{
+  // Tabs
+  document.querySelectorAll('[data-ti]').forEach(el=>{el.onclick=()=>{saveNF();N.idx=parseInt(el.dataset.ti);renderN()};});
+  // Add/remove item
+  $('n-add').onclick=()=>{saveNF();N.items.push(newItem());N.idx=N.items.length-1;renderN()};
+  const rmBtn=$('n-rm');if(rmBtn)rmBtn.onclick=()=>{saveNF();N.items.splice(N.idx,1);N.idx=Math.max(0,N.idx-1);renderN()};
+  // Preview
+  $('n-prev').onclick=()=>{
+    saveNF();
+    for(const item of N.items){
+      if(!item.pid){toast('Selecione um produto em todos os itens');return}
+      if(!item.ch||parseFloat(item.ch)<=0){toast('Informe a quantidade que chegou');return}
+      if(item.qb===''||parseFloat(item.qb)<0){toast('Informe a quebra (pode ser 0)');return}
+    }
+    N.step='preview';renderN()
+  };
+  // Date
+  $('n-dt').onchange=function(){it.data=this.value};
+  // KG fields
+  $('n-ch').onchange=()=>updBar(it);$('n-ch').onblur=()=>updBar(it);
+  $('n-qb').onchange=()=>updBar(it);$('n-qb').onblur=()=>updBar(it);
+  // Busca produto
+  const bEl=$('n-busca'),acl=$('n-acl'),psel=$('n-psel');
+  const showAC=v=>{
+    if(!v){acl.style.display='none';return}
+    const vl=v.toLowerCase();
+    const sugs=S.produtos.filter(p=>p.at&&(p.c.toLowerCase().includes(vl)||p.n.toLowerCase().includes(vl))).slice(0,8);
+    if(!sugs.length){acl.style.display='none';return}
+    acl.innerHTML=sugs.map(p=>`<div class="aci" data-pid="${p.id}"><span class="acode">${esc(p.c)}</span><span class="aname">${esc(p.n)}</span></div>`).join('');
+    acl.style.display='block';
+  };
+  const selProd=p=>{
+    it.pid=p.id;
+    bEl.value=p.c+' · '+p.n;
+    acl.style.display='none';
+    psel.innerHTML=`<div class="psel">${I.chk}<span>${esc(p.n)}</span></div>`;
+    // update tab
+    const tab=document.querySelector(`[data-ti="${idx}"]`);
+    if(tab)tab.textContent=esc(p.c);
+    updBar(it);
+  };
+  bEl.oninput=function(){
+    if(it.pid){
+      const cur=S.produtos.find(p=>p.id===it.pid);
+      if(cur&&this.value!==(cur.c+' · '+cur.n)){it.pid=null;psel.innerHTML=''}
+    }
+    showAC(this.value);
+  };
+  bEl.onfocus=function(){showAC(this.value)};
+  bEl.onblur=()=>setTimeout(()=>{acl.style.display='none'},200);
+  // Usar touchstart para mobile - mais responsivo que click
+  acl.ontouchstart=e=>{
+    const a=e.target.closest('.aci');if(!a)return;
+    e.preventDefault();
+    const p=S.produtos.find(p=>p.id===a.dataset.pid);
+    if(p)selProd(p);
+  };
+  acl.onmousedown=e=>{
+    const a=e.target.closest('.aci');if(!a)return;
+    e.preventDefault();
+    const p=S.produtos.find(p=>p.id===a.dataset.pid);
+    if(p)selProd(p);
+  };
+  // Fotos
+  const setupFoto=(tipo,multi)=>{
+    $(`pc-${tipo}`).onclick=()=>{$(`pf-${tipo}-c`).value='';$(`pf-${tipo}-c`).click()};
+    $(`pg-${tipo}`).onclick=()=>{$(`pf-${tipo}-g`).value='';$(`pf-${tipo}-g`).click()};
+    const handle=files=>{
+      Array.from(files).forEach(f=>{
+        if(!multi&&it.fotos[tipo].length>=1){toast('Máx 1 foto para etiqueta');return}
+        const r=new FileReader();
+        r.onload=ev=>{it.fotos[tipo].push(ev.target.result);updPhotos(tipo,it)};
+        r.readAsDataURL(f);
+      });
+    };
+    $(`pf-${tipo}-c`).onchange=e=>handle(e.target.files);
+    $(`pf-${tipo}-g`).onchange=e=>handle(e.target.files);
+  };
+  setupFoto('p',true);setupFoto('b',true);setupFoto('e',false);
+  // Delete foto
+  const delH=e=>{
+    const btn=e.target.closest('.pdel');if(!btn)return;
+    const tipo=btn.dataset.t,pi=parseInt(btn.dataset.i);
+    it.fotos[tipo].splice(pi,1);updPhotos(tipo,it);
+  };
+};
+// Delete foto - listener unico, fora do bindNova
+document.addEventListener('click',function(e){
+  if(S.tab!=='nova')return;
+  var b=e.target.closest('.pdel');if(!b)return;
+  var it=N.items[N.idx];if(!it)return;
+  it.fotos[b.dataset.t].splice(parseInt(b.dataset.i),1);
+  updPhotos(b.dataset.t,it);
+});
+
+// PREVIEW
+const prevH=()=>{
+  const wa=genWA(N.items);
+  const allPh=N.items.flatMap(it=>[...it.fotos.p.map((s,i)=>({src:s,lbl:'Produto '+(i+1)})),...it.fotos.b.map((s,i)=>({src:s,lbl:'Balança '+(i+1)})),...it.fotos.e.map((s,i)=>({src:s,lbl:'Etiqueta '+(i+1)}))]);
+  return`<div style="padding-bottom:8px">
+    <div class="stitle"><button class="btn bg_ bs" id="pv-back">${I.back}</button><span style="flex:1;margin-left:6px">Preview</span></div>
+    <div class="card"><div class="ch">${I.wa} Passo 1 — Texto</div><div class="cb">
+      <div class="wabox">${esc(wa)}</div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn bo f1" id="pv-copy">${I.copy} Copiar</button>
+        <button class="btn bwa f1" id="pv-wa">${I.wa} WhatsApp</button>
+      </div>
+    </div></div>
+    ${allPh.length>0?`<div class="card"><div class="ch">${I.cam} Passo 2 — Fotos (${allPh.length})</div><div class="cb">
+      <div style="background:var(--gl);border-radius:8px;padding:9px 12px;margin-bottom:10px;font-size:12px;color:var(--t2);line-height:1.5">📲 Toque <strong>Enviar</strong> em cada foto → escolha <strong>WhatsApp</strong> → mesmo contato</div>
+      ${allPh.map((f,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--br)"><img src="${f.src}" style="width:52px;height:52px;object-fit:cover;border-radius:9px;flex-shrink:0"><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:var(--t2);text-transform:uppercase">${f.lbl}</div></div><button class="btn bo bs pv-foto" data-fi="${i}">${I.wa} Enviar</button></div>`).join('')}
+    </div></div>`:''}
+    <div style="padding:6px 12px 16px"><button class="btn bo bf" style="padding:13px" id="pv-save">${I.chk} Salvar e Concluir</button></div>
+  </div>`;
+};
+const bindPrev=()=>{
+  const wa=genWA(N.items);
+  $('pv-back').onclick=()=>{N.step='form';renderN()};
+  $('pv-copy').onclick=()=>{if(navigator.clipboard)navigator.clipboard.writeText(wa).then(()=>toast('Texto copiado!'))};
+  $('pv-wa').onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent(wa),'_blank');
+  $('pv-save').onclick=finalizar;
+  document.querySelectorAll('.pv-foto').forEach(btn=>{
+    btn.onclick=()=>{
+      const i=parseInt(btn.dataset.fi);
+      const all=N.items.flatMap(it=>[...it.fotos.p,...it.fotos.b,...it.fotos.e]);
+      shareFoto(all[i],i);
+    };
+  });
+};
+const finalizar=()=>{
+  const items=JSON.parse(JSON.stringify(N.items));
+  S.trats.unshift({id:gid(),at:new Date().toISOString(),items,wa:genWA(items)});
+  save();toast('Tratativa salva!');
+  N.items=[];N.idx=0;N.step='form';
+  S.tab='historico';S.histDetail=null;
+  nav();renderM();
+};
+
+// ── INIT
+$('hdate').textContent=fmtD();
+nav();renderM();
+
+// PWA
+const mf={name:'FLV Controle',short_name:'FLV',start_url:'./',display:'standalone',background_color:'#f4f7f4',theme_color:'#2d7a3a',icons:[{src:`data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232d7a3a'/><text y='.9em' font-size='80'>🥦</text></svg>`,sizes:'any',type:'image/svg+xml'}]};
+const mb=new Blob([JSON.stringify(mf)],{type:'application/json'});
+$('mfst').href=URL.createObjectURL(mb);
+// SW removido - blob SW instavel no Android
+</script>
+
+</body></html>
