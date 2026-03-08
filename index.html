@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_13.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_14.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/0d75b6f3-789e-4574-8e07-e67f601f8dd7">
+<link rel="manifest" id="mfst" href="blob:null/96560322-7692-42e3-b606-f50a270c656d">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -19,7 +19,7 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .ht{font-size:18px;font-weight:800;color:#fff}
 .hs{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.8px;text-transform:uppercase}
 .hd{font-size:11px;color:rgba(255,255,255,.75);font-family:monospace;margin-left:auto}
-.main{flex:1;overflow-y:auto;overflow-x:hidden;padding-bottom:70px}
+.main{flex:1;overflow-y:auto;overflow-x:clip;padding-bottom:70px;-webkit-overflow-scrolling:touch}
 .bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid var(--br);display:flex;z-index:100;box-shadow:0 -2px 8px rgba(0,0,0,.06)}
 .nb{flex:1;padding:8px 4px 10px;background:none;border:none;cursor:pointer;color:var(--mu);font-size:9px;letter-spacing:.4px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:600}
 .nb.on{color:var(--g)}
@@ -38,7 +38,7 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .inp[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .acw{position:relative;z-index:100}
-.aclist{position:absolute;top:100%;left:0;right:0;z-index:999;background:var(--w);border:1.5px solid var(--g);border-top:none;border-radius:0 0 10px 10px;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.14);display:none}
+.aclist{position:absolute;top:calc(100% + 2px);left:0;right:0;z-index:9999;background:var(--w);border:1.5px solid var(--g);border-radius:10px;max-height:200px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.18);display:none}
 .aci{padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--br);display:flex;gap:10px;align-items:center}
 .aci:last-child{border-bottom:none}
 .aci:active,.aci:hover{background:var(--gl)}
@@ -417,8 +417,8 @@ const dashH=()=>{
   const bp={};ai.forEach(i=>{const p=S.produtos.find(p=>p.id===i.pid);if(!p)return;bp[p.n]=(bp[p.n]||0)+(parseFloat(i.qb)||0)});
   const top=Object.entries(bp).sort((a,b)=>b[1]-a[1]).slice(0,8),mx=top[0]?.[1]||1;
   const insH=S.aiLoad?`<div style="display:flex;align-items:center;gap:8px;padding:12px;color:var(--g)"><div class="spin"></div> Analisando...</div>`:
-    S.ai.length>0?`${S.ai.map((x,i)=>`<div class="insight"><strong>#${i+1}</strong> ${esc(x)}</div>`).join('')}<button class="btn bo bf bs mt8" onclick="doAI()">Reanalisar</button>`:
-    `<button class="btn bp bf" onclick="doAI()">${I.brain} Analisar com IA</button>`;
+    S.ai.length>0?`${S.ai.map((x,i)=>`<div class="insight"><strong>#${i+1}</strong> ${esc(x)}</div>`).join('')}<button class="btn bo bf bs mt8" onclick="doAI()">Atualizar análise</button>`:
+    `<button class="btn bp bf" onclick="doAI()">${I.brain} Analisar dados</button>`;
   return`<div><div class="stitle"><span>Dashboard</span></div>
   <div style="display:flex;gap:6px;padding:4px 12px 10px;overflow-x:auto">
     ${[['hoje','Hoje'],['semana','7 dias'],['mes','30 dias'],['tudo','Tudo']].map(([v,l])=>`<button class="btn bs${S.periodo===v?' bp':' bo'}" onclick="S.periodo='${v}';renderM()">${l}</button>`).join('')}
@@ -430,19 +430,82 @@ const dashH=()=>{
     <div class="metric"><div class="mlbl">Chegou</div><div class="mval">${tc.toFixed(0)}</div><div class="msub">kg</div></div>
   </div>
   ${top.length>0?`<div class="card" style="margin-top:4px"><div class="ch">${I.chart} Top Quebra</div><div class="cb">${top.map(([n,k])=>`<div class="crow"><div class="clbl">${esc(n)}</div><div class="ctrk"><div class="cfil" style="width:${(k/mx*100).toFixed(1)}%"></div></div><div class="cval">${k.toFixed(1)} kg</div></div>`).join('')}</div></div>`:''}
-  <div class="card"><div class="ch">${I.brain} Análise IA</div><div class="cb">${insH}</div></div></div>`;
+  <div class="card"><div class="ch">${I.brain} Análise</div><div class="cb">${insH}</div></div></div>`;
 };
-window.doAI=async()=>{
-  if(!S.trats.length){toast('Sem dados');return}
+window.doAI=()=>{
+  if(!S.trats.length){toast('Sem dados para analisar');return}
   S.aiLoad=true;renderM();
-  try{
-    const r=S.trats.slice(0,20).flatMap(t=>t.items).map(i=>{const p=S.produtos.find(p=>p.id===i.pid);return p?`${p.n}:${i.ch}kg chegou,${i.qb}kg quebra`:null}).filter(Boolean).join(';');
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,messages:[{role:'user',content:`Analise quebra de hortifruti e dê 3 insights práticos em português: ${r}`}]})});
-    const d=await res.json();
-    const txt=d.content?.map(c=>c.text||'').join('');
-    S.ai=txt.split('\n').filter(l=>l.trim().length>10).slice(0,3)
-  }catch{S.ai=['Não foi possível analisar.']}
-  S.aiLoad=false;renderM()
+  
+  const insights=[];
+  const now=new Date();
+  const meta=S.metaGlobal;
+
+  // ── Dados gerais
+  const todayStr=today();
+  const trats7=S.trats.filter(t=>(now-new Date(t.at))/864e5<=7);
+  const trats30=S.trats.filter(t=>(now-new Date(t.at))/864e5<=30);
+  const tratsHoje=S.trats.filter(t=>t.at.startsWith(todayStr));
+
+  const soma=(trats,campo)=>trats.flatMap(t=>t.items).reduce((s,i)=>s+(parseFloat(i[campo])||0),0);
+  const pct=(qb,ch)=>ch>0?((qb/ch)*100):0;
+
+  const qbHoje=soma(tratsHoje,'qb'), chHoje=soma(tratsHoje,'ch');
+  const qb7=soma(trats7,'qb'), ch7=soma(trats7,'ch');
+  const qb30=soma(trats30,'qb'), ch30=soma(trats30,'ch');
+  const pctHoje=pct(qbHoje,chHoje), pct7=pct(qb7,ch7), pct30=pct(qb30,ch30);
+
+  // ── Insight 1: Status do dia
+  if(chHoje>0){
+    if(pctHoje>meta){
+      insights.push(`🔴 Hoje: quebra de ${pctHoje.toFixed(1)}% — ${(pctHoje-meta).toFixed(1)}pp acima da meta de ${meta}%. Foram perdidos ${qbHoje.toFixed(1)}kg de ${chHoje.toFixed(1)}kg recebidos.`);
+    } else {
+      insights.push(`✅ Hoje: quebra de ${pctHoje.toFixed(1)}% — dentro da meta de ${meta}%. Perdidos ${qbHoje.toFixed(1)}kg de ${chHoje.toFixed(1)}kg recebidos.`);
+    }
+  } else {
+    insights.push(`📋 Nenhum registro hoje ainda. Meta do dia: ${meta}%.`);
+  }
+
+  // ── Insight 2: Produto com maior quebra nos últimos 30 dias
+  const bp={};
+  trats30.flatMap(t=>t.items).forEach(i=>{
+    const p=S.produtos.find(p=>p.id===i.pid);
+    if(!p)return;
+    if(!bp[p.n])bp[p.n]={qb:0,ch:0};
+    bp[p.n].qb+=parseFloat(i.qb)||0;
+    bp[p.n].ch+=parseFloat(i.ch)||0;
+  });
+  const topProd=Object.entries(bp).sort((a,b)=>b[1].qb-a[1].qb)[0];
+  if(topProd){
+    const [nome,{qb,ch}]=topProd;
+    const pp=pct(qb,ch);
+    const emoji=pp>meta*2?'🚨':pp>meta?'⚠':'📦';
+    insights.push(`${emoji} Maior quebra (30 dias): ${nome} com ${qb.toFixed(1)}kg perdidos (${pp.toFixed(1)}%). ${pp>meta?'Acima da meta — verificar armazenamento.':'Dentro da meta.'}`);
+  }
+
+  // ── Insight 3: Tendência semanal vs mensal
+  if(ch7>0&&ch30>0){
+    const diff=pct7-pct30;
+    if(Math.abs(diff)<0.5){
+      insights.push(`📊 Quebra estável: ${pct7.toFixed(1)}% na semana vs ${pct30.toFixed(1)}% no mês. Volume recebido nos últimos 7 dias: ${ch7.toFixed(0)}kg.`);
+    } else if(diff>0){
+      insights.push(`📈 Quebra aumentou: ${pct7.toFixed(1)}% esta semana vs ${pct30.toFixed(1)}% no mês (+${diff.toFixed(1)}pp). Atenção redobrada necessária.`);
+    } else {
+      insights.push(`📉 Quebra melhorou: ${pct7.toFixed(1)}% esta semana vs ${pct30.toFixed(1)}% no mês (${diff.toFixed(1)}pp). Bom trabalho!`);
+    }
+  } else if(trats7.length>0){
+    insights.push(`📊 Últimos 7 dias: ${trats7.length} tratativa(s), ${qb7.toFixed(1)}kg de quebra total, ${pct7.toFixed(1)}% de quebra.`);
+  }
+
+  // ── Insight 4 (bônus): Produto mais eficiente
+  const eficiente=Object.entries(bp).filter(([n,{ch}])=>ch>5).sort((a,b)=>pct(a[1].qb,a[1].ch)-pct(b[1].qb,b[1].ch))[0];
+  if(eficiente&&Object.keys(bp).length>1){
+    const [nome,{qb:q,ch:c}]=eficiente;
+    insights.push(`🏆 Menor quebra (30 dias): ${nome} com apenas ${pct(q,c).toFixed(1)}% — referência de bom manuseio.`);
+  }
+
+  S.ai=insights.slice(0,4);
+  S.aiLoad=false;
+  renderM();
 };
 
 // ── HISTÓRICO
