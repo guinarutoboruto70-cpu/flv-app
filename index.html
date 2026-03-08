@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_12.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_13.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/efa0b687-2066-411a-944f-fae119a637ac">
+<link rel="manifest" id="mfst" href="blob:null/0d75b6f3-789e-4574-8e07-e67f601f8dd7">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -24,7 +24,7 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .nb{flex:1;padding:8px 4px 10px;background:none;border:none;cursor:pointer;color:var(--mu);font-size:9px;letter-spacing:.4px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:600}
 .nb.on{color:var(--g)}
 .nb svg{width:22px;height:22px;stroke-width:1.8}
-.card{margin:8px 12px;background:#fff;border:1px solid var(--br);border-radius:14px;overflow:hidden;box-shadow:var(--sh)}
+.card{margin:8px 12px;background:#fff;border:1px solid var(--br);border-radius:14px;overflow:visible;box-shadow:var(--sh)}
 .ch{padding:11px 14px 9px;border-bottom:1px solid var(--br);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:7px}
 .ch svg{width:15px;height:15px;flex-shrink:0}
 .cb{padding:13px}
@@ -37,7 +37,7 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .inp[type=number]{font-family:monospace;font-size:15px}
 .inp[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.acw{position:relative;z-index:10}
+.acw{position:relative;z-index:100}
 .aclist{position:absolute;top:100%;left:0;right:0;z-index:999;background:var(--w);border:1.5px solid var(--g);border-top:none;border-radius:0 0 10px 10px;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.14);display:none}
 .aci{padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--br);display:flex;gap:10px;align-items:center}
 .aci:last-child{border-bottom:none}
@@ -437,7 +437,7 @@ window.doAI=async()=>{
   S.aiLoad=true;renderM();
   try{
     const r=S.trats.slice(0,20).flatMap(t=>t.items).map(i=>{const p=S.produtos.find(p=>p.id===i.pid);return p?`${p.n}:${i.ch}kg chegou,${i.qb}kg quebra`:null}).filter(Boolean).join(';');
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,messages:[{role:'user',content:`Analise quebra de hortifruti e dê 3 insights práticos em português: ${r}`}]})});
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,messages:[{role:'user',content:`Analise quebra de hortifruti e dê 3 insights práticos em português: ${r}`}]})});
     const d=await res.json();
     const txt=d.content?.map(c=>c.text||'').join('');
     S.ai=txt.split('\n').filter(l=>l.trim().length>10).slice(0,3)
