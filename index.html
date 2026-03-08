@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/willi/Downloads/index_9.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_12.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,10 +7,11 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/9bd8e5eb-f5cd-409b-837e-e4081feb3df1">
+<link rel="manifest" id="mfst" href="blob:null/efa0b687-2066-411a-944f-fae119a637ac">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
+.dark{--bg:#121a13;--w:#1a2e1c;--g:#4db860;--g2:#3a9648;--g3:#2d7a3a;--gl:#1a2e1c;--r:#ff6b5b;--y:#f0b840;--t:#e8f5e9;--t2:#a5c9a8;--mu:#6a8a6d;--br:#2a3d2c;--sh:0 1px 4px rgba(0,0,0,.4)}
 html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-family:'Segoe UI',system-ui,sans-serif;color:var(--t);font-size:14px}
 #app{display:flex;flex-direction:column;height:100svh;max-width:480px;margin:0 auto;background:var(--bg)}
 .hdr{background:var(--g);padding:12px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(45,122,58,.25)}
@@ -36,8 +37,8 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .inp[type=number]{font-family:monospace;font-size:15px}
 .inp[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.acw{position:relative}
-.aclist{position:absolute;top:100%;left:0;right:0;z-index:60;background:#fff;border:1.5px solid var(--g);border-top:none;border-radius:0 0 10px 10px;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.14);display:none}
+.acw{position:relative;z-index:10}
+.aclist{position:absolute;top:100%;left:0;right:0;z-index:999;background:var(--w);border:1.5px solid var(--g);border-top:none;border-radius:0 0 10px 10px;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.14);display:none}
 .aci{padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--br);display:flex;gap:10px;align-items:center}
 .aci:last-child{border-bottom:none}
 .aci:active,.aci:hover{background:var(--gl)}
@@ -60,6 +61,10 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .bg2{background:#e6f5e9;color:var(--g)}
 .brr{background:#fdecea;color:var(--r)}
 .itabs{display:flex;gap:6px;padding:8px 12px 4px;overflow-x:auto}
+.recents-grid{display:flex;flex-wrap:wrap;gap:6px}
+.rbtn{display:flex;flex-direction:column;align-items:center;padding:7px 10px;border:1.5px solid var(--br);border-radius:10px;background:var(--bg);cursor:pointer;font-size:12px;font-weight:700;color:var(--g);min-width:70px;flex:1}
+.rbtn span{font-size:10px;font-weight:400;color:var(--mu);margin-top:2px;text-align:center}
+.rbtn-on{border-color:var(--g);background:var(--gl)!important;color:var(--g)}
 .itabs::-webkit-scrollbar{display:none}
 .itab{flex-shrink:0;padding:6px 16px;background:#fff;border:1.5px solid var(--br);border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;color:var(--mu)}
 .itab.on{background:var(--g);border-color:var(--g);color:#fff}
@@ -107,7 +112,7 @@ input[type=file]{display:none}
 .ctrk{flex:1;height:20px;background:var(--bg);border-radius:6px;overflow:hidden}
 .cfil{height:100%;background:linear-gradient(90deg,var(--g2),var(--g3));border-radius:6px}
 .cval{font-family:monospace;font-size:10px;color:var(--g);width:48px;text-align:right;font-weight:700}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--t);color:#fff;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:all .28s;white-space:nowrap;max-width:90vw;pointer-events:none}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--t);color:#fff;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;z-index:999;opacity:0;transition:all .28s;white-space:nowrap;max-width:90vw;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .stitle{padding:13px 14px 5px;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:space-between}
 .srch{padding:5px 12px 9px}
@@ -126,12 +131,12 @@ input[type=file]{display:none}
   <div class="hdr">
     <div class="hl">🥦</div>
     <div style="flex:1"><div class="ht">FLV Controle</div><div class="hs">Quebra de Hortifruti &nbsp;·&nbsp; v5</div></div>
-    <div id="hdate" class="hd">07/03/2026</div>
+    <button id="dm-btn" onclick="toggleDark()" style="background:none;border:none;color:rgba(255,255,255,.85);font-size:18px;cursor:pointer;padding:4px 8px;border-radius:6px">☀</button><div id="hdate" class="hd">08/03/2026</div>
   </div>
-  <div class="main" id="main"><div><div style="padding:14px 14px 6px"><div style="font-size:21px;font-weight:800">Controle FLV</div><div style="font-size:11px;color:var(--mu);margin-top:2px;font-family:monospace">07/03/2026 · 0 tratativa(s) hoje</div></div>
+  <div class="main" id="main"><div><div style="padding:14px 14px 6px"><div style="font-size:21px;font-weight:800">Controle FLV</div><div style="font-size:11px;color:var(--mu);margin-top:2px;font-family:monospace">08/03/2026 · 0 tratativa(s) hoje</div></div>
   <div class="metrics">
     <div class="metric"><div class="mlbl">Quebra Hoje</div><div class="mval">0.0</div><div class="msub">kg perdidos</div></div>
-    <div class="metric"><div class="mval" style="color:var(--g)">0.0%</div><div class="msub">% quebra · meta: 5%</div></div>
+    <div class="metric"><div class="mval" style="color:var(--g)">0.0%</div><div class="msub">% quebra · meta: <span onclick="editMeta()" style="text-decoration:underline;cursor:pointer">3.5%</span></div></div>
     <div class="metric"><div class="mlbl">Tratativas</div><div class="mval">0</div><div class="msub">total</div></div>
     <div class="metric"><div class="mlbl">Produtos</div><div class="mval">0</div><div class="msub">ativos</div></div>
   </div>
@@ -149,11 +154,11 @@ const DB={
 };
 const gid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const today=()=>new Date().toISOString().split('T')[0];
-const fmtD=d=>{const dt=d?new Date(d+'T12:00:00'):new Date();return`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}/${dt.getFullYear()}`};
+const fmtD=d=>{const dt=d?(d.includes('T')?new Date(d):new Date(d+'T12:00:00')):new Date();return`${String(dt.getDate()).padStart(2,'0')}/${String(dt.getMonth()+1).padStart(2,'0')}/${dt.getFullYear()}`};
 const fmtK=n=>String(parseFloat(n)||0).replace('.',',');
 const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 let _tt;
-const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),2800)};
+const toast=(m,dur=2800)=>{const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(_tt);_tt=setTimeout(()=>t.classList.remove('show'),dur)};
 
 // ICONS
 const I={
@@ -184,14 +189,38 @@ const S={
   periodo:'mes',histDetail:null,histQ:'',prodQ:'',
   pModal:null,pForm:{c:'',n:'',p:'',m:'5'},pId:null,
   ai:[],aiLoad:false,
+  metaGlobal:DB.get('flv-meta',3.5),
+  nfModal:false,nfLoading:false,nfResult:[],
 };
-const save=()=>{DB.set('flv-prod',S.produtos);DB.set('flv-trat',S.trats)};
+const save=()=>{
+  DB.set('flv-prod',S.produtos);
+  // Save trats without large photos to avoid localStorage overflow
+  // Photos are stored separately per tratativa
+  const trats_slim=S.trats.map(t=>({
+    ...t,
+    items:t.items.map(it=>({...it,fotos:{p:[],b:[],e:[]}}))
+  }));
+  DB.set('flv-trat',trats_slim);
+  // Save photos separately (each trat gets its own key)
+  S.trats.forEach(t=>{
+    const fotos=t.items.map(it=>it.fotos);
+    try{DB.set('flv-foto-'+t.id,fotos);}catch(e){/* foto muito grande, ignora */}
+  });
+};
+const loadFotos=()=>{
+  S.trats.forEach(t=>{
+    const fotos=DB.get('flv-foto-'+t.id,null);
+    if(fotos&&Array.isArray(fotos)){
+      t.items.forEach((it,i)=>{if(fotos[i])it.fotos=fotos[i];});
+    }
+  });
+};
 const genWA=items=>items.map(it=>{const p=S.produtos.find(p=>p.id===it.pid);if(!p)return'';return`Cod: ${p.c}\n${p.n}\n${fmtD(it.data)}\n chegou: ${fmtK(it.ch)} kg\nQuantidade da quebra: ${fmtK(it.qb)} kg`}).filter(Boolean).join('\n\n');
 const newItem=()=>({id:gid(),pid:null,data:today(),ch:'',qb:'',fotos:{p:[],b:[],e:[]}});
 
 // NOVA STATE - completely separate, never touched by main render
 const N={items:[],idx:0,step:'form'};
-const initN=()=>{if(!N.items.length){N.items=[newItem()];N.idx=0;N.step='form'}};
+const initN=()=>{if(!N.items.length){N.items=[newItem()];N.idx=0;N.step='form';N.sentPhotos=new Set();}};
 
 // RENDER
 const nav=()=>$('nav').innerHTML=[['home','Início',I.home],['produtos','Produtos',I.box],['nova','Nova',I.plus],['dashboard','Dash',I.chart],['historico','Histórico',I.list]].map(([id,l,ic])=>`<button class="nb${S.tab===id?' on':''}" onclick="go('${id}')">${ic}<span>${l}</span></button>`).join('');
@@ -224,7 +253,7 @@ const homeH=()=>{
   return`<div><div style="padding:14px 14px 6px"><div style="font-size:21px;font-weight:800">Controle FLV</div><div style="font-size:11px;color:var(--mu);margin-top:2px;font-family:monospace">${fmtD()} · ${tt.length} tratativa(s) hoje</div></div>
   <div class="metrics">
     <div class="metric"><div class="mlbl">Quebra Hoje</div><div class="mval">${tq.toFixed(1)}</div><div class="msub">kg perdidos</div></div>
-    <div class="metric"><div class="mval" style="color:${parseFloat(pct)>5?'var(--r)':'var(--g)'}">${pct}%</div><div class="msub">% quebra · meta: 5%</div></div>
+    <div class="metric"><div class="mval" style="color:${parseFloat(pct)>S.metaGlobal?'var(--r)':'var(--g)'}">${pct}%</div><div class="msub">% quebra · meta: <span onclick="editMeta()" style="text-decoration:underline;cursor:pointer">${S.metaGlobal}%</span></div></div>
     <div class="metric"><div class="mlbl">Tratativas</div><div class="mval">${S.trats.length}</div><div class="msub">total</div></div>
     <div class="metric"><div class="mlbl">Produtos</div><div class="mval">${S.produtos.filter(p=>p.at).length}</div><div class="msub">ativos</div></div>
   </div>
@@ -253,7 +282,7 @@ const pmH=()=>{
       <div class="fld"><label class="lbl">Nome *</label><input class="inp" id="pm-n" value="${esc(f.n)}" placeholder="ex: Tomate Longa Vida"></div>
       <div class="r2">
         <div class="fld"><label class="lbl">Preço/kg R$</label><input class="inp" id="pm-p" type="number" step="0.01" value="${f.p}" placeholder="0,00"></div>
-        <div class="fld"><label class="lbl">Meta Quebra %</label><input class="inp" id="pm-m" type="number" step="0.1" value="${f.m}" placeholder="5"></div>
+        <div class="fld"><label class="lbl">Meta Quebra %<span style="font-size:10px;color:var(--mu);display:block">opcional - usa meta global se vazio</span></label><input class="inp" id="pm-m" type="number" step="0.1" value="${f.m}" placeholder="${S.metaGlobal}"></div>
       </div>
     </div>
     <div class="mft"><button class="btn bo f1" onclick="closeP()">Cancelar</button><button class="btn bp" style="flex:2" onclick="saveP()">${I.chk} Salvar</button></div>
@@ -461,11 +490,17 @@ const shareFoto=(src,i)=>{
   if(!src)return;
   fetch(src).then(r=>r.blob()).then(b=>{
     const file=new File([b],`foto_${i+1}.jpg`,{type:'image/jpeg'});
+    const markSent=()=>{
+      N.sentPhotos.add(i);
+      const btn=document.querySelector(`.pv-foto[data-fi="${i}"]`);
+      if(btn){btn.style.background='#2d7a3a';btn.style.color='#fff';btn.textContent='✓ Enviada';}
+      toast('✓ Foto '+(i+1)+' enviada!');
+    };
     if(navigator.share&&navigator.canShare({files:[file]})){
-      navigator.share({files:[file]}).catch(()=>{});
+      navigator.share({files:[file]}).then(markSent).catch(()=>{});
     } else {
       const a=document.createElement('a');a.href=src;a.download=`foto_${i+1}.jpg`;a.click();
-      toast('Foto baixada — envie pelo WhatsApp');
+      markSent();
     }
   }).catch(()=>toast('Erro ao processar foto'));
 };
@@ -501,9 +536,13 @@ const novaH=(idx,it)=>{
     <input type="file" id="pf-${tipo}-c" accept="image/*" capture="environment">
     <input type="file" id="pf-${tipo}-g" accept="image/*"${multi?' multiple':''}>
   </div>`;
+  // Build recentes list - last 8 unique products used
+  const recentPids=[...new Set(S.trats.flatMap(t=>t.items.map(i=>i.pid)))].slice(0,8);
+  const recentProds=recentPids.map(pid=>S.produtos.find(p=>p.id===pid&&p.at)).filter(Boolean);
   return`<div style="padding-bottom:8px">
     <div class="stitle"><span>Nova Tratativa</span><button class="btn bo bs" id="n-add">${I.plus} Item</button></div>
     <div class="itabs">${tabs}</div>
+    ${recentProds.length>0?`<div class="card"><div class="ch">⚡ Recentes</div><div class="cb"><div class="recents-grid">${recentProds.map(p=>`<button class="rbtn${it.pid===p.id?' rbtn-on':''}" onclick="quickSel('${p.id}')">${esc(p.c)}<span>${esc(p.n.split(' ').slice(0,2).join(' '))}</span></button>`).join('')}</div></div></div>`:''}
     <div class="card"><div class="ch">${I.box} Produto</div><div class="cb">
       <div class="fld"><label class="lbl">Código / Nome</label>
         <div class="acw">
@@ -688,16 +727,77 @@ const bindPrev=()=>{
     };
   });
 };
+window.quickSel=(pid)=>{
+  saveNF();
+  const p=S.produtos.find(x=>x.id===pid);
+  if(!p)return;
+  const it=N.items[N.idx];
+  it.pid=p.id;
+  // Update the search field and psel without full rerender
+  const bEl=$('n-busca');
+  if(bEl)bEl.value=p.c+' · '+p.n;
+  const psel=$('n-psel');
+  if(psel)psel.innerHTML=`<div class="psel">${I.chk}<span>${esc(p.n)}</span></div>`;
+  // Update tab label
+  const tab=document.querySelector(`[data-ti="${N.idx}"]`);
+  if(tab)tab.textContent=esc(p.c);
+  // Update recents buttons
+  document.querySelectorAll('.rbtn').forEach(b=>{
+    const bid=b.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+    b.classList.toggle('rbtn-on', bid===pid);
+  });
+  updBar(it);
+};
+window.editMeta=()=>{
+  const v=prompt('Meta global de quebra (%):',S.metaGlobal);
+  if(v===null)return;
+  const n=parseFloat(v.replace(',','.'));
+  if(isNaN(n)||n<0||n>100){toast('Valor inválido');return;}
+  S.metaGlobal=n;
+  DB.set('flv-meta',n);
+  renderM();
+  toast('Meta atualizada: '+n+'%');
+};
+// Check daily meta and show alert
+const checkMeta=()=>{
+  const td=today();
+  const trats_hoje=S.trats.filter(t=>t.at&&t.at.startsWith(td));
+  const tq=trats_hoje.reduce((s,t)=>s+t.items.reduce((a,i)=>a+(parseFloat(i.qb)||0),0),0);
+  const tc=trats_hoje.reduce((s,t)=>s+t.items.reduce((a,i)=>a+(parseFloat(i.ch)||0),0),0);
+  if(tc<=0)return;
+  const pct=(tq/tc)*100;
+  if(pct>S.metaGlobal){
+    setTimeout(()=>{
+      toast(`⚠ META ULTRAPASSADA! Quebra hoje: ${pct.toFixed(1)}% (meta: ${S.metaGlobal}%)`,5000);
+      // Vibrate if available
+      if(navigator.vibrate)navigator.vibrate([200,100,200]);
+    },500);
+  }
+};
 const finalizar=()=>{
   const items=JSON.parse(JSON.stringify(N.items));
   S.trats.unshift({id:gid(),at:new Date().toISOString(),items,wa:genWA(items)});
-  save();toast('Tratativa salva!');
+  save();toast('Tratativa salva!');checkMeta();
   N.items=[];N.idx=0;N.step='form';
   S.tab='historico';S.histDetail=null;
   nav();renderM();
 };
 
+// ── DARK MODE
+const initDark=()=>{
+  const d=localStorage.getItem('flv-dark')==='1';
+  if(d){document.body.classList.add('dark');const b=document.getElementById('dm-btn');if(b)b.textContent='🌙';}
+};
+window.toggleDark=()=>{
+  const isDark=document.body.classList.toggle('dark');
+  localStorage.setItem('flv-dark',isDark?'1':'0');
+  const b=document.getElementById('dm-btn');
+  if(b)b.textContent=isDark?'🌙':'☀';
+};
+
 // ── INIT
+loadFotos();
+initDark();
 $('hdate').textContent=fmtD();
 nav();renderM();
 
