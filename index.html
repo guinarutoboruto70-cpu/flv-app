@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/willi/Downloads/index_6.html -->
+<!-- saved from url=(0045)file:///C:/Users/willi/Downloads/index_8.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/3bb4f3e6-a4d2-4b41-bc39-6c340c7f1ba1">
+<link rel="manifest" id="mfst" href="blob:null/4ec05610-a402-485a-8321-d3ba75225e49">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -172,6 +172,7 @@ const I={
   copy:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>`,
   back:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>`,
   share:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+  scan:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg>`,
   brain:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="12" rx="10" ry="8"/><path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`,
 };
 
@@ -236,11 +237,11 @@ const homeH=()=>{
 const prodH=()=>{
   const q=S.prodQ||'';
   const list=S.produtos.filter(p=>p.at&&(p.n.toLowerCase().includes(q.toLowerCase())||p.c.toLowerCase().includes(q.toLowerCase())));
-  return`<div><div class="stitle"><span>Produtos</span><button class="btn bp bs" onclick="newP()">${I.plus} Novo</button></div>
+  return`<div><div class="stitle"><span>Produtos</span><div class="flex gap8"><button class="btn bo bs" onclick="openNF()">${I.scan} Scan NF</button><button class="btn bp bs" onclick="newP()">${I.plus} Novo</button></div></div>
   <div class="srch"><input class="inp" placeholder="Buscar..." value="${esc(q)}" oninput="S.prodQ=this.value;renderM()"></div>
   ${list.length===0?`<div class="empty"><div class="empty-ico">📦</div><p>${q?'Nenhum encontrado.':'Cadastre o primeiro produto.'}</p></div>`:''}
   ${list.map(p=>`<div class="pcard"><span class="pcode">${esc(p.c)}</span><div class="pinfo"><div class="pname">${esc(p.n)}</div><div class="pmeta">Meta: ${p.m||5}%${p.p?' · R$'+p.p+'/kg':''}</div></div><div class="flex gap8"><button class="btn bg_ bs" onclick="editP('${p.id}')">${I.edit}</button><button class="btn bg_ bs" style="color:var(--r)" onclick="delP('${p.id}')">${I.trash}</button></div></div>`).join('')}
-  ${pmH()}</div>`;
+  ${pmH()}${nfH()}</div>`;
 };
 const pmH=()=>{
   if(!S.pModal)return'';
@@ -258,6 +259,106 @@ const pmH=()=>{
     <div class="mft"><button class="btn bo f1" onclick="closeP()">Cancelar</button><button class="btn bp" style="flex:2" onclick="saveP()">${I.chk} Salvar</button></div>
   </div></div>`;
 };
+// ── NF SCAN MODAL
+const nfH=()=>{
+  if(!S.nfModal)return'';
+  return`<div class="mbg" onclick="closeNF()"><div class="modal" onclick="event.stopPropagation()">
+    <div class="mhd"><span>${I.scan} Escanear Nota Fiscal</span><button class="btn bg_ bs" onclick="closeNF()">${I.x}</button></div>
+    <div class="mbd">
+      ${S.nfLoading?`<div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding:24px 0">
+        <div class="spin" style="width:36px;height:36px;border-width:3px"></div>
+        <div style="font-size:14px;color:var(--mu);font-weight:600">IA lendo a nota fiscal...</div>
+      </div>`:
+      S.nfResult.length>0?`<div>
+        <div style="background:var(--gl);border-radius:10px;padding:10px 13px;margin-bottom:12px;font-size:12px;color:var(--t2)">
+          ✅ <strong>${S.nfResult.length} produto(s)</strong> encontrado(s) na nota. Já foram cadastrados!
+        </div>
+        ${S.nfResult.map(p=>`<div class="pcard" style="margin:6px 0">
+          <span class="pcode">${esc(p.c)}</span>
+          <div class="pinfo"><div class="pname">${esc(p.n)}</div><div class="pmeta">Meta: 5% quebra</div></div>
+        </div>`).join('')}
+        <button class="btn bp bf mt8" onclick="closeNF()">Fechar</button>
+      </div>`:
+      `<div>
+        <p style="font-size:13px;color:var(--mu);margin-bottom:14px;line-height:1.6">
+          Tire uma foto clara da nota fiscal. A IA vai ler os produtos e cadastrar automaticamente.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button class="btn bp bf" onclick="trigNF('c')">${I.cam} Tirar Foto com Câmera</button>
+          <button class="btn bo bf" onclick="trigNF('g')">${I.img} Escolher da Galeria</button>
+        </div>
+        <input type="file" id="nf-c" accept="image/*" capture="environment">
+        <input type="file" id="nf-g" accept="image/*">
+      </div>`}
+    </div>
+  </div></div>`;
+};
+window.openNF=()=>{S.nfModal=true;S.nfLoading=false;S.nfResult=[];renderM();
+  setTimeout(()=>{
+    const fc=document.getElementById('nf-c');
+    const fg=document.getElementById('nf-g');
+    if(fc)fc.onchange=e=>processNF(e.target.files[0]);
+    if(fg)fg.onchange=e=>processNF(e.target.files[0]);
+  },50);
+};
+window.closeNF=()=>{S.nfModal=false;S.nfLoading=false;S.nfResult=[];renderM()};
+window.trigNF=type=>{const el=document.getElementById('nf-'+type);if(el){el.value='';el.click()}};
+window.processNF=async file=>{
+  if(!file)return;
+  S.nfLoading=true;renderM();
+  try{
+    // Convert image to base64
+    const b64=await new Promise((res,rej)=>{
+      const r=new FileReader();
+      r.onload=e=>res(e.target.result.split(',')[1]);
+      r.onerror=rej;
+      r.readAsDataURL(file);
+    });
+    // Call Claude API with the image
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:[
+          {type:'image',source:{type:'base64',media_type:file.type||'image/jpeg',data:b64}},
+          {type:'text',text:'Esta é uma nota fiscal de hortifruti (frutas, legumes e verduras). Extraia todos os produtos listados e retorne SOMENTE um JSON válido no formato: [{"c":"codigo","n":"nome"}]. Se não houver código, use o número da linha (01, 02, etc). Use o nome do produto como aparece na nota, sem abreviações se possível. Retorne APENAS o JSON, sem explicações.'}
+        ]}]
+      })
+    });
+    const data=await resp.json();
+    const txt=data.content?.map(x=>x.text||'').join('').trim();
+    // Parse JSON - handle possible markdown code blocks
+    const clean=txt.replace(/```json|```/g,'').trim();
+    const produtos=JSON.parse(clean);
+    if(!Array.isArray(produtos)||!produtos.length)throw new Error('Nenhum produto encontrado');
+    // Register products that don't exist yet
+    const novos=[];
+    for(const p of produtos){
+      const codigo=String(p.c||'').trim();
+      const nome=String(p.n||'').trim();
+      if(!codigo||!nome)continue;
+      const existe=S.produtos.find(x=>x.c===codigo&&x.at);
+      if(!existe){
+        S.produtos.push({id:gid(),c:codigo,n:nome,p:'',m:'5',at:true,cr:new Date().toISOString()});
+        novos.push({c:codigo,n:nome});
+      }
+    }
+    save();
+    S.nfLoading=false;
+    S.nfResult=novos.length>0?novos:produtos.map(p=>({c:String(p.c),n:String(p.n)}));
+    if(novos.length===0){
+      S.nfResult=[{c:'—',n:'Todos os produtos já estavam cadastrados'}];
+    }
+    renderM();
+  }catch(err){
+    S.nfLoading=false;
+    toast('⚠ Erro ao ler nota: '+(err.message||'tente novamente'));
+    renderM();
+  }
+};
+
 window.newP=()=>{S.pForm={c:'',n:'',p:'',m:'5'};S.pId=null;S.pModal='new';renderM()};
 window.editP=id=>{const p=S.produtos.find(p=>p.id===id);if(!p)return;S.pForm={c:p.c,n:p.n,p:p.p||'',m:p.m||'5'};S.pId=id;S.pModal='edit';renderM()};
 window.closeP=()=>{S.pModal=null;renderM()};
