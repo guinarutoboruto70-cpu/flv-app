@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_14.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_15.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/96560322-7692-42e3-b606-f50a270c656d">
+<link rel="manifest" id="mfst" href="blob:null/27ce7c94-ea3c-4c67-8637-82a5860cdd71">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -269,7 +269,7 @@ const prodH=()=>{
   return`<div><div class="stitle"><span>Produtos</span><div class="flex gap8"><button class="btn bo bs" onclick="openNF()">${I.scan} Scan NF</button><button class="btn bp bs" onclick="newP()">${I.plus} Novo</button></div></div>
   <div class="srch"><input class="inp" placeholder="Buscar..." value="${esc(q)}" oninput="S.prodQ=this.value;renderM()"></div>
   ${list.length===0?`<div class="empty"><div class="empty-ico">📦</div><p>${q?'Nenhum encontrado.':'Cadastre o primeiro produto.'}</p></div>`:''}
-  ${list.map(p=>`<div class="pcard"><span class="pcode">${esc(p.c)}</span><div class="pinfo"><div class="pname">${esc(p.n)}</div><div class="pmeta">Meta: ${p.m||5}%${p.p?' · R$'+p.p+'/kg':''}</div></div><div class="flex gap8"><button class="btn bg_ bs" onclick="editP('${p.id}')">${I.edit}</button><button class="btn bg_ bs" style="color:var(--r)" onclick="delP('${p.id}')">${I.trash}</button></div></div>`).join('')}
+  ${list.map(p=>`<div class="pcard"><span class="pcode">${esc(p.c)}</span><div class="pinfo"><div class="pname">${esc(p.n)}</div><div class="pmeta">Meta: ${(!p.m||p.m===''||parseFloat(p.m)===parseFloat(S.metaGlobal))?'<span style="color:var(--mu)">global ('+S.metaGlobal+'%)</span>':p.m+'%'}${p.p?' · R$'+p.p+'/kg':''}</div></div><div class="flex gap8"><button class="btn bg_ bs" onclick="editP('${p.id}')">${I.edit}</button><button class="btn bg_ bs" style="color:var(--r)" onclick="delP('${p.id}')">${I.trash}</button></div></div>`).join('')}
   ${pmH()}${nfH()}</div>`;
 };
 const pmH=()=>{
@@ -282,7 +282,18 @@ const pmH=()=>{
       <div class="fld"><label class="lbl">Nome *</label><input class="inp" id="pm-n" value="${esc(f.n)}" placeholder="ex: Tomate Longa Vida"></div>
       <div class="r2">
         <div class="fld"><label class="lbl">Preço/kg R$</label><input class="inp" id="pm-p" type="number" step="0.01" value="${f.p}" placeholder="0,00"></div>
-        <div class="fld"><label class="lbl">Meta Quebra %<span style="font-size:10px;color:var(--mu);display:block">opcional - usa meta global se vazio</span></label><input class="inp" id="pm-m" type="number" step="0.1" value="${f.m}" placeholder="${S.metaGlobal}"></div>
+        <div class="fld">
+          <label class="lbl">Meta Quebra %</label>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <button type="button" id="pm-mg-btn" onclick="toggleMetaGlobal()" style="font-size:11px;padding:4px 10px;border-radius:20px;border:1.5px solid ${!f.m||f.m===''?'var(--g)':'var(--br)'};background:${!f.m||f.m===''?'var(--gl)':'transparent'};color:${!f.m||f.m===''?'var(--g)':'var(--mu)'};cursor:pointer;font-weight:600">
+              🌐 Meta global (${S.metaGlobal}%)
+            </button>
+            <button type="button" id="pm-mp-btn" onclick="toggleMetaPersonal()" style="font-size:11px;padding:4px 10px;border-radius:20px;border:1.5px solid ${f.m&&f.m!==''?'var(--g)':'var(--br)'};background:${f.m&&f.m!==''?'var(--gl)':'transparent'};color:${f.m&&f.m!==''?'var(--g)':'var(--mu)'};cursor:pointer;font-weight:600">
+              ✏ Personalizada
+            </button>
+          </div>
+          <input class="inp" id="pm-m" type="number" step="0.1" value="${f.m||''}" placeholder="${S.metaGlobal}" style="display:${f.m&&f.m!==''?'block':'none'}">
+        </div>
       </div>
     </div>
     <div class="mft"><button class="btn bo f1" onclick="closeP()">Cancelar</button><button class="btn bp" style="flex:2" onclick="saveP()">${I.chk} Salvar</button></div>
@@ -390,9 +401,23 @@ window.processNF=async file=>{
 };
 
 window.newP=()=>{S.pForm={c:'',n:'',p:'',m:'5'};S.pId=null;S.pModal='new';renderM()};
-window.editP=id=>{const p=S.produtos.find(p=>p.id===id);if(!p)return;S.pForm={c:p.c,n:p.n,p:p.p||'',m:p.m||'5'};S.pId=id;S.pModal='edit';renderM()};
+window.editP=id=>{const p=S.produtos.find(p=>p.id===id);if(!p)return;const mVal=(!p.m||p.m==='5'||p.m==='0'||parseFloat(p.m)===parseFloat(S.metaGlobal))?'':p.m;S.pForm={c:p.c,n:p.n,p:p.p||'',m:mVal};S.pId=id;S.pModal='edit';renderM()};
 window.closeP=()=>{S.pModal=null;renderM()};
 window.delP=id=>{if(!confirm('Desativar este produto?'))return;S.produtos=S.produtos.map(p=>p.id===id?{...p,at:false}:p);save();toast('Produto desativado');renderM()};
+window.toggleMetaGlobal=()=>{
+  // Clear custom meta - use global
+  const inp=document.getElementById('pm-m');
+  if(inp){inp.value='';inp.style.display='none';}
+  S.pForm.m='';
+  renderM();
+};
+window.toggleMetaPersonal=()=>{
+  // Show custom meta input
+  const inp=document.getElementById('pm-m');
+  if(inp){inp.style.display='block';inp.focus();}
+  S.pForm.m=inp?.value||S.metaGlobal;
+  renderM();
+};
 window.saveP=()=>{
   const c=$('pm-c')?.value.trim(),n=$('pm-n')?.value.trim(),p=$('pm-p')?.value,m=$('pm-m')?.value;
   if(!c||!n){toast('Código e nome obrigatórios');return}
