@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_15.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_16.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/27ce7c94-ea3c-4c67-8637-82a5860cdd71">
+<link rel="manifest" id="mfst" href="blob:null/f5e36cda-606e-494a-91e2-ebec1c82c740">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -38,8 +38,8 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .inp[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .acw{position:relative;z-index:100}
-.aclist{position:absolute;top:calc(100% + 2px);left:0;right:0;z-index:9999;background:var(--w);border:1.5px solid var(--g);border-radius:10px;max-height:200px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.18);display:none}
-.aci{padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--br);display:flex;gap:10px;align-items:center}
+.aclist{position:absolute;top:calc(100% + 2px);left:0;right:0;z-index:9999;background:var(--w);border:1.5px solid var(--g);border-radius:10px;height:220px;overflow-y:scroll;-webkit-overflow-scrolling:touch;box-shadow:0 8px 24px rgba(0,0,0,.18);display:none;overscroll-behavior:contain}
+.aci{padding:14px 13px;cursor:pointer;border-bottom:1px solid var(--br);display:flex;gap:10px;align-items:center;min-height:52px;user-select:none;-webkit-user-select:none}
 .aci:last-child{border-bottom:none}
 .aci:active,.aci:hover{background:var(--gl)}
 .acode{font-family:monospace;font-size:11px;color:var(--g);font-weight:700;min-width:50px}
@@ -737,7 +737,17 @@ const bindNova=(idx,it)=>{
   bEl.onfocus=function(){showAC(this.value)};
   bEl.onblur=()=>setTimeout(()=>{acl.style.display='none'},200);
   // Usar touchstart para mobile - mais responsivo que click
+  // Touch: only select if finger didn't move (distinguish tap from scroll)
+  let _touchY=0,_touchMoved=false;
   acl.ontouchstart=e=>{
+    _touchY=e.touches[0].clientY;
+    _touchMoved=false;
+  };
+  acl.ontouchmove=e=>{
+    if(Math.abs(e.touches[0].clientY-_touchY)>8)_touchMoved=true;
+  };
+  acl.ontouchend=e=>{
+    if(_touchMoved)return; // was scrolling, not tapping
     const a=e.target.closest('.aci');if(!a)return;
     e.preventDefault();
     const p=S.produtos.find(p=>p.id===a.dataset.pid);
