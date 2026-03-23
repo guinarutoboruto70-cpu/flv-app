@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_24.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_25.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/be1f30bf-22ef-4c0f-95a9-bfe77739d498">
+<link rel="manifest" id="mfst" href="blob:null/3c8850f1-703c-44e1-97b5-75177b9b55a3">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -95,6 +95,22 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .qpct{font-family:monospace;font-size:22px;font-weight:700}
 .qmeta{font-size:10px;color:var(--mu);font-weight:600}
 .btrack{height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden}
+.usr-card{margin:8px 12px;background:#fff;border:1px solid var(--br);border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh)}
+.usr-avatar{width:42px;height:42px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--g);flex-shrink:0}
+.usr-info{flex:1;min-width:0}
+.usr-name{font-size:14px;font-weight:700;color:var(--t)}
+.usr-code{font-size:13px;font-family:monospace;color:var(--g);font-weight:700;letter-spacing:1px;background:var(--gl);padding:2px 8px;border-radius:6px;display:inline-block;margin-top:3px}
+.usr-status{font-size:11px;color:var(--mu);margin-top:2px}
+.lock-screen{position:fixed;inset:0;z-index:9997;background:linear-gradient(160deg,#1a4a22 0%,#2d7a3a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px}
+.lock-logo{width:72px;height:72px;background:rgba(255,255,255,.15);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:40px}
+.lock-title{font-size:24px;font-weight:900;color:#fff;text-align:center}
+.lock-sub{font-size:13px;color:rgba(255,255,255,.7);text-align:center}
+.lock-inp{width:100%;max-width:320px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:14px;padding:16px;font-size:20px;font-weight:800;color:#fff;text-align:center;letter-spacing:3px;font-family:monospace;outline:none}
+.lock-inp::placeholder{color:rgba(255,255,255,.4);letter-spacing:1px;font-size:14px;font-weight:400}
+.lock-inp:focus{border-color:rgba(255,255,255,.7)}
+.lock-btn{width:100%;max-width:320px;background:#fff;color:#2d7a3a;border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:800;cursor:pointer}
+.lock-btn:active{transform:scale(.97)}
+.lock-err{color:#ffb3b3;font-size:13px;font-weight:600;text-align:center;min-height:20px}
 .res-card{margin:8px 12px;background:#fff;border:1px solid var(--br);border-radius:14px;box-shadow:var(--sh);overflow:hidden}
 .res-day{padding:12px 14px;border-bottom:1px solid var(--br);display:flex;align-items:center;justify-content:space-between;cursor:pointer}
 .res-day:active{background:var(--gl)}
@@ -181,7 +197,19 @@ input[type=file]{display:none}
 </style>
 </head>
 <body>
-<div id="upd-banner" class="upd-banner hide" style="display: none;">
+<div id="lock-screen" class="lock-screen" style="display:none">
+  <div class="lock-logo">🥦</div>
+  <div>
+    <div class="lock-title">FLV Controle</div>
+    <div class="lock-sub">Digite seu código de acesso</div>
+  </div>
+  <input class="lock-inp" id="lock-inp" type="text" placeholder="Ex: FLV-X7K2" maxlength="8" autocomplete="off" oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key===&#39;Enter&#39;)checkLock()">
+  <button class="lock-btn" onclick="checkLock()">Entrar →</button>
+  <div class="lock-err" id="lock-err"></div>
+  <div style="font-size:11px;color:rgba(255,255,255,.4);text-align:center;margin-top:8px">Solicite seu código de acesso ao administrador</div>
+</div>
+
+<div id="upd-banner" class="upd-banner" style="display:none">
   <div class="upd-ico">🆕</div>
   <div class="upd-body">
     <div class="upd-title">App atualizado! v2.1.0</div>
@@ -230,7 +258,7 @@ input[type=file]{display:none}
   <div class="stitle" style="margin-top:4px"><span>Recentes</span></div>
   <div class="empty"><div class="empty-ico">📋</div><p>Nenhuma tratativa ainda.<br>Toque em Nova para começar.</p></div>
   <div style="padding:8px 12px 16px"><button class="btn bp bf" style="padding:14px;font-size:15px" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> Nova Tratativa</button></div></div></div>
-  <nav class="bnav" id="nav"><button class="nb on" onclick="go(&#39;home&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Início</span></button><button class="nb" onclick="go(&#39;produtos&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg><span>Produtos</span></button><button class="nb" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span>Nova</span></button><button class="nb" onclick="go(&#39;dashboard&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Dash</span></button><button class="nb" onclick="go(&#39;graficos&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg><span>Gráficos</span></button><button class="nb" onclick="go(&#39;resultado&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Result.</span></button><button class="nb" onclick="go(&#39;historico&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span>Histórico</span></button></nav>
+  <nav class="bnav" id="nav"><button class="nb on" onclick="go(&#39;home&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Início</span></button><button class="nb" onclick="go(&#39;produtos&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg><span>Produtos</span></button><button class="nb" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span>Nova</span></button><button class="nb" onclick="go(&#39;dashboard&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Dash</span></button><button class="nb" onclick="go(&#39;graficos&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg><span>Gráficos</span></button><button class="nb" onclick="go(&#39;resultado&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Result.</span></button><button class="nb" onclick="go(&#39;usuarios&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg><span>Usuários</span></button></nav>
 </div>
 <div class="toast" id="toast"></div>
 <script>
@@ -267,6 +295,8 @@ const I={
   pie:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>`,
   dl:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
   scan:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg>`,
+  users:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`,
+  lock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>`,
   result:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
   brain:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.98-3 2.5 2.5 0 0 1-1.32-4.24A3 3 0 0 1 3 9a3 3 0 0 1 3-3 2.5 2.5 0 0 1 3.5-4z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.98-3 2.5 2.5 0 0 0 1.32-4.24A3 3 0 0 0 21 9a3 3 0 0 0-3-3 2.5 2.5 0 0 0-3.5-4z"/></svg>`,
 };
@@ -286,6 +316,8 @@ const S={
   resultados:DB.get('flv-result',[]),
   resForm:{data:null,venda:'',quebra:'',perda:'',indenizado:''},
   resModal:false,
+  usuarios:DB.get('flv-users',[]),
+  adminKey:DB.get('flv-admin',''),
 };
 const save=()=>{
   DB.set('flv-prod',S.produtos);
@@ -318,7 +350,7 @@ const N={items:[],idx:0,step:'form'};
 const initN=()=>{if(!N.items.length){N.items=[newItem()];N.idx=0;N.step='form';N.sentPhotos=new Set();}};
 
 // RENDER
-const nav=()=>$('nav').innerHTML=[['home','Início',I.home],['produtos','Produtos',I.box],['nova','Nova',I.plus],['dashboard','Dash',I.chart],['graficos','Gráficos',I.pie],['resultado','Result.',I.result],['historico','Histórico',I.list]].map(([id,l,ic])=>`<button class="nb${S.tab===id?' on':''}" onclick="go('${id}')">${ic}<span>${l}</span></button>`).join('');
+const nav=()=>$('nav').innerHTML=[['home','Início',I.home],['produtos','Produtos',I.box],['nova','Nova',I.plus],['dashboard','Dash',I.chart],['graficos','Gráficos',I.pie],['resultado','Result.',I.result],['usuarios','Usuários',I.users]].map(([id,l,ic])=>`<button class="nb${S.tab===id?' on':''}" onclick="go('${id}')">${ic}<span>${l}</span></button>`).join('');
 
 window.go=t=>{
   if(S.tab==='nova')saveNF();
@@ -332,6 +364,7 @@ const renderM=()=>{
   else if(S.tab==='dashboard')$('main').innerHTML=dashH();
   else if(S.tab==='graficos')$('main').innerHTML=graficosH();
   else if(S.tab==='resultado')$('main').innerHTML=resultadoH();
+  else if(S.tab==='usuarios')$('main').innerHTML=usuariosH();
   else if(S.tab==='historico')$('main').innerHTML=histH();
 };
 
@@ -1562,6 +1595,166 @@ window.toggleDark=()=>{
   if(b)b.textContent=isDark?'🌙':'☀';
 };
 
+// ── ADMIN KEY - master password to access user management
+const ADMIN_KEY='FLV-ADMIN-2026';
+
+// ── LOCK SCREEN
+const initLock=()=>{
+  // Check if already unlocked
+  const unlocked=localStorage.getItem('flv-unlocked');
+  const users=DB.get('flv-users',[]);
+  // If no users registered yet - first time (William's device) skip lock
+  if(!users.length){
+    localStorage.setItem('flv-unlocked','ADMIN');
+    return;
+  }
+  if(unlocked){
+    // Verify code still active
+    if(unlocked==='ADMIN')return;
+    const u=users.find(u=>u.code===unlocked&&u.ativo);
+    if(u)return;
+    // Code deactivated - show lock
+    localStorage.removeItem('flv-unlocked');
+  }
+  // Show lock screen
+  document.getElementById('lock-screen').style.display='flex';
+  document.getElementById('splash').style.display='none';
+  setTimeout(()=>document.getElementById('lock-inp')?.focus(),300);
+};
+window.checkLock=()=>{
+  const val=(document.getElementById('lock-inp')?.value||'').trim().toUpperCase();
+  const err=document.getElementById('lock-err');
+  if(!val){if(err)err.textContent='Digite o código de acesso';return;}
+  // Check admin key
+  if(val===ADMIN_KEY){
+    localStorage.setItem('flv-unlocked','ADMIN');
+    document.getElementById('lock-screen').style.display='none';
+    document.getElementById('splash').style.display='flex';
+    return;
+  }
+  // Check user codes
+  const users=DB.get('flv-users',[]);
+  const u=users.find(u=>u.code===val&&u.ativo);
+  if(u){
+    localStorage.setItem('flv-unlocked',val);
+    document.getElementById('lock-screen').style.display='none';
+    document.getElementById('splash').style.display='flex';
+    if(err)err.textContent='';
+  } else {
+    if(err)err.textContent='Código inválido ou desativado. Tente novamente.';
+    document.getElementById('lock-inp').value='';
+    if(navigator.vibrate)navigator.vibrate([100,50,100]);
+  }
+};
+
+// ── USUARIOS
+const usuariosH=()=>{
+  const isAdmin=localStorage.getItem('flv-unlocked')==='ADMIN';
+  if(!isAdmin){
+    return`<div class="empty"><div class="empty-ico">🔒</div><p>Acesso restrito.<br>Apenas o administrador pode gerenciar usuários.</p></div>`;
+  }
+  const appUrl='https://guinarutoboruto70-cpu.github.io/flv-app/';
+  return`<div>
+    <div class="stitle"><span>Usuários</span><button class="btn bp bs" onclick="newUser()">${I.plus} Novo</button></div>
+    <div class="card" style="margin:8px 12px;padding:12px 14px;background:var(--gl)">
+      <div style="font-size:11px;font-weight:700;color:var(--g);margin-bottom:6px">🔗 Link do App</div>
+      <div style="font-size:12px;color:var(--t);word-break:break-all;margin-bottom:8px">${appUrl}</div>
+      <button class="btn bp bf" style="width:100%" onclick="shareApp()">${I.share} Compartilhar App</button>
+    </div>
+    ${S.usuarios.length===0?`<div class="empty"><div class="empty-ico">👥</div><p>Nenhum usuário cadastrado.<br>Toque em "+ Novo" para adicionar.</p></div>`:''}
+    ${S.usuarios.map(u=>{
+      const inicial=u.nome.charAt(0).toUpperCase();
+      return`<div class="usr-card">
+        <div class="usr-avatar" style="background:${u.ativo?'var(--gl)':'#f5f5f5'};color:${u.ativo?'var(--g)':'#aaa'}">${inicial}</div>
+        <div class="usr-info">
+          <div class="usr-name">${esc(u.nome)}</div>
+          <div class="usr-code">${u.code}</div>
+          <div class="usr-status">${u.ativo?'✅ Ativo':'🔴 Bloqueado'} · Criado ${fmtD(u.cr)}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <button class="btn bo bs" onclick="shareUser('${u.id}')" style="padding:7px 10px;font-size:11px">${I.share}</button>
+          <button class="btn ${u.ativo?'bo':'bp'} bs" onclick="toggleUser('${u.id}')" style="padding:7px 10px;font-size:11px">${u.ativo?'🔴':'✅'}</button>
+          <button class="btn bo bs" onclick="delUser('${u.id}')" style="padding:7px 10px;color:var(--r)">${I.trash}</button>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+};
+
+const gerarCodigo=()=>{
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code='FLV-';
+  for(let i=0;i<4;i++)code+=chars[Math.floor(Math.random()*chars.length)];
+  return code;
+};
+
+window.newUser=()=>{
+  const nome=prompt('Nome da pessoa:','');
+  if(!nome||!nome.trim())return;
+  let code=gerarCodigo();
+  // Ensure unique
+  while(S.usuarios.find(u=>u.code===code))code=gerarCodigo();
+  const u={id:gid(),nome:nome.trim(),code,ativo:true,cr:new Date().toISOString()};
+  S.usuarios.push(u);
+  DB.set('flv-users',S.usuarios);
+  renderM();
+  // Offer to share immediately
+  setTimeout(()=>shareUser(u.id),300);
+};
+
+window.shareUser=(id)=>{
+  const u=S.usuarios.find(u=>u.id===id);if(!u)return;
+  const appUrl='https://guinarutoboruto70-cpu.github.io/flv-app/';
+  const msg=`Olá ${u.nome}! 👋
+
+Você foi convidado para usar o *FLV Controle* — app de controle de quebra de hortifruti.
+
+📱 Acesse pelo link:
+${appUrl}
+
+🔑 Seu código de acesso:
+*${u.code}*
+
+Guarde este código, você precisará dele na primeira vez que abrir o app.`;
+  if(navigator.share){
+    navigator.share({title:'FLV Controle',text:msg}).catch(()=>{});
+  } else {
+    const url='https://wa.me/?text='+encodeURIComponent(msg);
+    window.open(url,'_blank');
+  }
+};
+
+window.shareApp=()=>{
+  const appUrl='https://guinarutoboruto70-cpu.github.io/flv-app/';
+  const msg=`📱 *FLV Controle*
+App de controle de quebra de hortifruti
+
+🔗 ${appUrl}
+
+_Para acessar você precisa de um código. Solicite ao administrador._`;
+  if(navigator.share){
+    navigator.share({title:'FLV Controle',text:msg}).catch(()=>{});
+  } else {
+    window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+  }
+};
+
+window.toggleUser=(id)=>{
+  S.usuarios=S.usuarios.map(u=>u.id===id?{...u,ativo:!u.ativo}:u);
+  DB.set('flv-users',S.usuarios);
+  renderM();
+  const u=S.usuarios.find(u=>u.id===id);
+  toast(u.ativo?'✅ Usuário ativado':'🔴 Usuário bloqueado');
+};
+
+window.delUser=(id)=>{
+  if(!confirm('Excluir este usuário? O código dele vai parar de funcionar.'))return;
+  S.usuarios=S.usuarios.filter(u=>u.id!==id);
+  DB.set('flv-users',S.usuarios);
+  renderM();
+  toast('Usuário excluído');
+};
+
 // ── UPDATE BANNER
 const APP_VERSION='2.1.0';
 const checkUpdate=()=>{
@@ -1595,6 +1788,7 @@ window.enterApp=()=>{
 loadFotos();
 initDark();
 checkUpdate();
+initLock();
 $('hdate').textContent=fmtD();
 nav();renderM();
 
