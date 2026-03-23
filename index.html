@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_23.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_24.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/f5d3bd1b-74eb-4f59-9c3a-5dba45f9157c">
+<link rel="manifest" id="mfst" href="blob:null/be1f30bf-22ef-4c0f-95a9-bfe77739d498">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -527,6 +527,34 @@ window.saveP=()=>{
 // ── DASHBOARD
 // ── RESULTADO DIÁRIO
 const fmtBRL=v=>v?'R$ '+parseFloat(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}):'R$ 0,00';
+// Currency mask - formats as user types (like bank apps)
+const maskBRL=(input)=>{
+  input.addEventListener('input',function(){
+    let v=this.value.replace(/\D/g,''); // only digits
+    if(!v){this.value='';return;}
+    v=parseInt(v,10).toString(); // remove leading zeros
+    while(v.length<3)v='0'+v; // ensure at least 3 digits for cents
+    // Insert decimal comma
+    const dec=v.slice(-2);
+    let int=v.slice(0,-2);
+    // Add thousand separators
+    int=int.replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+    this.value=int+','+dec;
+  });
+  input.addEventListener('focus',function(){
+    if(this.value==='0,00')this.value='';
+  });
+  input.addEventListener('blur',function(){
+    if(!this.value)this.value='';
+  });
+};
+const parseBRL=v=>{
+  if(!v||v==='')return 0;
+  // Remove thousand separators (.) and replace decimal comma with dot
+  const clean=String(v).trim().replace(/\./g,'').replace(',','.');
+  const n=parseFloat(clean);
+  return isNaN(n)?0:n;
+};
 const resultadoH=()=>{
   const meta=S.metaGlobal;
   const now=new Date();
@@ -545,12 +573,12 @@ const resultadoH=()=>{
     <div class="mhd"><span>${S.resForm.data?'Editar':'Novo'} Resultado</span><button class="btn bg_ bs" onclick="closeRes()">${I.x}</button></div>
     <div class="mbd">
       <div class="fld"><label class="lbl">Data</label><input class="inp" id="res-data" type="date" value="${S.resForm.data||today()}"></div>
-      <div class="fld"><label class="lbl">💰 Venda do dia R$</label><input class="inp" id="res-venda" type="number" step="0.01" placeholder="0,00" value="${S.resForm.venda}"></div>
+      <div class="fld"><label class="lbl">💰 Venda do dia R$</label><input class="inp" id="res-venda" type="text" inputmode="numeric" placeholder="0,00" value="${S.resForm.venda}"></div>
       <div class="r2">
-        <div class="fld"><label class="lbl">📦 Quebra R$</label><input class="inp" id="res-quebra" type="number" step="0.01" placeholder="0,00" value="${S.resForm.quebra}"></div>
-        <div class="fld"><label class="lbl">📉 Perda R$</label><input class="inp" id="res-perda" type="number" step="0.01" placeholder="0,00" value="${S.resForm.perda}"></div>
+        <div class="fld"><label class="lbl">📦 Quebra R$</label><input class="inp" id="res-quebra" type="text" inputmode="numeric" placeholder="0,00" value="${S.resForm.quebra}"></div>
+        <div class="fld"><label class="lbl">📉 Perda R$</label><input class="inp" id="res-perda" type="text" inputmode="numeric" placeholder="0,00" value="${S.resForm.perda}"></div>
       </div>
-      <div class="fld"><label class="lbl">✅ Indenizado R$ <span style="font-size:10px;color:var(--mu);display:block;font-weight:400">preencher no dia seguinte</span></label><input class="inp" id="res-ind" type="number" step="0.01" placeholder="0,00" value="${S.resForm.indenizado}"></div>
+      <div class="fld"><label class="lbl">✅ Indenizado R$ <span style="font-size:10px;color:var(--mu);display:block;font-weight:400">preencher no dia seguinte</span></label><input class="inp" id="res-ind" type="text" inputmode="numeric" placeholder="0,00" value="${S.resForm.indenizado}"></div>
       ${S.resForm.venda&&S.resForm.quebra?`<div style="background:var(--gl);border-radius:10px;padding:10px 12px;margin-top:4px">
         <div style="font-size:11px;color:var(--mu);font-weight:700">PRÉVIA</div>
         <div style="font-size:20px;font-weight:800;color:${((parseFloat(S.resForm.quebra||0)+parseFloat(S.resForm.perda||0)-parseFloat(S.resForm.indenizado||0))/(parseFloat(S.resForm.venda)||1)*100)>meta?'var(--r)':'var(--g)'}">
@@ -601,12 +629,30 @@ const resultadoH=()=>{
     }).join('')}
   </div>`;
 };
-window.newRes=()=>{S.resForm={data:today(),venda:'',quebra:'',perda:'',indenizado:''};S.resModal=true;renderM()};
+window.newRes=()=>{
+  S.resForm={data:today(),venda:'',quebra:'',perda:'',indenizado:''};
+  S.resModal=true;renderM();
+  setTimeout(()=>{
+    ['res-venda','res-quebra','res-perda','res-ind'].forEach(id=>{
+      const el=$(id);if(el)maskBRL(el);
+    });
+  },50);
+};
 window.closeRes=()=>{S.resModal=false;renderM()};
 window.editRes=(id)=>{
   const r=S.resultados.find(r=>r.id===id);if(!r)return;
-  S.resForm={data:r.data,venda:r.venda,quebra:r.quebra,perda:r.perda,indenizado:r.indenizado||''};
+  // Format back to Brazilian format for display
+  const toDisp=v=>{
+    if(!v||parseFloat(v)===0)return '';
+    return parseFloat(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+  };
+  S.resForm={id:r.id,data:r.data,venda:toDisp(r.venda),quebra:toDisp(r.quebra),perda:toDisp(r.perda),indenizado:toDisp(r.indenizado||'')};
   S.resModal=true;renderM();
+  setTimeout(()=>{
+    ['res-venda','res-quebra','res-perda','res-ind'].forEach(id=>{
+      const el=$(id);if(el)maskBRL(el);
+    });
+  },50);
 };
 window.delRes=(id)=>{
   if(!confirm('Excluir este resultado?'))return;
@@ -615,16 +661,20 @@ window.delRes=(id)=>{
 };
 window.saveRes=()=>{
   const data=$('res-data')?.value;
-  const venda=$('res-venda')?.value;
-  const quebra=$('res-quebra')?.value;
-  const perda=$('res-perda')?.value||'0';
-  const indenizado=$('res-ind')?.value||'0';
-  if(!data||!venda||!quebra){toast('Preencha data, venda e quebra');return}
-  if(isNaN(parseFloat(venda))||isNaN(parseFloat(quebra))){toast('Valores inválidos');return}
+  const vendaRaw=$('res-venda')?.value||'';
+  const quebraRaw=$('res-quebra')?.value||'';
+  const perdaRaw=$('res-perda')?.value||'0';
+  const indenizadoRaw=$('res-ind')?.value||'0';
+  const venda=parseBRL(vendaRaw);
+  const quebra=parseBRL(quebraRaw);
+  const perda=parseBRL(perdaRaw);
+  const indenizado=parseBRL(indenizadoRaw);
+  if(!data||!vendaRaw||!quebraRaw){toast('Preencha data, venda e quebra');return}
+  if(venda<=0||quebra<0){toast('Valores inválidos');return}
   // Check if editing existing
   const existing=S.resultados.find(r=>r.data===data&&!S.resForm.id);
   if(existing){if(!confirm('Já existe um registro para esta data. Substituir?'))return;S.resultados=S.resultados.filter(r=>r.data!==data);}
-  const r={id:S.resForm.id||gid(),data,venda,quebra,perda,indenizado};
+  const r={id:S.resForm.id||gid(),data,venda,quebra,perda,indenizado};  // saved as numbers
   if(S.resForm.id){S.resultados=S.resultados.map(x=>x.id===r.id?r:x);}
   else{S.resultados.push(r);}
   DB.set('flv-result',S.resultados);
