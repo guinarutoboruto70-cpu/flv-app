@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_28.html -->
+<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_29.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="FLV Controle">
 <title>FLV Controle v5</title>
-<link rel="manifest" id="mfst" href="blob:null/bee00a76-9046-4654-a8b6-fe5e9669f747">
+<link rel="manifest" id="mfst" href="blob:null/de14193d-f601-4ceb-9880-7f5de001fbbc">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{--bg:#f4f7f4;--w:#fff;--g:#2d7a3a;--g2:#3a9648;--g3:#4db860;--gl:#eaf2eb;--r:#d93025;--y:#e8a020;--t:#1a2e1c;--t2:#3d5c42;--mu:#7a9a80;--br:#d4e8d6;--sh:0 1px 4px rgba(45,122,58,.10)}
@@ -33,7 +33,7 @@
 .splash-ilus{width:100%;max-width:340px;margin:24px auto 0}
 .splash-btn{width:100%;max-width:340px;background:#fff;color:#2d7a3a;border:none;border-radius:16px;padding:18px;font-size:17px;font-weight:800;letter-spacing:.3px;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;gap:10px}
 .splash-btn:active{transform:scale(.97)}
-.splash-credit{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.5px;text-align:center;margin-top:12px}
+.splash-credit{font-size:14px;font-weight:800;color:#a8e6b0;letter-spacing:.5px;text-align:center;margin-top:12px;text-shadow:0 1px 4px rgba(0,0,0,.4)}
 html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-family:'Segoe UI',system-ui,sans-serif;color:var(--t);font-size:14px}
 #app{display:flex;flex-direction:column;height:100svh;max-width:480px;margin:0 auto;background:var(--bg)}
 .hdr{background:var(--g);padding:12px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;box-shadow:0 2px 8px rgba(45,122,58,.25)}
@@ -95,6 +95,15 @@ html,body{height:100%;width:100%;overflow:hidden;background:var(--bg);font-famil
 .qpct{font-family:monospace;font-size:22px;font-weight:700}
 .qmeta{font-size:10px;color:var(--mu);font-weight:600}
 .btrack{height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden}
+.foto-modal{position:fixed;inset:0;z-index:9995;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.foto-modal img{max-width:100%;max-height:80vh;border-radius:12px;object-fit:contain}
+.foto-modal-bar{display:flex;gap:10px;margin-top:16px;width:100%;max-width:480px}
+.install-bar{margin:8px 12px;background:linear-gradient(135deg,#1a4a22,#2d7a3a);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh)}
+.install-bar-txt{flex:1;color:#fff}
+.install-bar-title{font-size:13px;font-weight:800}
+.install-bar-sub{font-size:11px;opacity:.8;margin-top:2px}
+.install-bar-btn{background:#fff;color:#2d7a3a;border:none;border-radius:10px;padding:10px 16px;font-size:13px;font-weight:800;cursor:pointer;flex-shrink:0}
+.install-bar-btn:active{opacity:.8}
 .meta-card{margin:8px 12px;border-radius:14px;overflow:hidden;box-shadow:var(--sh)}
 .meta-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
 .meta-header.ok{background:#2d7a3a;color:#fff}
@@ -226,6 +235,27 @@ input[type=file]{display:none}
 </style>
 </head>
 <body>
+<div id="foto-modal" class="foto-modal" style="display:none">
+  <div style="width:100%;max-width:480px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <span id="foto-modal-lbl" style="color:#fff;font-size:13px;font-weight:700"></span>
+    <button onclick="closeFotoModal()" style="background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer">✕ Fechar</button>
+  </div>
+  <img id="foto-modal-img" src="file:///C:/Users/willi/Downloads/index_29.html" style="max-width:100%;max-height:75vh;border-radius:12px;object-fit:contain">
+  <div class="foto-modal-bar">
+    <button id="foto-modal-copy" class="btn bo f1" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.3)">📋 Copiar Foto</button>
+    <button id="foto-modal-send" class="btn bo f1" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.3)">📤 Enviar WA</button>
+  </div>
+</div>
+
+<div id="install-bar" class="install-bar" style="display:none;position:fixed;bottom:75px;left:0;right:0;z-index:9996;margin:0 12px 8px;">
+  <div class="install-bar-txt">
+    <div class="install-bar-title">📲 Instalar FLV Controle</div>
+    <div class="install-bar-sub">Adicionar à tela inicial do celular</div>
+  </div>
+  <button class="install-bar-btn" onclick="installApp()">Instalar</button>
+  <button onclick="document.getElementById(&#39;install-bar&#39;).style.display=&#39;none&#39;" style="background:none;border:none;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;padding:4px 8px">✕</button>
+</div>
+
 <div id="lock-screen" class="lock-screen" style="display:none">
   <div class="lock-logo">🥦</div>
   <div>
@@ -286,7 +316,13 @@ input[type=file]{display:none}
   </div>
   <div class="stitle" style="margin-top:4px"><span>Recentes</span></div>
   <div class="empty"><div class="empty-ico">📋</div><p>Nenhuma tratativa ainda.<br>Toque em Nova para começar.</p></div>
-  <div style="padding:8px 12px 16px"><button class="btn bp bf" style="padding:14px;font-size:15px" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> Nova Tratativa</button></div></div></div>
+  <div style="padding:8px 12px 4px;display:flex;gap:8px">
+    <button class="btn bp bf f1" style="padding:14px;font-size:15px" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> Nova Tratativa</button>
+  </div>
+  <div style="padding:4px 12px 16px;display:flex;gap:8px">
+    <button class="btn bo f1" onclick="shareAppLink()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> Compartilhar Link</button>
+    <button class="btn bo f1" onclick="installApp()">📲 Instalar App</button>
+  </div></div></div>
   <nav class="bnav" id="nav"><button class="nb on" onclick="go(&#39;home&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Início</span></button><button class="nb" onclick="go(&#39;produtos&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg><span>Produtos</span></button><button class="nb" onclick="go(&#39;nova&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span>Nova</span></button><button class="nb" onclick="go(&#39;dashboard&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Dash</span></button><button class="nb" onclick="go(&#39;graficos&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg><span>Gráficos</span></button><button class="nb" onclick="go(&#39;resultado&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span>Result.</span></button><button class="nb" onclick="go(&#39;historico&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span>Hist.</span></button><button class="nb" onclick="go(&#39;usuarios&#39;)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg><span>Usuários</span></button></nav>
 </div>
 <div class="toast" id="toast"></div>
@@ -419,7 +455,13 @@ const homeH=()=>{
   </div>
   <div class="stitle" style="margin-top:4px"><span>Recentes</span></div>
   ${S.trats.length===0?`<div class="empty"><div class="empty-ico">📋</div><p>Nenhuma tratativa ainda.<br>Toque em Nova para começar.</p></div>`:rec}
-  <div style="padding:8px 12px 16px"><button class="btn bp bf" style="padding:14px;font-size:15px" onclick="go('nova')">${I.plus} Nova Tratativa</button></div></div>`;
+  <div style="padding:8px 12px 4px;display:flex;gap:8px">
+    <button class="btn bp bf f1" style="padding:14px;font-size:15px" onclick="go('nova')">${I.plus} Nova Tratativa</button>
+  </div>
+  <div style="padding:4px 12px 16px;display:flex;gap:8px">
+    <button class="btn bo f1" onclick="shareAppLink()">${I.share} Compartilhar Link</button>
+    <button class="btn bo f1" onclick="installApp()">📲 Instalar App</button>
+  </div></div>`;
 };
 
 // ── PRODUTOS
@@ -1233,7 +1275,17 @@ const histDetH=t=>{
   </div></div>
   ${allPh.length>0?`<div class="card"><div class="ch">${I.cam} Fotos (${allPh.length})</div><div class="cb">
     <div style="background:var(--gl);border-radius:8px;padding:9px 12px;margin-bottom:10px;font-size:12px;color:var(--t2);line-height:1.5">📲 Toque <strong>Enviar</strong> em cada foto → <strong>WhatsApp</strong> → mesmo contato</div>
-    ${allPh.map((f,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--br)"><img src="${f.src}" style="width:52px;height:52px;object-fit:cover;border-radius:9px;flex-shrink:0"><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:var(--t2);text-transform:uppercase">${f.lbl}</div></div><button class="btn bo bs" data-hsrc="${i}" data-htid="${t.id}">${I.wa} Enviar</button></div>`).join('')}
+    ${allPh.map((f,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--br)">
+      <img src="${f.src}" style="width:60px;height:60px;object-fit:cover;border-radius:9px;flex-shrink:0;cursor:pointer" onclick="viewFoto('${t.id}',${i})" title="Toque para ampliar">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:700;color:var(--t2);text-transform:uppercase">${f.lbl}</div>
+        <div style="font-size:11px;color:var(--mu);margin-top:2px">Toque na foto para ampliar</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <button class="btn bo bs" data-hsrc="${i}" data-htid="${t.id}" style="font-size:11px;padding:7px 10px">${I.wa} Enviar</button>
+        <button class="btn bo bs" onclick="copyFoto('${t.id}',${i})" style="font-size:11px;padding:7px 10px">${I.copy} Copiar</button>
+      </div>
+    </div>`).join('')}
   </div></div>`:''}
   <div class="card" style="margin-top:4px">
     <div class="ch">${I.fluig} Fluig / Indenização</div>
@@ -1282,6 +1334,55 @@ const histDetH=t=>{
   <div style="padding:6px 12px 16px"><button class="btn bd bf bs" onclick="delTrat('${t.id}')">${I.trash} Excluir</button></div></div>`;
 };
 window.openDet=id=>{S.histDetail=S.trats.find(t=>t.id===id)||null;renderM()};
+
+// Photo viewer
+window.viewFoto=(tid,idx)=>{
+  const t=S.trats.find(t=>t.id===tid);if(!t)return;
+  const all=t.items.flatMap(it=>[
+    ...it.fotos.p.map((s,i)=>({src:s,lbl:'Produto '+(i+1)})),
+    ...it.fotos.b.map((s,i)=>({src:s,lbl:'Balança '+(i+1)})),
+    ...it.fotos.e.map((s,i)=>({src:s,lbl:'Etiqueta '+(i+1)}))
+  ]);
+  const foto=all[idx];if(!foto)return;
+  const modal=document.getElementById('foto-modal');
+  const img=document.getElementById('foto-modal-img');
+  const lbl=document.getElementById('foto-modal-lbl');
+  const copyBtn=document.getElementById('foto-modal-copy');
+  const sendBtn=document.getElementById('foto-modal-send');
+  if(!modal||!img)return;
+  img.src=foto.src;
+  if(lbl)lbl.textContent=foto.lbl;
+  if(copyBtn)copyBtn.onclick=()=>copyFoto(tid,idx);
+  if(sendBtn)sendBtn.onclick=()=>{shareFoto(foto.src,idx);};
+  modal.style.display='flex';
+};
+window.closeFotoModal=()=>{
+  const modal=document.getElementById('foto-modal');
+  if(modal){modal.style.display='none';const img=document.getElementById('foto-modal-img');if(img)img.src='';}
+};
+window.copyFoto=async(tid,idx)=>{
+  const t=S.trats.find(t=>t.id===tid);if(!t)return;
+  const all=t.items.flatMap(it=>[...it.fotos.p,...it.fotos.b,...it.fotos.e]);
+  const src=all[idx];if(!src)return;
+  try{
+    const res=await fetch(src);
+    const blob=await res.blob();
+    if(navigator.clipboard&&navigator.clipboard.write){
+      await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+      toast('✅ Foto copiada!');
+    } else {
+      // Fallback: download the photo
+      const a=document.createElement('a');
+      a.href=src;a.download='foto_flv_'+(idx+1)+'.jpg';a.click();
+      toast('📥 Foto salva na galeria!');
+    }
+  }catch(e){
+    // Final fallback: open in new tab
+    const a=document.createElement('a');
+    a.href=src;a.download='foto_flv_'+(idx+1)+'.jpg';a.click();
+    toast('📥 Foto salva!');
+  }
+};
 
 window.updFluig=(tid,iid,val)=>{
   const t=S.trats.find(t=>t.id===tid);if(!t)return;
@@ -1970,6 +2071,45 @@ window.enterApp=()=>{
   if(!sp)return;
   sp.classList.add('hide');
   setTimeout(()=>{sp.style.display='none';},520);
+};
+
+// ── PWA INSTALL PROMPT
+let _installPrompt=null;
+window.addEventListener('beforeinstallprompt',(e)=>{
+  e.preventDefault();
+  _installPrompt=e;
+  // Show install bar if not already installed
+  const bar=document.getElementById('install-bar');
+  if(bar)bar.style.display='flex';
+});
+window.addEventListener('appinstalled',()=>{
+  _installPrompt=null;
+  const bar=document.getElementById('install-bar');
+  if(bar)bar.style.display='none';
+  toast('✅ App instalado com sucesso!');
+});
+window.installApp=()=>{
+  if(_installPrompt){
+    _installPrompt.prompt();
+    _installPrompt.userChoice.then(r=>{
+      if(r.outcome==='accepted')toast('✅ Instalando app...');
+      _installPrompt=null;
+      const bar=document.getElementById('install-bar');
+      if(bar)bar.style.display='none';
+    });
+  } else {
+    // Fallback: show manual instructions
+    toast('Abra o menu do Chrome (⋮) e toque em "Adicionar à tela inicial"');
+  }
+};
+window.shareAppLink=()=>{
+  const appUrl='https://guinarutoboruto70-cpu.github.io/flv-app/';
+  const msg='📱 *FLV Controle*\nApp de controle de quebra de hortifruti\n\n🔗 '+appUrl+'\n\n_Para acessar você precisa de um código. Solicite ao administrador._';
+  if(navigator.share){
+    navigator.share({title:'FLV Controle',text:msg,url:appUrl}).catch(()=>{});
+  } else {
+    window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+  }
 };
 
 // ── INIT
