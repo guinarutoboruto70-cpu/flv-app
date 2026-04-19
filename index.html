@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///C:/Users/willi/Downloads/index_30.html -->
-<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a2010">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="FLV Controle">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="FLV Controle">
-<link rel="manifest" id="pwa-manifest-link" href="blob:null/4e525458-ba4c-4926-8da9-05446a438dd9">
-<link rel="apple-touch-icon" id="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%22100%22%20fill%3D%22%230a2010%22%2F%3E%3Ctext%20x%3D%22256%22%20y%3D%22330%22%20text-anchor%3D%22middle%22%20font-size%3D%22260%22%20font-family%3D%22serif%22%3E%26%23x1F966%3B%3C%2Ftext%3E%3Crect%20x%3D%2232%22%20y%3D%22400%22%20width%3D%22448%22%20height%3D%2280%22%20rx%3D%2216%22%20fill%3D%22%231a5e1a%22%2F%3E%3Ctext%20x%3D%22256%22%20y%3D%22457%22%20text-anchor%3D%22middle%22%20font-size%3D%2240%22%20font-weight%3D%22bold%22%20font-family%3D%22sans-serif%22%20fill%3D%22%237fff7f%22%3EFLV%20CONTROLE%3C%2Ftext%3E%3C%2Fsvg%3E">
+<!--
+  FLV · CONTROLE DE QUEBRA v4.0
+  COMO INSTALAR: Abra no Chrome → Menu (⋮) → Adicionar à tela inicial
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0a2010"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="FLV Controle"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="application-name" content="FLV Controle"/>
+<link rel="manifest" href="./manifest.json"/>
+<link rel="apple-touch-icon" href="./icon-192.svg"/>
 <title>FLV · Controle de Quebra</title>
-<link href="./index_files/css2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
@@ -134,29 +138,29 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);font
 <div id="app">
   <header class="hdr">
     <div class="hdr-logo">
-      <span class="hdr-em">🥦</span>
+      <span class="hdr-em">&#x1F966;</span>
       <div><div class="hdr-t">FLV</div><div class="hdr-s">Controle de Recebimento</div></div>
     </div>
-    <button class="hdr-btn" id="hist-btn" onclick="navigate(&#39;historico&#39;)">
-      <span style="font-size:18px">📋</span><span>Histórico</span>
+    <button class="hdr-btn" id="hist-btn" onclick="navigate('historico')">
+      <span style="font-size:18px">&#x1F4CB;</span><span>Hist&oacute;rico</span>
     </button>
   </header>
-  <div id="pg" class="page pe"><div class="ibanner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><div style="flex:1"><div class="sub" style="font-size:13px">Instalar App FLV</div><div style="font-size:11px;color:var(--mut)">Adicione à tela inicial</div></div><button class="btn btn-p btn-sm" onclick="instApp()">Instalar</button><button class="cl" onclick="ST.showInst=false;render()">×</button></div><div style="margin-bottom:16px"><div style="font-size:12px;color:var(--mut);font-weight:700">18/04/2026</div><div class="ttl" style="font-size:22px">Resumo do Dia 🌿</div></div><div class="mg"><div class="bf mc"><span class="lbl">Hoje</span><span class="mv">0</span></div><div class="bf mc"><span class="lbl">Quebra Total</span><span class="mv ok">0,0 kg</span></div><div class="bf mc"><span class="lbl">% Quebra</span><span class="mv ok">0.0%</span></div><div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg bok">✓ OK</span></div></div></div><div class="bf" style="padding:14px;margin-bottom:16px"><div class="cr" style="margin-bottom:8px"><span class="lbl">Meta 3.5%</span><span style="font-size:12px;font-weight:700;color:var(--ok)">0.0%</span></div><div class="pw" style="height:8px"><div class="pb" style="height:8px;width:0%;background:var(--ok)"></div></div></div><button class="btn btn-p btn-f" style="margin-bottom:16px;padding:14px" onclick="navigate(&#39;nova&#39;)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Nova Tratativa</button><div class="sh"><span class="lbl">Recentes — Abr/2026</span><div class="shl"></div></div><div class="bf"><div style="padding:24px;text-align:center;color:var(--mut)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--mut)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><div style="margin-top:8px;font-size:12px;font-weight:600">Nenhuma tratativa este mês</div></div></div></div>
-  <nav class="bnav" id="bnav"><button class="ni a" onclick="navigate(&#39;home&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Início</span></button><button class="ni " onclick="navigate(&#39;produtos&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg><span>Produtos</span></button><div class="nc"><button class="ncb" onclick="navigate(&#39;nova&#39;)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button></div><button class="ni " onclick="navigate(&#39;dashboard&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Dashboard</span></button><button class="ni " onclick="navigate(&#39;historico&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span>Histórico</span></button></nav>
+  <div id="pg" class="page"></div>
+  <nav class="bnav" id="bnav"></nav>
   <div id="toast" class="toast hidden"></div>
 
   <!-- SPLASH SCREEN -->
-  <div class="splash" id="splash" style="transition: opacity 0.4s; opacity: 0; display: none;">
-    <canvas id="splash-canvas" style="position:absolute;inset:0;width:100%;height:100%" width="1366" height="599"></canvas>
+  <div class="splash" id="splash">
+    <canvas id="splash-canvas" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
     <div class="splash-bg" style="background:linear-gradient(to bottom,rgba(5,30,5,.1) 0%,rgba(5,25,5,.5) 55%,rgba(3,18,3,.93) 100%)"></div>
     <div class="splash-content">
       <div class="splash-logo-wrap">
-        <span style="font-size:44px;line-height:1">🥦</span>
+        <span style="font-size:44px;line-height:1">&#x1F966;</span>
       </div>
       <div class="splash-title">FLV Controle</div>
       <div class="splash-sub">Quebra de Hortifruti</div>
       <button class="splash-btn" onclick="enterApp()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         Entrar no App
       </button>
       <div class="splash-powered">Powered by <b>William Jesus</b></div>
@@ -437,7 +441,7 @@ function rHome(pc){
 }
 function instApp(){
   if(ST.instEvt){ ST.instEvt.prompt(); ST.instEvt.userChoice.then(function(r){ if(r.outcome==='accepted'){ ST.showInst=false; render(); } }); }
-  else toast('No Chrome: Menu \u22ee \u2192 Adicionar \u00e0 tela inicial');
+  else { ST.showInst=false; toast('Abra pelo GitHub Pages para instalar o app'); }
 }
 
 // ════════════════════════════════════════════════════
@@ -1095,88 +1099,33 @@ function dtCpy(id){
 }
 
 // ════════════════════════════════════════════════════
-// PWA — MANIFEST + SERVICE WORKER
+// PWA — SERVICE WORKER + INSTALL PROMPT
 // ════════════════════════════════════════════════════
-(function(){
-  // Ícone SVG embutido
-  var iconSVG='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="100" fill="#0a2010"/><text x="256" y="330" text-anchor="middle" font-size="260" font-family="serif">&#x1F966;</text><rect x="32" y="400" width="448" height="80" rx="16" fill="#1a5e1a"/><text x="256" y="457" text-anchor="middle" font-size="40" font-weight="bold" font-family="sans-serif" fill="#7fff7f">FLV CONTROLE</text></svg>';
-  var iconURL='data:image/svg+xml,'+encodeURIComponent(iconSVG);
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js', { scope: './' })
+    .then(function(reg) {
+      console.log('[PWA] SW registrado:', reg.scope);
+    })
+    .catch(function(err) {
+      console.warn('[PWA] SW erro:', err);
+    });
+}
 
-  // Apple touch icon
-  var ai=document.getElementById('apple-touch-icon');
-  if(ai) ai.href=iconURL;
+// Captura o prompt de instalação nativo do Chrome
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  ST.instEvt = e;
+  ST.showInst = true;
+  render();
+});
 
-  // Manifest PWA embutido
-  var manifest={
-    name:'FLV Controle',
-    short_name:'FLV',
-    description:'Controle de Quebra de Hortifruti',
-    start_url:'./',
-    scope:'./',
-    display:'standalone',
-    background_color:'#0a2010',
-    theme_color:'#0a2010',
-    orientation:'portrait-primary',
-    lang:'pt-BR',
-    icons:[
-      {src:iconURL,sizes:'192x192',type:'image/svg+xml',purpose:'any maskable'},
-      {src:iconURL,sizes:'512x512',type:'image/svg+xml',purpose:'any maskable'}
-    ]
-  };
-  try{
-    var mb=new Blob([JSON.stringify(manifest)],{type:'application/json'});
-    var ml=document.getElementById('pwa-manifest-link');
-    if(ml) ml.href=URL.createObjectURL(mb);
-  }catch(e){}
-
-  // Service Worker com cache offline
-  if('serviceWorker' in navigator){
-    var sw=[
-      "var C='flv-v5';",
-      "self.addEventListener('install',function(e){",
-      "  self.skipWaiting();",
-      "  e.waitUntil(caches.open(C).then(function(c){return c.addAll(['.']);}));",
-      "});",
-      "self.addEventListener('activate',function(e){",
-      "  e.waitUntil(caches.keys().then(function(ks){",
-      "    return Promise.all(ks.filter(function(k){return k!==C;}).map(function(k){return caches.delete(k);}));",
-      "  }));",
-      "  self.clients.claim();",
-      "});",
-      "self.addEventListener('fetch',function(e){",
-      "  if(e.request.method!=='GET') return;",
-      "  e.respondWith(caches.match(e.request).then(function(r){",
-      "    return r||fetch(e.request).then(function(res){",
-      "      var cl=res.clone();",
-      "      caches.open(C).then(function(c){c.put(e.request,cl);});",
-      "      return res;",
-      "    });",
-      "  }));",
-      "});"
-    ].join('\n');
-    try{
-      navigator.serviceWorker.register(
-        URL.createObjectURL(new Blob([sw],{type:'application/javascript'})),
-        {scope:'./'}
-      ).catch(function(){});
-    }catch(e){}
-  }
-
-  // Captura prompt de instalação
-  window.addEventListener('beforeinstallprompt',function(e){
-    e.preventDefault();
-    ST.instEvt=e;
-    ST.showInst=true;
-    render();
-  });
-
-  // Após instalar, esconde o banner
-  window.addEventListener('appinstalled',function(){
-    ST.showInst=false;
-    ST.instEvt=null;
-    render();
-  });
-})();
+// Após instalar com sucesso, esconde o banner
+window.addEventListener('appinstalled', function() {
+  ST.showInst = false;
+  ST.instEvt = null;
+  render();
+  toast('✓ App instalado com sucesso!');
+});
 
 // ════════════════════════════════════════════════════
 // SPLASH SCREEN — canvas hortifruti
@@ -1316,6 +1265,5 @@ render();
 setTimeout(drawSplash, 50);
 
 </script>
-
-
-</body></html>
+</body>
+</html>
