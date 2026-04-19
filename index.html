@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0059)file:///C:/Users/willi/Downloads/controle-quebra-flv_4.html -->
+<!-- saved from url=(0059)file:///C:/Users/willi/Downloads/controle-quebra-flv_5.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -113,6 +113,17 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);font
 .sit-lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
 .fluig-item{padding:11px 14px;border-bottom:1px solid var(--brd2);display:flex;justify-content:space-between;align-items:center;gap:8px}
 .fluig-item:last-child{border-bottom:none}
+/* SPLASH SCREEN */
+.splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;background:#0a2010}
+.splash-bg{position:absolute;inset:0}
+.splash-content{position:relative;z-index:2;width:100%;padding:0 24px 48px;display:flex;flex-direction:column;align-items:center}
+.splash-logo-wrap{width:88px;height:88px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;border:2px solid rgba(255,255,255,.3);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.splash-title{font-family:'Nunito',sans-serif;font-size:40px;font-weight:800;color:#fff;letter-spacing:.04em;text-shadow:0 2px 20px rgba(0,0,0,.6);margin-bottom:6px;text-align:center}
+.splash-sub{font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.2em;margin-bottom:44px;text-shadow:0 1px 8px rgba(0,0,0,.5);text-align:center}
+.splash-btn{width:100%;max-width:340px;background:rgba(255,255,255,.96);border:none;border-radius:16px;padding:18px 24px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Nunito',sans-serif;font-size:17px;font-weight:800;color:#1c4a1c;cursor:pointer;box-shadow:0 8px 32px rgba(0,0,0,.3);margin-bottom:20px;letter-spacing:.01em}
+.splash-btn:active{transform:scale(.97)}
+.splash-powered{font-family:'Nunito',sans-serif;font-size:11px;color:rgba(180,230,180,.65);letter-spacing:.05em}
+.splash-powered b{color:rgba(200,255,200,.85);font-weight:700}
 </style>
 </head>
 <body>
@@ -126,9 +137,27 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);font
       <span style="font-size:18px">📋</span><span>Histórico</span>
     </button>
   </header>
-  <div id="pg" class="page pe"><div class="ibanner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><div style="flex:1"><div class="sub" style="font-size:13px">Instalar App FLV</div><div style="font-size:11px;color:var(--mut)">Adicione à tela inicial</div></div><button class="btn btn-p btn-sm" onclick="instApp()">Instalar</button><button class="cl" onclick="ST.showInst=false;render()">×</button></div><div style="margin-bottom:16px"><div style="font-size:12px;color:var(--mut);font-weight:700">18/04/2026</div><div class="ttl" style="font-size:22px">Resumo do Dia 🌿</div></div><div class="mg"><div class="bf mc"><span class="lbl">Hoje</span><span class="mv">0</span></div><div class="bf mc"><span class="lbl">Quebra Total</span><span class="mv ok">0,0 kg</span></div><div class="bf mc"><span class="lbl">% Quebra</span><span class="mv ok">0.0%</span></div><div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg bok">✓ OK</span></div></div></div><div class="bf" style="padding:14px;margin-bottom:16px"><div class="cr" style="margin-bottom:8px"><span class="lbl">Meta 3.5%</span><span style="font-size:12px;font-weight:700;color:var(--ok)">0.0%</span></div><div class="pw" style="height:8px"><div class="pb" style="height:8px;width:0%;background:var(--ok)"></div></div></div><button class="btn btn-p btn-f" style="margin-bottom:16px;padding:14px" onclick="navigate(&#39;nova&#39;)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Nova Tratativa</button><div class="sh"><span class="lbl">Recentes — Abr/2026</span><div class="shl"></div></div><div class="bf"><div style="padding:24px;text-align:center;color:var(--mut)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--mut)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><div style="margin-top:8px;font-size:12px;font-weight:600">Nenhuma tratativa este mês</div></div></div></div>
+  <div id="pg" class="page pe"><div class="ibanner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><div style="flex:1"><div class="sub" style="font-size:13px">Instalar App FLV</div><div style="font-size:11px;color:var(--mut)">Adicione à tela inicial</div></div><button class="btn btn-p btn-sm" onclick="instApp()">Instalar</button><button class="cl" onclick="ST.showInst=false;render()">×</button></div><div style="margin-bottom:16px"><div style="font-size:12px;color:var(--mut);font-weight:700">18/04/2026</div><div class="ttl" style="font-size:22px">Resumo do Dia 🌿</div></div><div class="mg"><div class="bf mc"><span class="lbl">Hoje</span><span class="mv">0</span></div><div class="bf mc"><span class="lbl">Quebra Total</span><span class="mv ok">0,0 kg</span></div><div class="bf mc"><span class="lbl">% Quebra</span><span class="mv ok">0.0%</span></div><div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg bok">2713 OK</span></div></div></div><div class="bf" style="padding:14px;margin-bottom:16px"><div class="cr" style="margin-bottom:8px"><span class="lbl">Meta 3.5%</span><span style="font-size:12px;font-weight:700;color:var(--ok)">0.0%</span></div><div class="pw" style="height:8px"><div class="pb" style="height:8px;width:0%;background:var(--ok)"></div></div></div><button class="btn btn-p btn-f" style="margin-bottom:16px;padding:14px" onclick="navigate(&#39;nova&#39;)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Nova Tratativa</button><div class="sh"><span class="lbl">Recentes — Abr/2026</span><div class="shl"></div></div><div class="bf"><div style="padding:24px;text-align:center;color:var(--mut)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--mut)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><div style="margin-top:8px;font-size:12px;font-weight:600">Nenhuma tratativa este mês</div></div></div></div>
   <nav class="bnav" id="bnav"><button class="ni a" onclick="navigate(&#39;home&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Início</span></button><button class="ni " onclick="navigate(&#39;produtos&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg><span>Produtos</span></button><div class="nc"><button class="ncb" onclick="navigate(&#39;nova&#39;)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button></div><button class="ni " onclick="navigate(&#39;dashboard&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Dashboard</span></button><button class="ni " onclick="navigate(&#39;historico&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span>Histórico</span></button></nav>
   <div id="toast" class="toast hidden"></div>
+
+  <!-- SPLASH SCREEN -->
+  <div class="splash" id="splash">
+    <canvas id="splash-canvas" style="position:absolute;inset:0;width:100%;height:100%" width="1366" height="599"></canvas>
+    <div class="splash-bg" style="background:linear-gradient(to bottom,rgba(5,30,5,.1) 0%,rgba(5,25,5,.5) 55%,rgba(3,18,3,.93) 100%)"></div>
+    <div class="splash-content">
+      <div class="splash-logo-wrap">
+        <span style="font-size:44px;line-height:1">🥦</span>
+      </div>
+      <div class="splash-title">FLV Controle</div>
+      <div class="splash-sub">Quebra de Hortifruti</div>
+      <button class="splash-btn" onclick="enterApp()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        Entrar no App
+      </button>
+      <div class="splash-powered">Powered by <b>William Jesus</b></div>
+    </div>
+  </div>
 </div>
 <script>
 // ════════════════════════════════════════════════════
@@ -371,7 +400,7 @@ function rHome(pc){
   var meta=ST.cfg.meta;
   var cl=pctClr(pct,meta);
   var kb=DB.espacoKB();
-  var warn=kb>4000?'<div style="background:rgba(212,160,23,.1);border:1.5px solid var(--yel);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:600;color:var(--yel)">&#9888; Armazenamento: '+kb+'KB usado de ~5000KB</div>':'';
+  var warn=kb>4000?'<div style="background:rgba(212,160,23,.1);border:1.5px solid var(--yel);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:600;color:var(--yel)">26a0 Armazenamento: '+kb+'KB usado de ~5000KB</div>':'';
   var inst=ST.showInst?'<div class="ibanner">'+ic('dl',20,'var(--gold)')+'<div style="flex:1"><div class="sub" style="font-size:13px">Instalar App FLV</div><div style="font-size:11px;color:var(--mut)">Adicione &agrave; tela inicial</div></div><button class="btn btn-p btn-sm" onclick="instApp()">Instalar</button><button class="cl" onclick="ST.showInst=false;render()">&times;</button></div>':'';
   var mesTs=DB.tratsDeMes(mes).slice().sort(function(a,b){ return a.at>b.at?-1:1; });
   var recH='';
@@ -395,7 +424,7 @@ function rHome(pc){
       '<div class="bf mc"><span class="lbl">Hoje</span><span class="mv">'+todayTs.length+'</span></div>'+
       '<div class="bf mc"><span class="lbl">Quebra Total</span><span class="mv '+cl+'">'+numBR(totalQ)+' kg</span></div>'+
       '<div class="bf mc"><span class="lbl">% Quebra</span><span class="mv '+cl+'">'+pct.toFixed(1)+'%</span></div>'+
-      '<div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg '+(pct<=meta?'bok':'bd')+'">'+(pct<=meta?'&#10003; OK':'&#9888; Acima')+'</span></div></div>'+
+      '<div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg '+(pct<=meta?'bok':'bd')+'">'+(pct<=meta?'2713 OK':'26a0 Acima')+'</span></div></div>'+
     '</div>'+
     '<div class="bf" style="padding:14px;margin-bottom:16px"><div class="cr" style="margin-bottom:8px"><span class="lbl">Meta '+meta+'%</span><span style="font-size:12px;font-weight:700;color:'+(pct>meta?'var(--red)':'var(--ok)')+'">'+pct.toFixed(1)+'%</span></div><div class="pw" style="height:8px"><div class="pb" style="height:8px;width:'+barW+'%;background:'+barCol+'"></div></div></div>'+
     '<button class="btn btn-p btn-f" style="margin-bottom:16px;padding:14px" onclick="navigate(\'nova\')">'+ic('plus',18,'#fff')+' Nova Tratativa</button>'+
@@ -404,7 +433,7 @@ function rHome(pc){
 }
 function instApp(){
   if(ST.instEvt){ ST.instEvt.prompt(); ST.instEvt.userChoice.then(function(r){ if(r.outcome==='accepted'){ ST.showInst=false; render(); } }); }
-  else toast('No Chrome: Menu &#8942; &rarr; Adicionar &agrave; tela inicial');
+  else toast('No Chrome: Menu \u22ee \u2192 Adicionar \u00e0 tela inicial');
 }
 
 // ════════════════════════════════════════════════════
@@ -490,7 +519,12 @@ function handleNF(input){
       ]}]})
     }).then(function(r){ return r.json(); }).then(function(d){
       var txt=(d.content||[]).filter(function(b){ return b.type==='text'; }).map(function(b){ return b.text; }).join('');
-      var parsed=JSON.parse(txt.replace(/```json|```/g,'').trim());
+      // Extrai JSON de qualquer lugar no texto (mais robusto)
+      var jsonMatch=txt.match(/\{[\s\S]*?\}/);
+      var parsed=null;
+      if(jsonMatch){ try{ parsed=JSON.parse(jsonMatch[0]); }catch(e){} }
+      if(!parsed){ try{ parsed=JSON.parse(txt.replace(/```json|```/g,'').trim()); }catch(e){} }
+      if(!parsed){ throw new Error('JSON não encontrado'); }
       pForm={codigo:String(parsed.codigo||''),nome:parsed.nome||'',preco:String(parsed.preco||''),meta:'5',unidade:'kg'};
       pEd=null; nfPre=true; nfLoad=false; pMod='form';
       input.value=''; rProdutos(document.getElementById('pg'));
@@ -532,7 +566,7 @@ function rNova(pc){
     return '<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:6px"><span class="lbl">'+label+' '+(single?'(1 foto)':'('+arr.length+')')+'</span><div style="display:flex;gap:5px"><button class="btn btn-g btn-sm" onclick="openCam(\''+field+'\','+(single?'true':'false')+')">'+ic('cam',13)+' C&acirc;m</button><button class="btn btn-g btn-sm" onclick="openGal(\''+field+'\','+(single?'true':'false')+')">'+ic('gal',13)+' Gal</button></div></div>'+(arr.length>0?'<div class="pg">'+thumbs+'</div>':'')+'</div>';
   }
   // Autocomplete
-  var acSel=selP?('<div style="margin-top:3px;font-size:11px;color:var(--mut)">&#10003; '+esc(selP.nome)+' <span class="bdg '+(isUn?'bw':'bok')+'" style="font-size:9px">'+(isUn?'&#x1F522; un':'&#x2696; kg')+'</span></div>'):'';
+  var acSel=selP?('<div style="margin-top:3px;font-size:11px;color:var(--mut)">2713 '+esc(selP.nome)+' <span class="bdg '+(isUn?'bw':'bok')+'" style="font-size:9px">'+(isUn?'&#x1F522; un':'&#x2696; kg')+'</span></div>'):'';
   var acChk=selP?('<span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--ok)">'+ic('chk',15,'var(--ok)')+'</span>'):'';
   var acH='<div class="acw"><div style="position:relative"><input class="inp" id="ac-inp" placeholder="Digite c&oacute;digo ou nome (m&iacute;n 2)..." value="'+(selP?esc(selP.codigo):'')+'" oninput="fAC(this.value)" onfocus="fAC(this.value)" autocomplete="off"/>'+acChk+'</div><div id="ac-list" class="acl hidden"></div>'+acSel+'</div>';
   // Barra %
@@ -540,7 +574,7 @@ function rNova(pc){
   if(ch>0){
     var barW2=Math.min(pct/meta*100,100);
     var barCol2=pct>meta?'var(--red)':pct>meta*.7?'var(--yel)':'var(--ok)';
-    pctBar='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'&#9888; Acima':'&#10003; OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+barW2+'%;background:'+barCol2+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno &mdash; n&atilde;o enviado ao WhatsApp</div></div>';
+    pctBar='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'26a0 Acima':'2713 OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+barW2+'%;background:'+barCol2+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno &mdash; n&atilde;o enviado ao WhatsApp</div></div>';
   }
   var remBtn=items.length>1?'<button class="btn btn-d btn-sm" onclick="remIt('+tab+')">'+ic('tr',12)+' Remover</button>':'';
   pc.innerHTML=
@@ -596,7 +630,7 @@ function updPct(){
   if(ch>0){
     var bW=Math.min(pct/meta*100,100);
     var bC=pct>meta?'var(--red)':pct>meta*.7?'var(--yel)':'var(--ok)';
-    bar.innerHTML='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'&#9888; Acima':'&#10003; OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+bW+'%;background:'+bC+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno &mdash; n&atilde;o enviado ao WhatsApp</div></div>';
+    bar.innerHTML='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'26a0 Acima':'2713 OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+bW+'%;background:'+bC+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno &mdash; n&atilde;o enviado ao WhatsApp</div></div>';
   } else { bar.innerHTML=''; }
 }
 function addIt(){ var n=ST.novaItems.concat([newIt()]); ST.novaItems=n; ST.novaTab=n.length-1; rNova(document.getElementById('pg')); }
@@ -1065,8 +1099,143 @@ if('serviceWorker' in navigator){
   try{ navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(function(){}); }catch(e){}
 }
 
+// ════════════════════════════════════════════════════
+// SPLASH SCREEN — canvas hortifruti
+// ════════════════════════════════════════════════════
+function drawSplash(){
+  var canvas=document.getElementById('splash-canvas');
+  if(!canvas) return;
+  var W=canvas.offsetWidth, H=canvas.offsetHeight;
+  canvas.width=W; canvas.height=H;
+  var ctx=canvas.getContext('2d');
+
+  // Fundo gradiente verde escuro
+  var bg=ctx.createLinearGradient(0,0,0,H);
+  bg.addColorStop(0,'#0d3010');
+  bg.addColorStop(0.5,'#0a2a0a');
+  bg.addColorStop(1,'#061406');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+
+  // Função para desenhar vegetal estilizado
+  function circle(x,y,r,col,alpha){
+    ctx.save(); ctx.globalAlpha=alpha||1;
+    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle=col; ctx.fill(); ctx.restore();
+  }
+  function ellipse(x,y,rx,ry,rot,col,alpha){
+    ctx.save(); ctx.globalAlpha=alpha||1;
+    ctx.beginPath(); ctx.ellipse(x,y,rx,ry,rot||0,0,Math.PI*2);
+    ctx.fillStyle=col; ctx.fill(); ctx.restore();
+  }
+
+  // Grade de vegetais coloridos no fundo
+  var vegs=[
+    // Tomates
+    {x:W*.08,y:H*.06,r:28,col:'#c0392b',s:'tom'},
+    {x:W*.22,y:H*.12,r:24,col:'#e74c3c',s:'tom'},
+    {x:W*.75,y:H*.05,r:30,col:'#c0392b',s:'tom'},
+    {x:W*.91,y:H*.14,r:22,col:'#e74c3c',s:'tom'},
+    {x:W*.55,y:H*.08,r:26,col:'#c0392b',s:'tom'},
+    // Pimentões verdes
+    {x:W*.38,y:H*.07,r:20,col:'#27ae60',s:'pip'},
+    {x:W*.65,y:H*.17,r:22,col:'#2ecc71',s:'pip'},
+    {x:W*.14,y:H*.22,r:18,col:'#1e8449',s:'pip'},
+    // Melancias
+    {x:W*.85,y:H*.28,r:35,col:'#2ecc71',s:'mel'},
+    {x:W*.05,y:H*.35,r:32,col:'#27ae60',s:'mel'},
+    // Berinjelas
+    {x:W*.48,y:H*.21,r:18,col:'#6c3483',s:'ber'},
+    {x:W*.78,y:H*.38,r:22,col:'#7d3c98',s:'ber'},
+    {x:W*.18,y:H*.44,r:16,col:'#5b2c6f',s:'ber'},
+    // Laranjas/limões
+    {x:W*.32,y:H*.31,r:20,col:'#e67e22',s:'lar'},
+    {x:W*.62,y:H*.33,r:18,col:'#f39c12',s:'lar'},
+    {x:W*.88,y:H*.48,r:16,col:'#f1c40f',s:'lim'},
+    {x:W*.42,y:H*.42,r:14,col:'#d4ac0d',s:'lim'},
+    // Brócolis/couve
+    {x:W*.25,y:H*.48,r:24,col:'#1a5e2a',s:'bro'},
+    {x:W*.70,y:H*.52,r:20,col:'#145a32',s:'bro'},
+    // Cebolas
+    {x:W*.50,y:H*.52,r:18,col:'#d35400',s:'ceb'},
+    {x:W*.08,y:H*.52,r:16,col:'#ca6f1e',s:'ceb'},
+    // Pepinos
+    {x:W*.35,y:H*.55,r:12,col:'#1e8449',s:'pep'},
+    {x:W*.80,y:H*.56,r:14,col:'#196f3d',s:'pep'},
+  ];
+
+  vegs.forEach(function(v){
+    var alpha=0.7+Math.random()*0.25;
+    circle(v.x,v.y,v.r,v.col,alpha);
+    // Detalhe/brilho
+    ctx.save(); ctx.globalAlpha=0.3;
+    ctx.beginPath(); ctx.arc(v.x-v.r*.25,v.y-v.r*.25,v.r*.35,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.fill(); ctx.restore();
+    // Detalhes por tipo
+    if(v.s==='tom'){
+      ctx.save(); ctx.globalAlpha=0.8;
+      ctx.beginPath(); ctx.moveTo(v.x,v.y-v.r);
+      ctx.bezierCurveTo(v.x+5,v.y-v.r-8,v.x+10,v.y-v.r-4,v.x+8,v.y-v.r+2);
+      ctx.strokeStyle='#196f3d'; ctx.lineWidth=2; ctx.stroke(); ctx.restore();
+    }
+    if(v.s==='mel'){
+      // Listras de melancia
+      for(var i=0;i<4;i++){
+        ctx.save(); ctx.globalAlpha=0.35;
+        ctx.beginPath();
+        ctx.arc(v.x,v.y,v.r*(0.6+i*.1),(Math.PI*0.1*i),(Math.PI*0.1*i+0.4));
+        ctx.strokeStyle='#145a32'; ctx.lineWidth=3; ctx.stroke(); ctx.restore();
+      }
+    }
+    if(v.s==='bro'){
+      // Mini círculos para brócolis
+      for(var j=0;j<5;j++){
+        var bx=v.x+Math.cos(j*Math.PI*2/5)*v.r*.5;
+        var by=v.y+Math.sin(j*Math.PI*2/5)*v.r*.5;
+        circle(bx,by,v.r*.35,'#27ae60',0.6);
+      }
+    }
+  });
+
+  // Folhas espalhadas
+  function leaf(x,y,size,angle,col){
+    ctx.save(); ctx.globalAlpha=0.55;
+    ctx.translate(x,y); ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.bezierCurveTo(size*.5,-size*.6,size,-size*.2,size*.8,size*.3);
+    ctx.bezierCurveTo(size*.4,size*.7,size*.1,size*.3,0,0);
+    ctx.fillStyle=col||'#27ae60'; ctx.fill();
+    ctx.restore();
+  }
+  var leafPositions=[
+    [W*.15,H*.18,22,0.3],[W*.45,H*.15,18,-0.5],[W*.72,H*.22,20,0.8],
+    [W*.30,H*.38,16,-0.3],[W*.60,H*.44,20,1.1],[W*.90,H*.35,18,-0.7],
+    [W*.05,H*.48,14,0.5],[W*.55,H*.35,16,-1.0],[W*.82,H*.42,22,0.4],
+  ];
+  leafPositions.forEach(function(l){ leaf(l[0],l[1],l[2],l[3],'#27ae60'); });
+
+  // Overlay gradiente escurecendo na parte de baixo
+  var ov=ctx.createLinearGradient(0,H*.3,0,H);
+  ov.addColorStop(0,'rgba(5,20,5,0)');
+  ov.addColorStop(0.5,'rgba(5,20,5,0.55)');
+  ov.addColorStop(1,'rgba(3,15,3,0.93)');
+  ctx.fillStyle=ov; ctx.fillRect(0,0,W,H);
+}
+
+function enterApp(){
+  var splash=document.getElementById('splash');
+  if(splash){
+    splash.style.transition='opacity .4s ease';
+    splash.style.opacity='0';
+    setTimeout(function(){ splash.style.display='none'; },420);
+  }
+}
+
 // INICIAR
 render();
+// Desenhar splash depois que o DOM estiver pronto
+setTimeout(drawSplash, 50);
+
 </script>
 
 
