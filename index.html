@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<!--
-  FLV · CONTROLE DE QUEBRA v4.0
-  COMO INSTALAR: Abra no Chrome → Menu (⋮) → Adicionar à tela inicial
--->
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<meta name="theme-color" content="#0a2010"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="FLV Controle"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="application-name" content="FLV Controle"/>
-<link rel="manifest" href="./manifest.json"/>
-<link rel="apple-touch-icon" href="./icon-192.svg"/>
+<!-- saved from url=(0059)file:///C:/Users/willi/Downloads/controle-quebra-flv_6.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1c4a1c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FLV Quebra">
 <title>FLV · Controle de Quebra</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet"/>
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
@@ -138,29 +130,29 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--txt);font
 <div id="app">
   <header class="hdr">
     <div class="hdr-logo">
-      <span class="hdr-em">&#x1F966;</span>
+      <span class="hdr-em">🥦</span>
       <div><div class="hdr-t">FLV</div><div class="hdr-s">Controle de Recebimento</div></div>
     </div>
-    <button class="hdr-btn" id="hist-btn" onclick="navigate('historico')">
-      <span style="font-size:18px">&#x1F4CB;</span><span>Hist&oacute;rico</span>
+    <button class="hdr-btn" id="hist-btn" onclick="navigate(&#39;historico&#39;)">
+      <span style="font-size:18px">📋</span><span>Histórico</span>
     </button>
   </header>
-  <div id="pg" class="page"></div>
-  <nav class="bnav" id="bnav"></nav>
+  <div id="pg" class="page pe"><div class="ibanner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><div style="flex:1"><div class="sub" style="font-size:13px">Instalar App FLV</div><div style="font-size:11px;color:var(--mut)">Adicione à tela inicial</div></div><button class="btn btn-p btn-sm" onclick="instApp()">Instalar</button><button class="cl" onclick="ST.showInst=false;render()">×</button></div><div style="margin-bottom:16px"><div style="font-size:12px;color:var(--mut);font-weight:700">20/04/2026</div><div class="ttl" style="font-size:22px">Resumo do Dia 🌿</div></div><div class="mg"><div class="bf mc"><span class="lbl">Hoje</span><span class="mv">0</span></div><div class="bf mc"><span class="lbl">Quebra Total</span><span class="mv ok">0,0 kg</span></div><div class="bf mc"><span class="lbl">% Quebra</span><span class="mv ok">0.0%</span></div><div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg bok">2713 OK</span></div></div></div><div class="bf" style="padding:14px;margin-bottom:16px"><div class="cr" style="margin-bottom:8px"><span class="lbl">Meta 3.5%</span><span style="font-size:12px;font-weight:700;color:var(--ok)">0.0%</span></div><div class="pw" style="height:8px"><div class="pb" style="height:8px;width:0%;background:var(--ok)"></div></div></div><button class="btn btn-p btn-f" style="margin-bottom:16px;padding:14px" onclick="navigate(&#39;nova&#39;)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> Nova Tratativa</button><div class="sh"><span class="lbl">Recentes — Abr/2026</span><div class="shl"></div></div><div class="bf"><div style="padding:24px;text-align:center;color:var(--mut)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--mut)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><div style="margin-top:8px;font-size:12px;font-weight:600">Nenhuma tratativa este mês</div></div></div></div>
+  <nav class="bnav" id="bnav"><button class="ni a" onclick="navigate(&#39;home&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span>Início</span></button><button class="ni " onclick="navigate(&#39;produtos&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg><span>Produtos</span></button><div class="nc"><button class="ncb" onclick="navigate(&#39;nova&#39;)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></button></div><button class="ni " onclick="navigate(&#39;dashboard&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg><span>Dashboard</span></button><button class="ni " onclick="navigate(&#39;historico&#39;)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg><span>Histórico</span></button></nav>
   <div id="toast" class="toast hidden"></div>
 
   <!-- SPLASH SCREEN -->
-  <div class="splash" id="splash">
-    <canvas id="splash-canvas" style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+  <div class="splash" id="splash" style="transition: opacity 0.4s; opacity: 0; display: none;">
+    <canvas id="splash-canvas" style="position:absolute;inset:0;width:100%;height:100%" width="1366" height="633"></canvas>
     <div class="splash-bg" style="background:linear-gradient(to bottom,rgba(5,30,5,.1) 0%,rgba(5,25,5,.5) 55%,rgba(3,18,3,.93) 100%)"></div>
     <div class="splash-content">
       <div class="splash-logo-wrap">
-        <span style="font-size:44px;line-height:1">&#x1F966;</span>
+        <span style="font-size:44px;line-height:1">🥦</span>
       </div>
       <div class="splash-title">FLV Controle</div>
       <div class="splash-sub">Quebra de Hortifruti</div>
       <button class="splash-btn" onclick="enterApp()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         Entrar no App
       </button>
       <div class="splash-powered">Powered by <b>William Jesus</b></div>
@@ -371,11 +363,11 @@ function navigate(p,d){
 function renderNav(){
   var p=ST.page;
   document.getElementById('bnav').innerHTML=
-    '<button class="ni '+(p==='home'?'a':'')+'" onclick="navigate(\'home\')">'+ic('home',19)+'<span>In&iacute;cio</span></button>'+
+    '<button class="ni '+(p==='home'?'a':'')+'" onclick="navigate(\'home\')">'+ic('home',19)+'<span>Início</span></button>'+
     '<button class="ni '+(p==='produtos'?'a':'')+'" onclick="navigate(\'produtos\')">'+ic('pkg',19)+'<span>Produtos</span></button>'+
     '<div class="nc"><button class="ncb" onclick="navigate(\'nova\')">'+ic('plus',22,'#fff')+'</button></div>'+
     '<button class="ni '+(p==='dashboard'?'a':'')+'" onclick="navigate(\'dashboard\')">'+ic('bar',19)+'<span>Dashboard</span></button>'+
-    '<button class="ni '+(p==='historico'?'a':'')+'" onclick="navigate(\'historico\')">'+ic('list',19)+'<span>Hist&oacute;rico</span></button>';
+    '<button class="ni '+(p==='historico'?'a':'')+'" onclick="navigate(\'historico\')">'+ic('list',19)+'<span>Histórico</span></button>';
   var hb=document.getElementById('hist-btn');
   if(hb) hb.className='hdr-btn'+(p==='historico'?' a':'');
 }
@@ -408,40 +400,40 @@ function rHome(pc){
   var meta=ST.cfg.meta;
   var cl=pctClr(pct,meta);
   var kb=DB.espacoKB();
-  var warn=kb>4000?'<div style="background:rgba(212,160,23,.1);border:1.5px solid var(--yel);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:600;color:var(--yel)">&#9888; Armazenamento: '+kb+'KB usado de ~5000KB</div>':'';
-  var inst=ST.showInst?'<div class="ibanner">'+ic('dl',20,'var(--gold)')+'<div style="flex:1"><div class="sub" style="font-size:13px">Instalar App FLV</div><div style="font-size:11px;color:var(--mut)">Adicione &agrave; tela inicial</div></div><button class="btn btn-p btn-sm" onclick="instApp()">Instalar</button><button class="cl" onclick="ST.showInst=false;render()">&times;</button></div>':'';
+  var warn=kb>4000?'<div style="background:rgba(212,160,23,.1);border:1.5px solid var(--yel);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:600;color:var(--yel)">26a0 Armazenamento: '+kb+'KB usado de ~5000KB</div>':'';
+  var inst=ST.showInst?'<div class="ibanner">'+ic('dl',20,'var(--gold)')+'<div style="flex:1"><div class="sub" style="font-size:13px">Instalar App FLV</div><div style="font-size:11px;color:var(--mut)">Adicione à tela inicial</div></div><button class="btn btn-p btn-sm" onclick="instApp()">Instalar</button><button class="cl" onclick="ST.showInst=false;render()">×</button></div>':'';
   var mesTs=DB.tratsDeMes(mes).slice().sort(function(a,b){ return a.at>b.at?-1:1; });
   var recH='';
   if(mesTs.length===0){
-    recH='<div style="padding:24px;text-align:center;color:var(--mut)">'+ic('list',28,'var(--mut)')+'<div style="margin-top:8px;font-size:12px;font-weight:600">Nenhuma tratativa este m&ecirc;s</div></div>';
+    recH='<div style="padding:24px;text-align:center;color:var(--mut)">'+ic('list',28,'var(--mut)')+'<div style="margin-top:8px;font-size:12px;font-weight:600">Nenhuma tratativa este mês</div></div>';
   } else {
     mesTs.slice(0,5).forEach(function(t){
       var codes=(t.items||[]).map(function(i){ var p=ST.prods.filter(function(x){ return x.id===i.prodId; })[0]; return p?p.codigo:null; }).filter(Boolean);
       var kgT=(t.items||[]).reduce(function(s,i){ return s+parseN(i.quebra); },0);
       var dt=new Date(t.at).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
       var stCls=t.status==='finalizada'?'bok':'bw';
-      recH+='<div class="li" onclick="navigate(\'detalhe\',\''+t.id+'\')"><div class="cr"><div><div class="sub" style="font-size:12px">'+esc(codes.join(' &middot; ')||'&mdash;')+'</div><div style="font-size:11px;color:var(--mut);margin-top:1px">'+dt+'</div></div><div style="text-align:right"><div class="mono" style="font-size:13px;color:var(--gm);font-weight:600">'+numBR(kgT)+' kg</div><span class="bdg '+stCls+'">'+esc(t.status||'rascunho')+'</span></div></div></div>';
+      recH+='<div class="li" onclick="navigate(\'detalhe\',\''+t.id+'\')"><div class="cr"><div><div class="sub" style="font-size:12px">'+esc(codes.join(' · ')||'—')+'</div><div style="font-size:11px;color:var(--mut);margin-top:1px">'+dt+'</div></div><div style="text-align:right"><div class="mono" style="font-size:13px;color:var(--gm);font-weight:600">'+numBR(kgT)+' kg</div><span class="bdg '+stCls+'">'+esc(t.status||'rascunho')+'</span></div></div></div>';
     });
   }
   var barW=Math.min(pct/meta*100,100);
   var barCol=pct>meta?'var(--red)':pct>meta*.7?'var(--yel)':'var(--ok)';
   pc.innerHTML=
     warn+inst+
-    '<div style="margin-bottom:16px"><div style="font-size:12px;color:var(--mut);font-weight:700">'+todayBR()+'</div><div class="ttl" style="font-size:22px">Resumo do Dia &#x1F33F;</div></div>'+
+    '<div style="margin-bottom:16px"><div style="font-size:12px;color:var(--mut);font-weight:700">'+todayBR()+'</div><div class="ttl" style="font-size:22px">Resumo do Dia 🌿</div></div>'+
     '<div class="mg">'+
       '<div class="bf mc"><span class="lbl">Hoje</span><span class="mv">'+todayTs.length+'</span></div>'+
       '<div class="bf mc"><span class="lbl">Quebra Total</span><span class="mv '+cl+'">'+numBR(totalQ)+' kg</span></div>'+
       '<div class="bf mc"><span class="lbl">% Quebra</span><span class="mv '+cl+'">'+pct.toFixed(1)+'%</span></div>'+
-      '<div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg '+(pct<=meta?'bok':'bd')+'">'+(pct<=meta?'&#10003; OK':'&#9888; Acima')+'</span></div></div>'+
+      '<div class="bf mc"><span class="lbl">Status</span><div style="margin-top:6px"><span class="bdg '+(pct<=meta?'bok':'bd')+'">'+(pct<=meta?'2713 OK':'26a0 Acima')+'</span></div></div>'+
     '</div>'+
     '<div class="bf" style="padding:14px;margin-bottom:16px"><div class="cr" style="margin-bottom:8px"><span class="lbl">Meta '+meta+'%</span><span style="font-size:12px;font-weight:700;color:'+(pct>meta?'var(--red)':'var(--ok)')+'">'+pct.toFixed(1)+'%</span></div><div class="pw" style="height:8px"><div class="pb" style="height:8px;width:'+barW+'%;background:'+barCol+'"></div></div></div>'+
     '<button class="btn btn-p btn-f" style="margin-bottom:16px;padding:14px" onclick="navigate(\'nova\')">'+ic('plus',18,'#fff')+' Nova Tratativa</button>'+
-    '<div class="sh"><span class="lbl">Recentes &mdash; '+mesBR(mes)+'</span><div class="shl"></div></div>'+
+    '<div class="sh"><span class="lbl">Recentes — '+mesBR(mes)+'</span><div class="shl"></div></div>'+
     '<div class="bf">'+recH+'</div>';
 }
 function instApp(){
   if(ST.instEvt){ ST.instEvt.prompt(); ST.instEvt.userChoice.then(function(r){ if(r.outcome==='accepted'){ ST.showInst=false; render(); } }); }
-  else { ST.showInst=false; toast('Abra pelo GitHub Pages para instalar o app'); }
+  else toast('No Chrome: Menu \u22ee \u2192 Adicionar \u00e0 tela inicial');
 }
 
 // ════════════════════════════════════════════════════
@@ -460,7 +452,7 @@ function rProdutos(pc){
   } else {
     ativos.forEach(function(p){
       var unCls=(p.unidade||'kg')==='un'?'bw':'bok';
-      var unTxt=(p.unidade||'kg')==='un'?'&#x1F522; un':'&#x2696;&#xFE0F; kg';
+      var unTxt=(p.unidade||'kg')==='un'?'🔢 un':'⚖ kg';
       var metaBdg=p.meta?'<span class="bdg bok">Meta '+p.meta+'%</span>':'';
       var precDiv=p.preco?'<div style="font-size:11px;color:var(--mut);margin-top:1px">R$ '+numBR(p.preco)+'/'+(p.unidade||'kg')+'</div>':'';
       listH+='<div class="li"><div class="cr"><div style="flex:1;min-width:0"><div style="display:flex;gap:8px;align-items:center;margin-bottom:2px"><span class="mono" style="font-size:12px;color:var(--gm);font-weight:600">'+esc(p.codigo)+'</span><span class="bdg '+unCls+'">'+unTxt+'</span>'+metaBdg+'</div><div style="font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(p.nome)+'</div>'+precDiv+'</div><div style="display:flex;gap:4px;flex-shrink:0"><button class="btn btn-g btn-sm" onclick="editP(\''+p.id+'\')">'+ic('ed',13)+'</button><button class="btn btn-d btn-sm" onclick="delP(\''+p.id+'\')">'+ic('tr',13)+'</button></div></div></div>';
@@ -470,16 +462,16 @@ function rProdutos(pc){
   if(pMod==='form'){
     var unKgCls=(pForm.unidade||'kg')==='kg'?'btn-p':'btn-g';
     var unUnCls=(pForm.unidade||'kg')==='un'?'btn-p':'btn-g';
-    var nfBanner=nfPre&&!pEd?'<div class="aic" style="margin-bottom:12px"><div style="font-size:11px;color:var(--gm)">'+ic('sc',13,'var(--gm)')+' Dados lidos pela IA &mdash; verifique antes de salvar</div></div>':'';
-    fMod='<div class="mov" onclick="if(event.target===this){pMod=null;rProdutos(document.getElementById(\'pg\'))}"><div class="modal" onclick="event.stopPropagation()"><div class="mhd"></div><div class="sub" style="margin-bottom:14px">'+(pEd?'Editar Produto':'Novo Produto')+'</div>'+nfBanner+'<div class="fg"><label class="lbl">C&oacute;digo *</label><input class="inp mono" id="f-cod" maxlength="20" placeholder="Ex: 7028" value="'+esc(pForm.codigo)+'" oninput="pForm.codigo=this.value"/></div><div class="fg"><label class="lbl">Nome *</label><input class="inp" id="f-nome" maxlength="200" placeholder="Ex: Tomate" value="'+esc(pForm.nome)+'" oninput="pForm.nome=this.value"/></div><div class="fg"><label class="lbl">Unidade de Medida *</label><div style="display:flex;gap:8px"><button id="un-kg" class="btn btn-f '+unKgCls+'" onclick="pForm.unidade=\'kg\';document.getElementById(\'un-kg\').className=\'btn btn-f btn-p\';document.getElementById(\'un-un\').className=\'btn btn-f btn-g\'">&#x2696;&#xFE0F; kg</button><button id="un-un" class="btn btn-f '+unUnCls+'" onclick="pForm.unidade=\'un\';document.getElementById(\'un-un\').className=\'btn btn-f btn-p\';document.getElementById(\'un-kg\').className=\'btn btn-f btn-g\'">&#x1F522; un</button></div></div><div class="fg"><label class="lbl" id="f-preco-lbl">Pre&ccedil;o/'+(pForm.unidade||'kg')+' (R$)</label><input class="inp inp-n" id="f-preco" type="number" step="0.01" min="0" placeholder="3.50" value="'+esc(pForm.preco)+'" oninput="pForm.preco=this.value"/></div><div class="fg"><label class="lbl">Meta Quebra (%)</label><input class="inp inp-n" id="f-meta" type="number" step="0.1" min="0" max="100" placeholder="5" value="'+esc(pForm.meta)+'" oninput="pForm.meta=this.value"/></div><div style="display:flex;gap:8px"><button class="btn btn-g btn-f" onclick="pMod=null;rProdutos(document.getElementById(\'pg\'))">Cancelar</button><button class="btn btn-p btn-f" onclick="saveP()">Salvar</button></div></div></div>';
+    var nfBanner=nfPre&&!pEd?'<div class="aic" style="margin-bottom:12px"><div style="font-size:11px;color:var(--gm)">'+ic('sc',13,'var(--gm)')+' Dados lidos pela IA — verifique antes de salvar</div></div>':'';
+    fMod='<div class="mov" onclick="if(event.target===this){pMod=null;rProdutos(document.getElementById(\'pg\'))}"><div class="modal" onclick="event.stopPropagation()"><div class="mhd"></div><div class="sub" style="margin-bottom:14px">'+(pEd?'Editar Produto':'Novo Produto')+'</div>'+nfBanner+'<div class="fg"><label class="lbl">Código *</label><input class="inp mono" id="f-cod" maxlength="20" placeholder="Ex: 7028" value="'+esc(pForm.codigo)+'" oninput="pForm.codigo=this.value"/></div><div class="fg"><label class="lbl">Nome *</label><input class="inp" id="f-nome" maxlength="200" placeholder="Ex: Tomate" value="'+esc(pForm.nome)+'" oninput="pForm.nome=this.value"/></div><div class="fg"><label class="lbl">Unidade de Medida *</label><div style="display:flex;gap:8px"><button id="un-kg" class="btn btn-f '+unKgCls+'" onclick="pForm.unidade=\'kg\';document.getElementById(\'un-kg\').className=\'btn btn-f btn-p\';document.getElementById(\'un-un\').className=\'btn btn-f btn-g\'">⚖ kg</button><button id="un-un" class="btn btn-f '+unUnCls+'" onclick="pForm.unidade=\'un\';document.getElementById(\'un-un\').className=\'btn btn-f btn-p\';document.getElementById(\'un-kg\').className=\'btn btn-f btn-g\'">🔢 un</button></div></div><div class="fg"><label class="lbl" id="f-preco-lbl">Preço/'+(pForm.unidade||'kg')+' (R$)</label><input class="inp inp-n" id="f-preco" type="number" step="0.01" min="0" placeholder="3.50" value="'+esc(pForm.preco)+'" oninput="pForm.preco=this.value"/></div><div class="fg"><label class="lbl">Meta Quebra (%)</label><input class="inp inp-n" id="f-meta" type="number" step="0.1" min="0" max="100" placeholder="5" value="'+esc(pForm.meta)+'" oninput="pForm.meta=this.value"/></div><div style="display:flex;gap:8px"><button class="btn btn-g btn-f" onclick="pMod=null;rProdutos(document.getElementById(\'pg\'))">Cancelar</button><button class="btn btn-p btn-f" onclick="saveP()">Salvar</button></div></div></div>';
   }
-  var nfMod='<div id="nf-modal" class="mov hidden" onclick="if(event.target===this)this.classList.add(\'hidden\')"><div class="modal" onclick="event.stopPropagation()"><div class="mhd"></div><div class="sub" style="margin-bottom:6px;text-align:center">Cadastro por Nota Fiscal</div><div style="font-size:12px;color:var(--mut);text-align:center;margin-bottom:20px">A IA l&ecirc; o c&oacute;digo e nome automaticamente</div><div style="display:flex;flex-direction:column;gap:10px"><button class="btn btn-p btn-f" onclick="document.getElementById(\'nf-modal\').classList.add(\'hidden\');document.getElementById(\'nf-cam\').click()">'+ic('cam',17)+' Tirar Foto da Nota Fiscal</button><button class="btn btn-g btn-f" onclick="document.getElementById(\'nf-modal\').classList.add(\'hidden\');document.getElementById(\'nf-gal\').click()">'+ic('gal',17)+' Escolher da Galeria</button><button class="btn btn-g btn-f" onclick="document.getElementById(\'nf-modal\').classList.add(\'hidden\')">Cancelar</button></div></div></div>';
-  var nfLoadH=nfLoad?'<div class="mov"><div class="modal" style="text-align:center;padding:40px"><div class="spin" style="margin:0 auto 16px;width:32px;height:32px;border-width:3px"></div><div class="sub">Lendo Nota Fiscal</div><div style="font-size:12px;color:var(--mut);margin-top:8px">A IA est&aacute; identificando o produto...</div></div></div>':'';
+  var nfMod='<div id="nf-modal" class="mov hidden" onclick="if(event.target===this)this.classList.add(\'hidden\')"><div class="modal" onclick="event.stopPropagation()"><div class="mhd"></div><div class="sub" style="margin-bottom:6px;text-align:center">Cadastro por Nota Fiscal</div><div style="font-size:12px;color:var(--mut);text-align:center;margin-bottom:20px">A IA lê o código e nome automaticamente</div><div style="display:flex;flex-direction:column;gap:10px"><button class="btn btn-p btn-f" onclick="document.getElementById(\'nf-modal\').classList.add(\'hidden\');document.getElementById(\'nf-cam\').click()">'+ic('cam',17)+' Tirar Foto da Nota Fiscal</button><button class="btn btn-g btn-f" onclick="document.getElementById(\'nf-modal\').classList.add(\'hidden\');document.getElementById(\'nf-gal\').click()">'+ic('gal',17)+' Escolher da Galeria</button><button class="btn btn-g btn-f" onclick="document.getElementById(\'nf-modal\').classList.add(\'hidden\')">Cancelar</button></div></div></div>';
+  var nfLoadH=nfLoad?'<div class="mov"><div class="modal" style="text-align:center;padding:40px"><div class="spin" style="margin:0 auto 16px;width:32px;height:32px;border-width:3px"></div><div class="sub">Lendo Nota Fiscal</div><div style="font-size:12px;color:var(--mut);margin-top:8px">A IA está identificando o produto...</div></div></div>':'';
   pc.innerHTML=
     '<div class="cr" style="margin-bottom:14px"><div class="ttl">Produtos ('+ST.prods.filter(function(p){ return p.ativo!==false; }).length+')</div><div style="display:flex;gap:6px"><button class="btn btn-g btn-sm" onclick="showNFM()">'+ic('sc',13)+' NF</button><button class="btn btn-p btn-sm" onclick="openNP()">'+ic('plus',13)+' Novo</button></div></div>'+
     '<input type="file" id="nf-cam" accept="image/*" capture="environment" class="hidden" onchange="handleNF(this)"/>'+
     '<input type="file" id="nf-gal" accept="image/*" class="hidden" onchange="handleNF(this)"/>'+
-    '<div class="fg"><input class="inp" placeholder="Buscar c&oacute;digo ou nome..." value="'+esc(pSrch)+'" oninput="pSrch=this.value;rProdutos(document.getElementById(\'pg\'))"/></div>'+
+    '<div class="fg"><input class="inp" placeholder="Buscar código ou nome..." value="'+esc(pSrch)+'" oninput="pSrch=this.value;rProdutos(document.getElementById(\'pg\'))"/></div>'+
     '<div class="bf">'+listH+'</div>'+fMod+nfMod+nfLoadH;
 }
 function showNFM(){ var m=document.getElementById('nf-modal'); if(m) m.classList.remove('hidden'); }
@@ -569,20 +561,20 @@ function rNova(pc){
   function pSec(label,arr,field,single){
     var thumbs='';
     arr.forEach(function(ph,pi){
-      thumbs+='<div class="pt"><img src="'+ph.url+'" alt="'+label+'"/><div class="plbl">'+label+'</div><button class="rm" onclick="remPh(\''+field+'\','+pi+')">&times;</button></div>';
+      thumbs+='<div class="pt"><img src="'+ph.url+'" alt="'+label+'"/><div class="plbl">'+label+'</div><button class="rm" onclick="remPh(\''+field+'\','+pi+')">×</button></div>';
     });
-    return '<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:6px"><span class="lbl">'+label+' '+(single?'(1 foto)':'('+arr.length+')')+'</span><div style="display:flex;gap:5px"><button class="btn btn-g btn-sm" onclick="openCam(\''+field+'\','+(single?'true':'false')+')">'+ic('cam',13)+' C&acirc;m</button><button class="btn btn-g btn-sm" onclick="openGal(\''+field+'\','+(single?'true':'false')+')">'+ic('gal',13)+' Gal</button></div></div>'+(arr.length>0?'<div class="pg">'+thumbs+'</div>':'')+'</div>';
+    return '<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:6px"><span class="lbl">'+label+' '+(single?'(1 foto)':'('+arr.length+')')+'</span><div style="display:flex;gap:5px"><button class="btn btn-g btn-sm" onclick="openCam(\''+field+'\','+(single?'true':'false')+')">'+ic('cam',13)+' Câm</button><button class="btn btn-g btn-sm" onclick="openGal(\''+field+'\','+(single?'true':'false')+')">'+ic('gal',13)+' Gal</button></div></div>'+(arr.length>0?'<div class="pg">'+thumbs+'</div>':'')+'</div>';
   }
   // Autocomplete
-  var acSel=selP?('<div style="margin-top:3px;font-size:11px;color:var(--mut)">&#10003; '+esc(selP.nome)+' <span class="bdg '+(isUn?'bw':'bok')+'" style="font-size:9px">'+(isUn?'&#x1F522; un':'&#x2696; kg')+'</span></div>'):'';
+  var acSel=selP?('<div style="margin-top:3px;font-size:11px;color:var(--mut)">2713 '+esc(selP.nome)+' <span class="bdg '+(isUn?'bw':'bok')+'" style="font-size:9px">'+(isUn?'🔢 un':'⚖ kg')+'</span></div>'):'';
   var acChk=selP?('<span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--ok)">'+ic('chk',15,'var(--ok)')+'</span>'):'';
-  var acH='<div class="acw"><div style="position:relative"><input class="inp" id="ac-inp" placeholder="Digite c&oacute;digo ou nome (m&iacute;n 2)..." value="'+(selP?esc(selP.codigo):'')+'" oninput="fAC(this.value)" onfocus="fAC(this.value)" autocomplete="off"/>'+acChk+'</div><div id="ac-list" class="acl hidden"></div>'+acSel+'</div>';
+  var acH='<div class="acw"><div style="position:relative"><input class="inp" id="ac-inp" placeholder="Digite código ou nome (mín 2)..." value="'+(selP?esc(selP.codigo):'')+'" oninput="fAC(this.value)" onfocus="fAC(this.value)" autocomplete="off"/>'+acChk+'</div><div id="ac-list" class="acl hidden"></div>'+acSel+'</div>';
   // Barra %
   var pctBar='';
   if(ch>0){
     var barW2=Math.min(pct/meta*100,100);
     var barCol2=pct>meta?'var(--red)':pct>meta*.7?'var(--yel)':'var(--ok)';
-    pctBar='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'&#9888; Acima':'&#10003; OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+barW2+'%;background:'+barCol2+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno &mdash; n&atilde;o enviado ao WhatsApp</div></div>';
+    pctBar='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'26a0 Acima':'2713 OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+barW2+'%;background:'+barCol2+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno — não enviado ao WhatsApp</div></div>';
   }
   var remBtn=items.length>1?'<button class="btn btn-d btn-sm" onclick="remIt('+tab+')">'+ic('tr',12)+' Remover</button>':'';
   pc.innerHTML=
@@ -602,7 +594,7 @@ function rNova(pc){
       '<div class="lbl" style="margin-bottom:10px">Fotos</div>'+
       pSec('Produto',it.fProd,'fProd',false)+
       '<div class="dv"></div>'+
-      pSec('Balan&ccedil;a',it.fBal,'fBal',false)+
+      pSec('Balança',it.fBal,'fBal',false)+
       '<div class="dv"></div>'+
       pSec('Etiqueta',it.fEtq,'fEtq',true)+
     '</div>'+
@@ -638,7 +630,7 @@ function updPct(){
   if(ch>0){
     var bW=Math.min(pct/meta*100,100);
     var bC=pct>meta?'var(--red)':pct>meta*.7?'var(--yel)':'var(--ok)';
-    bar.innerHTML='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'&#9888; Acima':'&#10003; OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+bW+'%;background:'+bC+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno &mdash; n&atilde;o enviado ao WhatsApp</div></div>';
+    bar.innerHTML='<div style="margin-bottom:10px"><div class="cr" style="margin-bottom:4px"><span class="lbl">% Quebra Interna</span><span class="mono" style="font-size:12px;color:'+(pct>meta?'var(--red)':'var(--gm)')+'">'+pct.toFixed(1)+'% '+(pct>meta?'26a0 Acima':'2713 OK')+'</span></div><div class="pw" style="height:6px"><div class="pb" style="height:6px;width:'+bW+'%;background:'+bC+'"></div></div><div style="font-size:10px;color:var(--mut);margin-top:3px">Percentual interno — não enviado ao WhatsApp</div></div>';
   } else { bar.innerHTML=''; }
 }
 function addIt(){ var n=ST.novaItems.concat([newIt()]); ST.novaItems=n; ST.novaTab=n.length-1; rNova(document.getElementById('pg')); }
@@ -700,7 +692,7 @@ function rPreview(){
     phH+='</div>';
   }
   var el=document.createElement('div'); el.className='mov';
-  el.innerHTML='<div class="modal" onclick="event.stopPropagation()"><div class="mhd"></div><div class="sub" style="margin-bottom:12px">Preview &middot; WhatsApp</div><div class="lbl" style="margin-bottom:6px">Texto gerado</div><div class="wab" style="margin-bottom:12px">'+esc(txt)+'</div>'+phH+'<div style="display:flex;flex-direction:column;gap:8px"><button class="btn btn-wa btn-f" onclick="sendWA()">'+ic('wa',17)+' Enviar para WhatsApp</button><button class="btn btn-g btn-f" onclick="cpyTxt()">'+ic('cpy',15)+' Copiar Texto</button><button class="btn btn-p btn-f" onclick="finalizar()">'+ic('chk',15)+' Finalizar e Salvar</button><button class="btn btn-g btn-f" onclick="this.closest(\'.mov\').remove()">Voltar</button></div></div>';
+  el.innerHTML='<div class="modal" onclick="event.stopPropagation()"><div class="mhd"></div><div class="sub" style="margin-bottom:12px">Preview · WhatsApp</div><div class="lbl" style="margin-bottom:6px">Texto gerado</div><div class="wab" style="margin-bottom:12px">'+esc(txt)+'</div>'+phH+'<div style="display:flex;flex-direction:column;gap:8px"><button class="btn btn-wa btn-f" onclick="sendWA()">'+ic('wa',17)+' Enviar para WhatsApp</button><button class="btn btn-g btn-f" onclick="cpyTxt()">'+ic('cpy',15)+' Copiar Texto</button><button class="btn btn-p btn-f" onclick="finalizar()">'+ic('chk',15)+' Finalizar e Salvar</button><button class="btn btn-g btn-f" onclick="this.closest(\'.mov\').remove()">Voltar</button></div></div>';
   el._txt=txt; el._allPh=allPh;
   document.body.appendChild(el);
 }
@@ -791,13 +783,13 @@ function rDash(pc){
   var sitClass, sitEmoji, sitMsg;
   if(!temDados){
     sitClass='sit-card" style="background:linear-gradient(135deg,rgba(212,160,23,.1),rgba(212,160,23,.05));border:2px solid var(--yel)';
-    sitEmoji='&#x1F4CA;'; sitMsg='Informe as vendas abaixo para calcular';
+    sitEmoji='📊'; sitMsg='Informe as vendas abaixo para calcular';
   } else if(pctLiq<=meta){
     sitClass='sit-card" style="background:linear-gradient(135deg,rgba(45,122,45,.15),rgba(45,122,45,.05));border:2px solid var(--ok)';
-    sitEmoji='&#x2705;'; sitMsg='BOM &mdash; Dentro da Meta ('+meta+'%)';
+    sitEmoji='✅'; sitMsg='BOM — Dentro da Meta ('+meta+'%)';
   } else {
     sitClass='sit-card" style="background:linear-gradient(135deg,rgba(192,57,43,.15),rgba(192,57,43,.05));border:2px solid var(--red)';
-    sitEmoji='&#x1F534;'; sitMsg='ALERTA &mdash; Acima da Meta ('+meta+'%)';
+    sitEmoji='🔴'; sitMsg='ALERTA — Acima da Meta ('+meta+'%)';
   }
   var sitColor=!temDados?'var(--yel)':pctLiq<=meta?'var(--ok)':'var(--red)';
 
@@ -864,16 +856,16 @@ function rDash(pc){
     if(limiteProj>0){
       limiteTxt='<div style="background:rgba(45,122,45,.08);border:1px solid var(--ok);border-radius:10px;padding:10px;text-align:center;margin-top:10px"><div class="lbl" style="color:var(--ok)">Ainda pode quebrar</div><div class="mono" style="font-size:20px;font-weight:700;color:var(--ok);margin-top:4px">R$ '+numBR0(limiteProj)+'</div><div style="font-size:10px;color:var(--mut);margin-top:2px">para fechar dentro da meta de '+meta+'%</div></div>';
     } else {
-      limiteTxt='<div style="background:rgba(192,57,43,.08);border:1px solid var(--red);border-radius:10px;padding:10px;text-align:center;margin-top:10px"><div class="lbl" style="color:var(--red)">Meta ultrapassada em</div><div class="mono" style="font-size:20px;font-weight:700;color:var(--red);margin-top:4px">R$ '+numBR0(Math.abs(limiteProj))+'</div><div style="font-size:10px;color:var(--mut);margin-top:2px">j&aacute; estourou o limite da meta de '+meta+'%</div></div>';
+      limiteTxt='<div style="background:rgba(192,57,43,.08);border:1px solid var(--red);border-radius:10px;padding:10px;text-align:center;margin-top:10px"><div class="lbl" style="color:var(--red)">Meta ultrapassada em</div><div class="mono" style="font-size:20px;font-weight:700;color:var(--red);margin-top:4px">R$ '+numBR0(Math.abs(limiteProj))+'</div><div style="font-size:10px;color:var(--mut);margin-top:2px">já estourou o limite da meta de '+meta+'%</div></div>';
     }
     var rAtualCol=pctLiq<=meta?'var(--ok)':'var(--red)';
     var rProjCol=pctProj<=meta?'var(--ok)':'var(--red)';
-    projH='<div class="bf" style="padding:14px;margin-bottom:14px"><div class="lbl" style="margin-bottom:10px">&#x1F4C8; Proje&ccedil;&atilde;o &mdash; '+mesBR(mesSel)+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="background:var(--bg2);border-radius:10px;padding:10px;text-align:center"><div class="lbl">Ritmo Atual</div><div class="mono" style="font-size:18px;font-weight:700;color:'+rAtualCol+';margin-top:4px">'+numBR2(pctLiq)+'%</div><div style="font-size:10px;color:var(--mut);margin-top:2px">at&eacute; dia '+diaAtual+'</div></div><div style="background:var(--bg2);border-radius:10px;padding:10px;text-align:center"><div class="lbl">Proje&ccedil;&atilde;o Final</div><div class="mono" style="font-size:18px;font-weight:700;color:'+rProjCol+';margin-top:4px">'+numBR2(pctProj)+'%</div><div style="font-size:10px;color:var(--mut);margin-top:2px">se continuar assim</div></div></div>'+limiteTxt+'</div>';
+    projH='<div class="bf" style="padding:14px;margin-bottom:14px"><div class="lbl" style="margin-bottom:10px">📈 Projeção — '+mesBR(mesSel)+'</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div style="background:var(--bg2);border-radius:10px;padding:10px;text-align:center"><div class="lbl">Ritmo Atual</div><div class="mono" style="font-size:18px;font-weight:700;color:'+rAtualCol+';margin-top:4px">'+numBR2(pctLiq)+'%</div><div style="font-size:10px;color:var(--mut);margin-top:2px">até dia '+diaAtual+'</div></div><div style="background:var(--bg2);border-radius:10px;padding:10px;text-align:center"><div class="lbl">Projeção Final</div><div class="mono" style="font-size:18px;font-weight:700;color:'+rProjCol+';margin-top:4px">'+numBR2(pctProj)+'%</div><div style="font-size:10px;color:var(--mut);margin-top:2px">se continuar assim</div></div></div>'+limiteTxt+'</div>';
   }
 
   var aiH='';
   if(aiLoad) aiH='<div style="text-align:center;padding:20px"><div class="spin" style="margin:0 auto 12px;width:28px;height:28px;border-width:3px"></div><div class="sub" style="font-size:12px">Analisando...</div></div>';
-  else if(aiTxt) aiH='<div class="aic"><div class="lbl" style="margin-bottom:8px;color:var(--gm)">An&aacute;lise &middot; IA</div><div style="font-size:13px;line-height:1.65;white-space:pre-wrap">'+esc(aiTxt)+'</div></div>';
+  else if(aiTxt) aiH='<div class="aic"><div class="lbl" style="margin-bottom:8px;color:var(--gm)">Análise · IA</div><div style="font-size:13px;line-height:1.65;white-space:pre-wrap">'+esc(aiTxt)+'</div></div>';
 
   pc.innerHTML=
     '<div class="ttl" style="margin-bottom:12px">Dashboard</div>'+
@@ -881,20 +873,20 @@ function rDash(pc){
     // SITUAÇÃO
     '<div class="'+sitClass+'">'+
       '<span class="sit-emoji">'+sitEmoji+'</span>'+
-      '<div class="sit-pct" style="color:'+sitColor+'">'+(temDados?numBR2(pctLiq)+'%':'&mdash;')+'</div>'+
+      '<div class="sit-pct" style="color:'+sitColor+'">'+(temDados?numBR2(pctLiq)+'%':'—')+'</div>'+
       '<div class="sit-lbl" style="color:'+sitColor+'">'+sitMsg+'</div>'+
-      (temDados?'<div style="font-size:11px;color:var(--mut);margin-top:6px">Quebra L&iacute;quida (bruta &minus; fluig)</div>':'')+'</div>'+
+      (temDados?'<div style="font-size:11px;color:var(--mut);margin-top:6px">Quebra Líquida (bruta - fluig)</div>':'')+'</div>'+
     // 4 MÉTRICAS
     '<div class="mg">'+
       '<div class="bf mc"><span class="lbl">Vendas Inf.</span><span class="mv" style="font-size:16px">R$ '+numBR0(totalVendas)+'</span><span style="font-size:10px;color:var(--mut)">'+vendas.length+' dia(s)</span></div>'+
       '<div class="bf mc"><span class="lbl">Quebra Bruta</span><span class="mv '+(temDados?pctClr(pctBruto,meta):'')+'" style="font-size:16px">R$ '+numBR0(rqBruto)+'</span><span style="font-size:10px;color:var(--mut)">'+(temDados?numBR2(pctBruto)+'%':'sem vendas')+'</span></div>'+
       '<div class="bf mc"><span class="lbl">Fluig Aprov.</span><span class="mv ok" style="font-size:16px">R$ '+numBR0(rqFluig)+'</span><span style="font-size:10px;color:var(--mut)">'+fluigs.length+' fluig(s)</span></div>'+
-      '<div class="bf mc"><span class="lbl">Quebra L&iacute;q.</span><span class="mv '+(temDados?pctClr(pctLiq,meta):'')+'" style="font-size:16px">R$ '+numBR0(rqLiq)+'</span><span style="font-size:10px;color:var(--mut)">'+(temDados?numBR2(pctLiq)+'%':'sem vendas')+'</span></div>'+
+      '<div class="bf mc"><span class="lbl">Quebra Líq.</span><span class="mv '+(temDados?pctClr(pctLiq,meta):'')+'" style="font-size:16px">R$ '+numBR0(rqLiq)+'</span><span style="font-size:10px;color:var(--mut)">'+(temDados?numBR2(pctLiq)+'%':'sem vendas')+'</span></div>'+
     '</div>'+
     projH+
     // INFORMAR VENDAS
     '<div class="bf" style="padding:14px;margin-bottom:14px">'+
-      '<div class="lbl" style="margin-bottom:8px">&#x1F4B0; Informar Vendas do Dia</div>'+
+      '<div class="lbl" style="margin-bottom:8px">💰 Informar Vendas do Dia</div>'+
       '<div style="display:flex;gap:8px;align-items:flex-end">'+
         '<div style="flex:1"><label class="lbl" style="display:block;margin-bottom:4px">Data</label><input class="inp" type="date" id="vd-data" value="'+todayISO()+'" max="'+todayISO()+'"/></div>'+
         '<div style="flex:1"><label class="lbl" style="display:block;margin-bottom:4px">Vendas FLV (R$)</label><input class="inp inp-n" type="number" step="0.01" min="0" id="vd-valor" placeholder="Ex: 8500"/></div>'+
@@ -905,22 +897,22 @@ function rDash(pc){
     // FLUIGS
     '<div class="bf" style="margin-bottom:14px">'+
       '<div style="padding:14px 14px 10px">'+
-        '<div class="lbl" style="margin-bottom:8px">&#x1F4CB; Registrar Fluig Aprovado</div>'+
+        '<div class="lbl" style="margin-bottom:8px">📋 Registrar Fluig Aprovado</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">'+
-          '<div><label class="lbl" style="display:block;margin-bottom:4px">Data aprova&ccedil;&atilde;o</label><input class="inp" type="date" id="fg-data" value="'+todayISO()+'" max="'+todayISO()+'"/></div>'+
+          '<div><label class="lbl" style="display:block;margin-bottom:4px">Data aprovação</label><input class="inp" type="date" id="fg-data" value="'+todayISO()+'" max="'+todayISO()+'"/></div>'+
           '<div><label class="lbl" style="display:block;margin-bottom:4px">Valor aprovado R$</label><input class="inp inp-n" type="number" step="0.01" min="0" id="fg-valor" placeholder="Ex: 500"/></div>'+
         '</div>'+
-        '<div style="margin-bottom:8px"><label class="lbl" style="display:block;margin-bottom:4px">Observa&ccedil;&atilde;o (produto)</label><input class="inp" id="fg-obs" placeholder="Ex: Tomate &mdash; tratativa 17/04" maxlength="100"/></div>'+
+        '<div style="margin-bottom:8px"><label class="lbl" style="display:block;margin-bottom:4px">Observação (produto)</label><input class="inp" id="fg-obs" placeholder="Ex: Tomate — tratativa 17/04" maxlength="100"/></div>'+
         '<button class="btn btn-p btn-f" onclick="saveFluig()">'+ic('chk',15)+' Registrar Fluig</button>'+
       '</div>'+
       fluigH+
     '</div>'+
     // TOP PRODUTOS
-    '<div class="bf" style="padding:12px;margin-bottom:14px"><div class="lbl" style="margin-bottom:10px">Top Produtos &middot; Quebra em R$</div>'+barsH+'</div>'+
+    '<div class="bf" style="padding:12px;margin-bottom:14px"><div class="lbl" style="margin-bottom:10px">Top Produtos · Quebra em R$</div>'+barsH+'</div>'+
     // META
-    '<div class="bf" style="padding:12px;margin-bottom:14px"><div class="lbl" style="margin-bottom:8px">&#x2699;&#xFE0F; Meta Mensal &mdash; Aguas Lindas FLV</div><div style="display:flex;gap:8px;align-items:flex-end"><div style="flex:1"><label class="lbl" style="display:block;margin-bottom:4px">% Meta de Quebra</label><input class="inp inp-n" type="number" step="0.1" min="0" max="100" id="meta-inp" value="'+metaEd+'" oninput="metaEd=this.value"/></div><button class="btn btn-p" onclick="saveMeta()">Salvar</button></div><div style="font-size:11px;color:var(--mut);margin-top:6px">Meta atual: <strong>'+meta+'%</strong></div></div>'+
+    '<div class="bf" style="padding:12px;margin-bottom:14px"><div class="lbl" style="margin-bottom:8px">⚙️ Meta Mensal — Aguas Lindas FLV</div><div style="display:flex;gap:8px;align-items:flex-end"><div style="flex:1"><label class="lbl" style="display:block;margin-bottom:4px">% Meta de Quebra</label><input class="inp inp-n" type="number" step="0.1" min="0" max="100" id="meta-inp" value="'+metaEd+'" oninput="metaEd=this.value"/></div><button class="btn btn-p" onclick="saveMeta()">Salvar</button></div><div style="font-size:11px;color:var(--mut);margin-top:6px">Meta atual: <strong>'+meta+'%</strong></div></div>'+
     // IA
-    '<button class="btn btn-g btn-f" style="margin-bottom:12px" onclick="doAI()" '+(aiLoad?'disabled':'')+'>'+( aiLoad?'<span class="spin"></span> Analisando...':ic('cpu',15)+' Analisar Padr&otilde;es com IA')+'</button>'+
+    '<button class="btn btn-g btn-f" style="margin-bottom:12px" onclick="doAI()" '+(aiLoad?'disabled':'')+'>'+( aiLoad?'<span class="spin"></span> Analisando...':ic('cpu',15)+' Analisar Padrões com IA')+'</button>'+
     aiH;
 }
 
@@ -1014,17 +1006,17 @@ function rHist(pc){
       var p2=cT>0?(kgT/cT*100).toFixed(1):0;
       var codes=(t.items||[]).map(function(i){ var p=ST.prods.filter(function(x){ return x.id===i.prodId; })[0]; return p?p.codigo:null; }).filter(Boolean);
       var nFotos=DB.keys().filter(function(k){ return k.indexOf('flv_ph_'+t.id)===0; }).length;
-      var fotosTxt=nFotos>0?'<div style="font-size:10px;color:var(--mut);margin-top:1px">&#x1F4F7; '+nFotos+' foto(s) salva(s)</div>':'';
+      var fotosTxt=nFotos>0?'<div style="font-size:10px;color:var(--mut);margin-top:1px">📷 '+nFotos+' foto(s) salva(s)</div>':'';
       var dt=new Date(t.at).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'});
       listH+='<div class="li" onclick="navigate(\'detalhe\',\''+t.id+'\')"><div class="cr"><div><div style="font-size:11px;color:var(--mut);margin-bottom:1px">'+dt+'</div><div style="font-size:12px;font-weight:700">'+esc(codes.join(' \u00b7 ')||'\u2014')+'</div>'+fotosTxt+'</div><div style="text-align:right"><div class="mono" style="font-size:13px;color:var(--gm);font-weight:600">'+numBR(kgT)+' kg</div><div style="font-size:10px;color:var(--mut)">'+p2+'%</div></div></div></div>';
     });
   }
   pc.innerHTML=
-    '<div class="ttl" style="margin-bottom:12px">Hist&oacute;rico</div>'+
+    '<div class="ttl" style="margin-bottom:12px">Histórico</div>'+
     monH+
-    '<div class="fg"><input class="inp" placeholder="Buscar c&oacute;digo ou produto..." value="'+esc(hSrch)+'" oninput="hSrch=this.value;rHist(document.getElementById(\'pg\'))"/></div>'+
-    '<div class="g2" style="margin-bottom:8px"><div><label class="lbl" style="display:block;margin-bottom:4px">De</label><input class="inp" type="date" value="'+hFrom+'" onchange="hFrom=this.value;rHist(document.getElementById(\'pg\'))"/></div><div><label class="lbl" style="display:block;margin-bottom:4px">At&eacute;</label><input class="inp" type="date" value="'+hTo+'" onchange="hTo=this.value;rHist(document.getElementById(\'pg\'))"/></div></div>'+
-    '<div style="font-size:11px;color:var(--mut);margin-bottom:8px;font-weight:700">'+filt.length+' tratativa(s) &middot; '+mesBR(mesSel)+'</div>'+
+    '<div class="fg"><input class="inp" placeholder="Buscar código ou produto..." value="'+esc(hSrch)+'" oninput="hSrch=this.value;rHist(document.getElementById(\'pg\'))"/></div>'+
+    '<div class="g2" style="margin-bottom:8px"><div><label class="lbl" style="display:block;margin-bottom:4px">De</label><input class="inp" type="date" value="'+hFrom+'" onchange="hFrom=this.value;rHist(document.getElementById(\'pg\'))"/></div><div><label class="lbl" style="display:block;margin-bottom:4px">Até</label><input class="inp" type="date" value="'+hTo+'" onchange="hTo=this.value;rHist(document.getElementById(\'pg\'))"/></div></div>'+
+    '<div style="font-size:11px;color:var(--mut);margin-bottom:8px;font-weight:700">'+filt.length+' tratativa(s) · '+mesBR(mesSel)+'</div>'+
     '<div class="bf">'+listH+'</div>';
 }
 
@@ -1033,7 +1025,7 @@ function rHist(pc){
 // ════════════════════════════════════════════════════
 function rDet(pc,id){
   var t=DB.loadTrat(id);
-  if(!t){ pc.innerHTML='<div style="padding:20px;color:var(--mut)">Tratativa n&atilde;o encontrada.</div>'; return; }
+  if(!t){ pc.innerHTML='<div style="padding:20px;color:var(--mut)">Tratativa não encontrada.</div>'; return; }
   var txt=t.txtWA||waText(t.items||[]);
   var allPh=[];
   (t.items||[]).forEach(function(it){
@@ -1054,7 +1046,7 @@ function rDet(pc,id){
     var p=ST.prods.filter(function(x){ return x.id===it.prodId; })[0];
     var ch2=parseN(it.chegou), qb2=parseN(it.quebra);
     var p2=ch2>0?(qb2/ch2*100).toFixed(1):0;
-    itensH+='<div class="li"><div class="mono" style="font-size:11px;color:var(--gm);font-weight:600">'+esc(p?p.codigo:'\u2014')+'</div><div style="font-size:13px">'+esc(p?p.nome:'\u2014')+'</div><div style="font-size:11px;color:var(--mut);margin-top:2px">Chegou: '+numBR(ch2)+' '+(p?(p.unidade||'kg'):'kg')+' &middot; Quebra: '+numBR(qb2)+' '+(p?(p.unidade||'kg'):'kg')+' &middot; '+p2+'%</div></div>';
+    itensH+='<div class="li"><div class="mono" style="font-size:11px;color:var(--gm);font-weight:600">'+esc(p?p.codigo:'\u2014')+'</div><div style="font-size:13px">'+esc(p?p.nome:'\u2014')+'</div><div style="font-size:11px;color:var(--mut);margin-top:2px">Chegou: '+numBR(ch2)+' '+(p?(p.unidade||'kg'):'kg')+' · Quebra: '+numBR(qb2)+' '+(p?(p.unidade||'kg'):'kg')+' · '+p2+'%</div></div>';
   });
   pc.innerHTML=
     '<div class="cr" style="margin-bottom:14px"><button class="btn btn-g btn-sm" onclick="navigate(\'historico\')">'+ic('bk',15)+'</button><div class="sub" style="flex:1;text-align:center">Detalhe</div><span class="bdg '+(t.status==='finalizada'?'bok':'bw')+'">'+esc(t.status||'\u2014')+'</span></div>'+
@@ -1066,7 +1058,7 @@ function rDet(pc,id){
     '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">'+
       '<button class="btn btn-wa btn-f" onclick="dtWA(\''+id+'\')">'+ic('wa',17)+' Reenviar para WhatsApp</button>'+
       '<button class="btn btn-g btn-f" onclick="dtCpy(\''+id+'\')">'+ic('cpy',15)+' Copiar Texto</button>'+
-      '<button class="btn btn-g btn-f" onclick="navigate(\'historico\')">'+ic('bk',15)+' Voltar ao Hist&oacute;rico</button>'+
+      '<button class="btn btn-g btn-f" onclick="navigate(\'historico\')">'+ic('bk',15)+' Voltar ao Histórico</button>'+
     '</div>'+
     (itensH?'<div class="sh"><span class="lbl">Itens</span><div class="shl"></div></div><div class="bf">'+itensH+'</div>':'');
 }
@@ -1099,33 +1091,13 @@ function dtCpy(id){
 }
 
 // ════════════════════════════════════════════════════
-// PWA — SERVICE WORKER + INSTALL PROMPT
+// PWA
 // ════════════════════════════════════════════════════
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js', { scope: './' })
-    .then(function(reg) {
-      console.log('[PWA] SW registrado:', reg.scope);
-    })
-    .catch(function(err) {
-      console.warn('[PWA] SW erro:', err);
-    });
+window.addEventListener('beforeinstallprompt',function(e){ e.preventDefault(); ST.instEvt=e; });
+if('serviceWorker' in navigator){
+  var sw="const C='flv-v4';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(['.']))));self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k))))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));";
+  try{ navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(function(){}); }catch(e){}
 }
-
-// Captura o prompt de instalação nativo do Chrome
-window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault();
-  ST.instEvt = e;
-  ST.showInst = true;
-  render();
-});
-
-// Após instalar com sucesso, esconde o banner
-window.addEventListener('appinstalled', function() {
-  ST.showInst = false;
-  ST.instEvt = null;
-  render();
-  toast('✓ App instalado com sucesso!');
-});
 
 // ════════════════════════════════════════════════════
 // SPLASH SCREEN — canvas hortifruti
@@ -1265,5 +1237,6 @@ render();
 setTimeout(drawSplash, 50);
 
 </script>
-</body>
-</html>
+
+
+</body></html>
